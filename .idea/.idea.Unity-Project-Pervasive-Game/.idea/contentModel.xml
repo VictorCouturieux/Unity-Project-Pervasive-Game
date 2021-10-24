@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Vic Ctx\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Vic Ctx\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Unity-Project-Pervasive-Game.-939825288.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Vic Ctx\Desktop\Unity-Project-Pervasive-Game" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Narrate" t="Include">
+          <e p="Demos" t="Include">
+            <e p="2DDemo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Elevator.cs" t="Include" />
+                <e p="Generator.cs" t="Include" />
+                <e p="GeneratorManager.cs" t="Include" />
+                <e p="MovementController.cs" t="Include" />
+                <e p="TheEnd.cs" t="Include" />
+              </e>
+            </e>
+            <e p="3DDemo" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="BoxCounter.cs" t="Include" />
+                <e p="CharacterController.cs" t="Include" />
+                <e p="KeyChecker.cs" t="Include" />
+                <e p="KeyEnabler.cs" t="Include" />
+                <e p="ObjRotate.cs" t="Include" />
+                <e p="OnDisableBox.cs" t="Include" />
+                <e p="SimpleTranslate.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="NarrationManagerInspector.cs" t="Include" />
+              <e p="NarrationPropertyDrawer.cs" t="Include" />
+              <e p="PhrasePropertyDrawer.cs" t="Include" />
+              <e p="SubtitleManagerInspector.cs" t="Include" />
+              <e p="TriggerInspectors" t="Include">
+                <e p="CollisionNarrationTriggerInspector.cs" t="Include" />
+                <e p="CountTriggerInspector.cs" t="Include" />
+                <e p="InteractiveTriggerInspector.cs" t="Include" />
+                <e p="NarrationTriggerInspector.cs" t="Include" />
+                <e p="OnEnableTriggerInspector.cs" t="Include" />
+                <e p="ProximityNarrationTriggerInspector.cs" t="Include" />
+                <e p="TimerTriggerInspector.cs" t="Include" />
+              </e>
+            </e>
+            <e p="NarrationChain.cs" t="Include" />
+            <e p="NarrationCountElement.cs" t="Include" />
+            <e p="NarrationList.cs" t="Include" />
+            <e p="NarrationManager.cs" t="Include" />
+            <e p="Other" t="Include">
+              <e p="ChainLink.cs" t="Include" />
+              <e p="CountEventArgs.cs" t="Include" />
+              <e p="Narration.cs" t="Include" />
+              <e p="NarrationTrigger.cs" t="Include" />
+              <e p="Phrase.cs" t="Include" />
+            </e>
+            <e p="SubtitleManager.cs" t="Include" />
+            <e p="Triggers" t="Include">
+              <e p="CollisionNarrationTrigger.cs" t="Include" />
+              <e p="CountingNarrationTrigger.cs" t="Include" />
+              <e p="InteractiveNarrationTrigger.cs" t="Include" />
+              <e p="OnEnableNarrationTrigger.cs" t="Include" />
+              <e p="ProximityNarrationTrigger.cs" t="Include" />
+              <e p="TimerNarrationTrigger.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Elements" t="Include">
+            <e p="AllLight" t="Include">
+              <e p="Door.cs" t="Include" />
+              <e p="GrpA.cs" t="Include" />
+              <e p="InputA.cs" t="Include" />
+              <e p="InputB.cs" t="Include" />
+              <e p="InputC.cs" t="Include" />
+              <e p="Radio.cs" t="Include" />
+            </e>
+            <e p="Element.cs" t="Include" />
+          </e>
+          <e p="FlateBar" t="Include">
+            <e p="BarDeflate.cs" t="Include" />
+            <e p="BarInflate.cs" t="Include" />
+          </e>
+          <e p="GameManager.cs" t="Include" />
+          <e p="Input_Arduino.cs" t="Include" />
+          <e p="PortsArduino.cs" t="Include" />
+          <e p="ScenetteState.cs" t="Include" />
+          <e p="ScenetteType.cs" t="Include" />
+          <e p="SoundEffect" t="Include">
+            <e p="FadeMixerGroup.cs" t="Include" />
+            <e p="TestSound.cs" t="Include" />
+          </e>
+          <e p="Story" t="Include">
+            <e p="storyLine1" t="Include">
+              <e p="StartRadioNoise.cs" t="Include" />
+            </e>
+            <e p="storyLine2" t="Include">
+              <e p="InteractivePhase1.cs" t="Include" />
+            </e>
+            <e p="StoryManager.cs" t="Include" />
+          </e>
+          <e p="TileTable" t="Include">
+            <e p="ClickableTile.cs" t="Include" />
+            <e p="TileMap.cs" t="Include" />
+            <e p="TileType.cs" t="Include" />
+            <e p="Unit.cs" t="Include" />
+          </e>
+          <e p="Voice" t="Include">
+            <e p="Dialogue.cs" t="Include" />
+            <e p="VoiceEvent.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+      <e p="Unity-Project-Pervasive-Game.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
