@@ -8,7 +8,6 @@ public class InteractivePhase1 {
     public float _lightYellowLapsSec = 3;
     public Dialogue _understoodQuestion;
     public float _timeLapsTryAgain = 3;
-    public Dialogue _noAnswer;
     public Dialogue _positiveAnswer;
     public Dialogue _negativeAnswer;
     
@@ -22,7 +21,7 @@ public class InteractivePhase1 {
         StoryManager.Instance.StageEnum = 1;
         while (true) {
             yield return new WaitForSeconds(_timeLapsTryAgain);
-            StoryManager.Instance.VoiceEvent.DialogueEvent(_noAnswer.text);
+            StoryManager.Instance.VoiceEvent.DialogueEvent(_negativeAnswer.text);
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class VoiceEvent : MonoBehaviour {
-    public float timeLapsShowingText = 1.5f;
+//    public float timeLapsShowingText = 1.5f;
     
 //    private static String noText = "[No Text]";
     
