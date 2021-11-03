@@ -21,12 +21,12 @@ public class StartRadioNoise {
         grpA.StartBlinking();
         
         //todo : Start RadioNoise Sound
-        StoryManager.Instance.VoiceEvent.DialogueEvent(_radioNoise.text);
+        StoryManager.Instance.VoiceEvent.DialogueEvent(_radioNoise);
         
         yield return new WaitForSeconds(_startRadioSoundLapsSec);
         StoryManager.Instance.StageEnum = 0;
         while (true) {
-            StoryManager.Instance.VoiceEvent.DialogueEvent(_allo.text);
+            StoryManager.Instance.VoiceEvent.DialogueEvent(_allo);
             yield return new WaitForSeconds(_AlloLaps);
         }
     }

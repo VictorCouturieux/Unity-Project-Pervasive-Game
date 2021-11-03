@@ -1,21 +1,35 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class StoryManager : MonoBehaviour {
-
-    public float ledFeedBackTimeInSec = 3;
     
     public StartRadioNoise _startRadioNoise;
-    public InteractivePhase1 _interactivePhase1;
+    public InteractiveStage1 _interactiveStage1;
+    public InteractiveStage2 _interactiveStage2;
+    public InteractiveStage3 _interactiveStage3;
+    public InteractiveStage4 _interactiveStage4;
+    public InteractiveStage5 _interactiveStage5;
+    public InteractiveStage6 _interactiveStage6;
+    public InteractiveStage7 _interactiveStage7;
     
     private InputA _inputA;
     private InputB _inputB;
+    public InputB InputB{
+        get { return _inputB; }
+    }
     private InputC _inputC;
+    public InputC InputC{
+        get { return _inputC; }
+    }
 
     private Door _door;
     private GrpA _grpA;
     private Radio _radio;
+    public Radio Radio{
+        get { return _radio; }
+    }
     
     private BarDeflate _barDeflate;
     private BarInflate _barInflate;
@@ -76,35 +90,105 @@ public class StoryManager : MonoBehaviour {
         switch (_stageEnum) {
             case 0 :
                 if (_radio.isTouchingOneTime()) {
-                    StartStageCoroutineTimeLine(_interactivePhase1.InteractiveStage1(_grpA, _radio));
+                    StartStageCoroutineTimeLine(_interactiveStage1.CinematicStage1(_grpA, _radio));
                 }
                 break;
         }
-
-        //effect sur multi stage
-        if (_stageEnum > 0) {
-            _radio.TouchRadioEffect(_stageEnum);
+    }
+    
+    public void InteractPositiveAnswer() {
+        if (_radio.isTouching()) {
+            StartCoroutine(_radio.CoroutineRadioInteractPositiveAnswer());
+            switch (_stageEnum) {
+                case 1:
+                    VoiceEvent.DialogueEvent(_interactiveStage1._positiveAnswer);
+                    StartStageCoroutineTimeLine(_interactiveStage2.CinematicStage2());
+                    break;
+                case 2:
+                    VoiceEvent.DialogueEvent(_interactiveStage2._posAnswer);
+                    VoiceEvent.DialogueEvent(_interactiveStage2._endDialogue);
+                    StartStageCoroutineTimeLine(_interactiveStage3.CinematicStage(_inputA));
+                    break;
+                case 4:
+                    VoiceEvent.DialogueEvent(_interactiveStage4._answer);
+                    StartStageCoroutineTimeLine(_interactiveStage5.CinematicStage());
+                    break;
+                case 5:
+                    VoiceEvent.DialogueEvent(_interactiveStage5._positivAnswer);
+                    StartStageCoroutineTimeLine(_interactiveStage6.CinematicStage(_inputA, _inputB, _inputC, _radio));
+                    break;
+            }
         }
     }
     
-    //feedback
-
-    public void RadioInteractPositiveAnswer() {
-        StartCoroutine(_radio.CoroutineRadioInteractPositiveAnswer(ledFeedBackTimeInSec));
-        switch (_stageEnum) {
-            case 1:
-                VoiceEvent.DialogueEvent(_interactivePhase1._positiveAnswer.text);
-//                StartStageCoroutineTimeLine() //2
-                break;
+    public void InteractNegativeAnswer() {
+        if (_radio.isTouching()) {
+            StartCoroutine(_radio.CoroutineRadioInteractNegativeAnswer());
+            switch (_stageEnum) {
+                case 1:
+                    VoiceEvent.DialogueEvent(_interactiveStage1._negativeAnswer);
+                    break;
+                case 2:
+                    VoiceEvent.DialogueEvent(_interactiveStage2._negAnswer);
+                    VoiceEvent.DialogueEvent(_interactiveStage2._endDialogue);
+                    StartStageCoroutineTimeLine(_interactiveStage3.CinematicStage(_inputA));
+                    break;
+                case 4:
+                    VoiceEvent.DialogueEvent(_interactiveStage4._answer);
+                    StartStageCoroutineTimeLine(_interactiveStage5.CinematicStage());
+                    break;
+                case 5:
+                    VoiceEvent.DialogueEvent(_interactiveStage5._negativAnswer);
+                    StartStageCoroutineTimeLine(_interactiveStage6.CinematicStage(_inputA, _inputB, _inputC, _radio));
+                    break;
+            }
         }
     }
-    
-    public void RadioInteractNegativeAnswer() {
-        StartCoroutine(_radio.CoroutineRadioInteractNegativeAnswer(ledFeedBackTimeInSec));
-        switch (_stageEnum) {
-            case 1:
-                VoiceEvent.DialogueEvent(_interactivePhase1._negativeAnswer.text);
-                break;
+
+    public void InteractApnea() {
+        if (_inputA.isTouching()) {
+            switch (_stageEnum) {
+                case 3:
+                    StartStageCoroutineTimeLine(_interactiveStage4.CinematicStage(_inputA, _radio));
+                    break;
+                case 6:
+                    if (_inputB.currentLedColor() == ColorLed.Green && 
+                        _inputC.currentLedColor() == ColorLed.Green) {
+                        _radio.StopCurrantHelpMode();
+                        _inputA.LightToGreen();
+                        VoiceEvent.DialogueEvent(_interactiveStage6._inputASuccess);
+                        VoiceEvent.DialogueEvent(_interactiveStage6._lighthouseHum);
+                        StartStageCoroutineTimeLine(_interactiveStage7.CinematicStage(_door));
+                    }
+                    break;
+                case 7:
+                    _inputA.LightToRed();
+                    VoiceEvent.DialogueEvent(_interactiveStage7._badEndFirst);
+                    VoiceEvent.DialogueEvent(_interactiveStage7._badEndSecond);
+                    break;
+            }
+        }
+
+        if (_inputB.isTouching()) {
+            switch (_stageEnum) {
+                case 6:
+                    VoiceEvent.DialogueEvent(_interactiveStage6._timerSound);
+                    _radio.StartHelpMode(_interactiveStage6._helpTimeLapsInSec, _interactiveStage6._helpInputC);
+                    _inputB.LightToGreen();
+                    break;
+            }
+        }
+
+        if (_inputC.isTouching()) {
+            switch (_stageEnum) {
+                case 6:
+                    if (_inputB.currentLedColor() == ColorLed.Green) {
+                        VoiceEvent.DialogueEvent(_interactiveStage6._inputBCSuccess);
+                        _radio.StartHelpMode(_interactiveStage6._helpTimeLapsInSec, _interactiveStage6._helpInputA);
+                        _inputC.LightToGreen();
+                    }
+                    break;
+            }
         }
     }
 

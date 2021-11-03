@@ -17,6 +17,7 @@
               <e p="Radio.cs" t="Include" />
             </e>
             <e p="Element.cs" t="Include" />
+            <e p="InputX.cs" t="Include" />
           </e>
           <e p="FlateBar" t="Include">
             <e p="BarDeflate.cs" t="Include" />
@@ -32,11 +33,29 @@
             <e p="TestSound.cs" t="Include" />
           </e>
           <e p="Story" t="Include">
-            <e p="storyLine1" t="Include">
+            <e p="storyLine0" t="Include">
               <e p="StartRadioNoise.cs" t="Include" />
             </e>
+            <e p="storyLine1" t="Include">
+              <e p="InteractiveStage1.cs" t="Include" />
+            </e>
             <e p="storyLine2" t="Include">
-              <e p="InteractivePhase1.cs" t="Include" />
+              <e p="InteractiveStage2.cs" t="Include" />
+            </e>
+            <e p="storyLine3" t="Include">
+              <e p="InteractiveStage3.cs" t="Include" />
+            </e>
+            <e p="storyLine4" t="Include">
+              <e p="InteractiveStage4.cs" t="Include" />
+            </e>
+            <e p="storyLine5" t="Include">
+              <e p="InteractiveStage5.cs" t="Include" />
+            </e>
+            <e p="storyLine6" t="Include">
+              <e p="InteractiveStage6.cs" t="Include" />
+            </e>
+            <e p="storyLine7" t="Include">
+              <e p="InteractiveStage7.cs" t="Include" />
             </e>
             <e p="StoryManager.cs" t="Include" />
           </e>

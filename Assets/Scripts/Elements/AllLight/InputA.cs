@@ -1,11 +1,58 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class InputA : Element, IInteractiveLed
+public class InputA : InputX
 {
+    public override bool isTouching() {
+        return Input.GetKey(KeyCode.A);
+    }
+    
+    public override bool isTouchingOneTime() {
+        return Input.GetKeyDown(KeyCode.A);
+    }
+
+    public override bool isLetTouchOneTime() {
+        return Input.GetKeyUp(KeyCode.A);
+    }
+
+    private void Update() {
+        switch (StoryManager.Instance.StageEnum) {
+            case 3:
+                if (isTouchingOneTime()) {
+                    StoryManager.Instance.VoiceEvent.DialogueEvent(StoryManager.Instance._interactiveStage3._contactInputA);
+                    LightToYellow();
+                    StoryManager.Instance.Radio.StartHelpMode(
+                        StoryManager.Instance._interactiveStage3._timeLapsHelpToApnea, 
+                        StoryManager.Instance._interactiveStage3._helpToApnea);
+                }
+                if (isLetTouchOneTime()) {
+//                    StoryManager.Instance.VoiceEvent.DialogueEvent(StoryManager.Instance._interactiveStage3._helpContact);
+                    LightToRed();
+                    StoryManager.Instance.Radio.StartHelpMode(
+                        StoryManager.Instance._interactiveStage3._timeLapsHelpContact, 
+                        StoryManager.Instance._interactiveStage3._helpContact);
+                }
+                break;
+            case 6 :
+                if (isTouchingOneTime() && currentLedColor() == ColorLed.Red && StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green && StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
+                    LightToYellow();
+                }
+                if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow && StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green && StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
+                    LightToRed();
+                }
+                break;
+        }
+    }
+
     public void LightOff() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
+        }
+    }
+    
+    public void LightToYellow() {
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/YellowRound");
         }
     }
     

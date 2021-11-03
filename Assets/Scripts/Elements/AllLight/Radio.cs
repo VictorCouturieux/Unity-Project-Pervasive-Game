@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Radio : Element
-{
+public class Radio : Element {
+    
+    public float ledLetContactTimeInSec = 1;
+
+    private IEnumerator _routineLetContact = null;
+    private IEnumerator _routineHelpMode = null;
+    private Dialogue _currantHelpDialogue;
+    
     public bool isTouching() {
         return Input.GetKey(KeyCode.R);
     }
@@ -12,40 +18,82 @@ public class Radio : Element
     public bool isTouchingOneTime() {
         return Input.GetKeyDown(KeyCode.R);
     }
+
+    public bool isLetTouchOneTime() {
+        return Input.GetKeyUp(KeyCode.R);
+    }
     
-    public void TouchRadioEffect(int stageEnum) {
-        if (currentLedColor() != ColorLed.Red && currentLedColor() != ColorLed.Green) {
-            if (isTouching()) {
-                LightToYellow();
+    private void Update() {
+        if (StoryManager.Instance.StageEnum >= 0) {
+            if (currentLedColor() != ColorLed.Red && currentLedColor() != ColorLed.Green) {
+                if (isTouchingOneTime()) {
+                    if (_routineLetContact != null) {
+                        StopCoroutine(_routineLetContact);
+                        _routineLetContact = null;
+                    }
+                    LightToYellow();
+                }
+                else if (isLetTouchOneTime()) {
+                    _routineLetContact = CoroutineRadioLetContact();
+                    StartCoroutine(_routineLetContact);
+                }
             }
-            else {
-                LightToBlue();
-            }
+        }
+        
+        if (_routineHelpMode != null && isTouchingOneTime()) {
+            StopCoroutine(_routineHelpMode);
+            StartCoroutine(_routineHelpMode);
+        }
+    }
+
+    public void StartHelpMode(float lapsTimeLoop, Dialogue dialogue) {
+        StopCurrantHelpMode();
+        _currantHelpDialogue = dialogue;
+        _routineHelpMode = CoroutineHelpMode(lapsTimeLoop, dialogue);
+        StartCoroutine(_routineHelpMode);
+    }
+
+    public void StopCurrantHelpMode() {
+        if (_routineHelpMode != null) {
+            StopCoroutine(_routineHelpMode);
+            _routineHelpMode = null;
         }
     }
     
-    public IEnumerator CoroutineRadioInteractPositiveAnswer(float ledFeedBackTimeInSec) {
-        if (currentLedColor() == ColorLed.Yellow) {
-            LightToGreen();
+    private IEnumerator CoroutineHelpMode(float lapsTimeLoop, Dialogue helpDialogue) {
+        while (true) {
+            yield return new WaitForSeconds(lapsTimeLoop);
+            StoryManager.Instance.VoiceEvent.DialogueEvent(helpDialogue);
         }
-        yield return new WaitForSeconds(ledFeedBackTimeInSec);
+    }
+    
+    public IEnumerator CoroutineRadioLetContact() {
+        yield return new WaitForSeconds(ledLetContactTimeInSec);
         if (isTouching()) {
             LightToYellow();
         }
         else {
             LightToBlue();
         }
+        _routineLetContact = null;
     }
     
-    public IEnumerator CoroutineRadioInteractNegativeAnswer(float ledFeedBackTimeInSec) {
+    public IEnumerator CoroutineRadioInteractPositiveAnswer() {
         if (currentLedColor() == ColorLed.Yellow) {
-            LightToRed();
+            while (isTouching()) {
+                LightToGreen();
+                yield return new WaitForSeconds(0.1f);
+            }
+            LightToBlue();
         }
-        yield return new WaitForSeconds(ledFeedBackTimeInSec);
-        if (isTouching()) {
-            LightToYellow();
-        }
-        else {
+    }
+    
+    public IEnumerator CoroutineRadioInteractNegativeAnswer() {
+        if (currentLedColor() == ColorLed.Yellow) {
+            while (isTouching()) {
+                LightToRed();
+                yield return new WaitForSeconds(0.1f);
+            }
             LightToBlue();
         }
     }

@@ -33,6 +33,12 @@ public class GrpA : Element {
         }
     }
 
+    public void FadeToBlue() {
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
+        }
+    }
+
     public void StartBlinking() {
         _blinkingCoroutine = BlinkingRed();
         StartCoroutine(_blinkingCoroutine);

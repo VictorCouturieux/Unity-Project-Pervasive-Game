@@ -14,34 +14,29 @@ using UnityEngine.UI;
 [ExecuteInEditMode()]
 public class BarDeflate : MonoBehaviour
 {
-
-    public int maximum;
-    public int currentDeflate;
-    public bool deflateIsValid = false;
+    public float timeMaxReachInSec = 6;
+    private float activeTime = 0f;
+    
+    private bool deflateIsValid = false;
+    public bool apneaIsValid = false;
     public Image mask;
 //    public Input_Arduino inputArduinoInstance;
-
-    void Start()
-    {
-        currentDeflate = 0;
-
-    }
 
     void Update()
     {
 
         if (Input.GetKey("down"))
         {
-            currentDeflate++; 
+            activeTime += Time.deltaTime;
 //            if (inputArduinoInstance)
 //            {
 //                inputArduinoInstance.Valve2_On();
 //            }
         }
-        else
-        {
-            currentDeflate = 0;
+        else {
+            activeTime = 0f;
             deflateIsValid = false;
+            apneaIsValid = false;
 //            if (inputArduinoInstance)
 //            {
 //                inputArduinoInstance.Valve2_Off();
@@ -53,11 +48,14 @@ public class BarDeflate : MonoBehaviour
 
     void GetCurrentFill()
     {
-        float fillAmount = (float)currentDeflate / (float)maximum;
-        mask.fillAmount = fillAmount;
-        if (mask.fillAmount >= 1 && !deflateIsValid) {
+        mask.fillAmount = Mathf.Lerp(0, 1, activeTime / timeMaxReachInSec);
+        if (mask.fillAmount >= 0.5 && !deflateIsValid) {
+            StoryManager.Instance.InteractPositiveAnswer();
             deflateIsValid = true;
-            StoryManager.Instance.RadioInteractPositiveAnswer();
+        }
+        if (mask.fillAmount >= 1 && !apneaIsValid) {
+            StoryManager.Instance.InteractApnea();
+            apneaIsValid = true;
         }
     }
 

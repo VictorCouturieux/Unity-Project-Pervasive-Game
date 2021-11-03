@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -13,24 +14,20 @@ using UnityEngine.UI;
 [ExecuteInEditMode()]
 public class BarInflate : MonoBehaviour
 {
-    public int maximum;
-    public int currentInflate;
+    public float timeMaxReachInSec = 6;
+    private float activeTime = 0f;
+    
     public bool inflateIsValid = false;
+    public bool apneaIsValid = false;
     public Image mask;
 //    public Input_Arduino inputArduinoInstance;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentInflate = 0;
-    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey("up"))
         {
-            currentInflate++;
+            activeTime += Time.deltaTime;
 //            if (inputArduinoInstance != null)
 //            {
 //                inputArduinoInstance.Valve1_On();
@@ -38,8 +35,9 @@ public class BarInflate : MonoBehaviour
         }
         else 
         { 
-            currentInflate = 0;
+            activeTime = 0f;
             inflateIsValid = false;
+            apneaIsValid = false;
 //            if (inputArduinoInstance != null)
 //            {
 //                inputArduinoInstance.Valve1_Off();
@@ -51,11 +49,15 @@ public class BarInflate : MonoBehaviour
 
     void GetCurrentFill()
     {
-        float fillAmount = (float)currentInflate / (float)maximum;
+        float fillAmount = Mathf.Lerp(0, 1, activeTime / timeMaxReachInSec);
         mask.fillAmount = fillAmount;
-        if (mask.fillAmount >= 1 && !inflateIsValid) {
+        if (mask.fillAmount >= 0.5 && !inflateIsValid) {
+            StoryManager.Instance.InteractNegativeAnswer();
             inflateIsValid = true;
-            StoryManager.Instance.RadioInteractNegativeAnswer();
+        }
+        if (mask.fillAmount >= 1 && !apneaIsValid) {
+            StoryManager.Instance.InteractApnea();
+            apneaIsValid = true;
         }
     }
 

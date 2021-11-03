@@ -41,7 +41,3 @@ public enum ColorLed {
     Red,
     Green
 }
-
-public interface IInteractiveLed {
-    
-}
