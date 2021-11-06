@@ -13,6 +13,11 @@ public class Input_Arduino : MonoBehaviour
 {
     private SerialPort stream;
     private SerialPort stream2;
+    private SerialPort stream3;
+
+    public string message;
+    private float lastSend = 0;
+    public float delayBetweenMessage;
 
     public PortsArduino portsArduino;
 
@@ -44,6 +49,10 @@ public class Input_Arduino : MonoBehaviour
         stream2.ReadTimeout = 100;
         stream2.Open();
 
+        stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
+        stream3.ReadTimeout = 100;
+        stream3.Open();
+
         Valve2_Off();
         Valve1_Off();
 
@@ -54,6 +63,7 @@ public class Input_Arduino : MonoBehaviour
     {
         if (stream.IsOpen) stream.Close();
         if (stream2.IsOpen) stream2.Close();
+        if (stream3.IsOpen) stream3.Close();
     }
 
 
@@ -135,5 +145,30 @@ public class Input_Arduino : MonoBehaviour
                 MoodNeutral();
                 break;
         }
+    }
+
+    public void SendMessageToServo(string message)
+    {
+
+        if (stream3 != null && stream3.IsOpen)
+        {
+            stream3.WriteLine(message);
+            stream3.BaseStream.Flush();
+           // Debug.Log(message);
+
+        }
+    }
+
+    private void Update()
+    {       
+        //SendMessageToServo(message);
+
+         if (Time.time > lastSend + delayBetweenMessage)
+         {
+             SendMessageToServo(message);
+             lastSend = Time.time;
+             Debug.Log(message);
+         }
+
     }
 }
