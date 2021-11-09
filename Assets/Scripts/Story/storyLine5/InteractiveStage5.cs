@@ -3,17 +3,23 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class InteractiveStage5
-{
+public class InteractiveStage5 : InteractiveStage {
     public Dialogue _question;
-    public float _answerTimeLapsInSec = 3f;
-    public Dialogue _helpMoode;
     public Dialogue _positivAnswer;
     public Dialogue _negativAnswer;
 
-    public IEnumerator CinematicStage() {
-        StoryManager.Instance.StageEnum = 5;
-        StoryManager.Instance.VoiceEvent.DialogueEvent(_question);
-        yield return null;
+    public IEnumerator CinematicStageIn() {
+        StageEnum = 5;
+        yield return StartDialogueEvent(_question);
     }
+
+    public IEnumerator CinematicStagePosOut() {
+        yield return StartDialogueEvent(_positivAnswer);
+    }
+    
+    public IEnumerator CinematicStageNegOut() {
+        yield return StartDialogueEvent(_positivAnswer);
+    }
+    
+    
 }

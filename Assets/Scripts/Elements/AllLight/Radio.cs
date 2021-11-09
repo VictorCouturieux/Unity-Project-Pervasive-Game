@@ -63,10 +63,16 @@ public class Radio : Element {
     private IEnumerator CoroutineHelpMode(float lapsTimeLoop, Dialogue helpDialogue) {
         while (true) {
             yield return new WaitForSeconds(lapsTimeLoop);
-            StoryManager.Instance.VoiceEvent.DialogueEvent(helpDialogue);
+            StoryManager.Instance.StartStageCoroutineTimeLine(CinematicHelpCLip(helpDialogue));
+            yield return StoryManager.Instance.CurrentCinematicCoroutine;
         }
     }
-    
+
+    public IEnumerator CinematicHelpCLip(Dialogue helpDialogue) {
+        StoryManager.Instance.VoiceEvent.DialogueEvent(helpDialogue);
+        yield return StoryManager.Instance.VoiceEvent.StartPhareDialogueNow(helpDialogue);
+    }
+
     public IEnumerator CoroutineRadioLetContact() {
         yield return new WaitForSeconds(ledLetContactTimeInSec);
         if (isTouching()) {

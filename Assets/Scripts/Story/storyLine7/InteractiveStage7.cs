@@ -1,27 +1,38 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class InteractiveStage7 {
-    public Dialogue _goodEndFirst;
-    public Dialogue _goodEndSecond;
-    public Dialogue _badEndFirst;
-    public Dialogue _badEndSecond;
+public class InteractiveStage7 : InteractiveStage {
+    public Dialogue _A_EndFirst;
+    public Dialogue _A_EndSecond;
+    public Dialogue _B_EndFirst;
+    public Dialogue _B_EndSecond;
 
     public Dialogue _influence;
     public float _influenceTimeLapsInSec = 3;
     
     public float _winTimer = 6;
     
-    public IEnumerator CinematicStage(Door _door) {
-        StoryManager.Instance.StageEnum = 7;
-        StoryManager.Instance.Radio.StartHelpMode(_influenceTimeLapsInSec, _influence);
+    public IEnumerator CinematicStageIn(Door _door, Radio radio) {
+        StageEnum = 7;
+        radio.StartHelpMode(_influenceTimeLapsInSec, _influence);
         yield return new WaitForSeconds(_winTimer);
-        StoryManager.Instance.VoiceEvent.DialogueEvent(
-            StoryManager.Instance._interactiveStage7._goodEndFirst);
+        yield return StartDialogueEvent(_A_EndFirst);
         _door.LightToGreen();
-        StoryManager.Instance.VoiceEvent.DialogueEvent(
-            StoryManager.Instance._interactiveStage7._goodEndSecond);
+        yield return StartDialogueEvent(_A_EndSecond);
+    }
+
+    public IEnumerator CinematicFirstEnd(Door door) {
+        yield return StartDialogueEvent(_A_EndFirst);
+//        door.LightToGreen();
+        yield return StartDialogueEvent(_A_EndSecond);
+    }
+    
+    public IEnumerator CinematicSecondEnd(InputA _inputA) {
+        _inputA.LightToRed();
+        yield return StartDialogueEvent(_B_EndFirst);
+        yield return StartDialogueEvent(_B_EndSecond);
     }
 }

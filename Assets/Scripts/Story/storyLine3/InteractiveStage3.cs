@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class InteractiveStage3 {
+public class InteractiveStage3 : InteractiveStage {
     public Dialogue _reload;
     public float _timeLapsHelpContact = 3;
     public Dialogue _helpContact;
@@ -11,13 +11,16 @@ public class InteractiveStage3 {
     public float _timeLapsHelpToApnea = 3;
     public Dialogue _helpToApnea;
 
-    public IEnumerator CinematicStage(InputA _inputA) {
+    public IEnumerator CinematicStageIn(InputA _inputA, Radio radio) {
+        StageEnum = 3;
+        _inputA.FirstTouchingInputAStage3 = false;
         _inputA.LightToRed();
-        StoryManager.Instance.VoiceEvent.DialogueEvent(_reload);
-        StoryManager.Instance.StageEnum = 3;
-        StoryManager.Instance.Radio.StartHelpMode(_timeLapsHelpContact, _helpContact);
+        yield return StartDialogueEvent(_reload);
+        radio.StartHelpMode(_timeLapsHelpContact, _helpContact);
         yield break;
     }
-    
-    
+
+    public IEnumerator CinematicStageFirstTouch() {
+        yield return StartDialogueEvent(_contactInputA);
+    }
 }

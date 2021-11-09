@@ -3,22 +3,31 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class InteractiveStage1 {
+public class InteractiveStage1 : InteractiveStage {
     public Dialogue _thankGod;
     public Dialogue _understoodQuestion;
     public float _timeLapsTryAgain = 3;
     public Dialogue _positiveAnswer;
     public Dialogue _negativeAnswer;
     
-    public IEnumerator CinematicStage1(GrpA grpA, Radio radio) {
-        StoryManager.Instance.VoiceEvent.DialogueEvent(_thankGod);
+    public IEnumerator CinematicStageIn(GrpA grpA) {
+        StageEnum = 1;
         grpA.StopBlinking();
-        StoryManager.Instance.VoiceEvent.DialogueEvent(_understoodQuestion);
-        StoryManager.Instance.StageEnum = 1;
+        yield return StartDialogueEvent(_thankGod);
+        yield return StartDialogueEvent(_understoodQuestion);
+        
         while (true) {
             yield return new WaitForSeconds(_timeLapsTryAgain);
-            StoryManager.Instance.VoiceEvent.DialogueEvent(_negativeAnswer);
+            yield return StartDialogueEvent(_negativeAnswer);
         }
+    }
+
+    public IEnumerator CinematicStageNegAnswer() {
+        yield return StartDialogueEvent(_negativeAnswer);
+    }
+
+    public IEnumerator CinematicStageOut() {
+        yield return StartDialogueEvent(_positiveAnswer);
     }
 
 }

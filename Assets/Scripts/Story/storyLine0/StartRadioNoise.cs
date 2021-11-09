@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
-public class StartRadioNoise {
+public class StartRadioNoise : InteractiveStage {
     public float _lightWhiteLapsSec = 3;
     public float _lightOffLapsSec = 3;
-    public Dialogue _radioNoise;
-    public float _startRadioSoundLapsSec = 3;
+    public SoundEffect _radioNoise;
+    public float _startRadioSoundFadeDuration = 3;
     public Dialogue _allo;
     public float _AlloLaps = 3;
 
@@ -19,14 +20,12 @@ public class StartRadioNoise {
         radio.LightToBlue();
         door.LightToRed();
         grpA.StartBlinking();
+
+        yield return StartSoundEvent(_radioNoise, _startRadioSoundFadeDuration);
         
-        //todo : Start RadioNoise Sound
-        StoryManager.Instance.VoiceEvent.DialogueEvent(_radioNoise);
-        
-        yield return new WaitForSeconds(_startRadioSoundLapsSec);
-        StoryManager.Instance.StageEnum = 0;
+        StageEnum = 0;
         while (true) {
-            StoryManager.Instance.VoiceEvent.DialogueEvent(_allo);
+            yield return StartDialogueEvent(_allo);
             yield return new WaitForSeconds(_AlloLaps);
         }
     }

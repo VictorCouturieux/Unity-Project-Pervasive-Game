@@ -6,9 +6,9 @@ public class TestSound : MonoBehaviour {
     public AudioMixer audioMixer;
 
     private void Update() {
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKeyDown(KeyCode.F)) {
             fadeSoundToAmbient();
-        } else if (Input.GetKey(KeyCode.G)) {
+        } else if (Input.GetKeyDown(KeyCode.G)) {
             fadeSoundToGould();
         }
         
