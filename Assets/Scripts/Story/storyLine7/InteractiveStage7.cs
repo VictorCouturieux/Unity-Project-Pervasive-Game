@@ -7,32 +7,46 @@ using UnityEngine.Serialization;
 public class InteractiveStage7 : InteractiveStage {
     public Dialogue _A_EndFirst;
     public Dialogue _A_EndSecond;
-    public Dialogue _B_EndFirst;
-    public Dialogue _B_EndSecond;
+    public Dialogue _endSecond;
 
     public Dialogue _influence;
     public float _influenceTimeLapsInSec = 3;
     
-    public float _winTimer = 6;
+    public float _winTimer = 12;
+
+    public float cutLightTimer = 4;
+    public SoundEffect _lighthouseHum;
     
     public IEnumerator CinematicStageIn(Door _door, Radio radio) {
         StageEnum = 7;
-        radio.StartHelpMode(_influenceTimeLapsInSec, _influence);
-        yield return new WaitForSeconds(_winTimer);
-        yield return StartDialogueEvent(_A_EndFirst);
-        _door.LightToGreen();
-        yield return StartDialogueEvent(_A_EndSecond);
+        float time = 0;
+        while (time <= _winTimer) {
+            yield return new WaitForSeconds(_influenceTimeLapsInSec);
+            time += _influenceTimeLapsInSec;
+            Debug.Log("_winTimer : " + _winTimer + " /_influenceTimeLapsInSec : " + _influenceTimeLapsInSec + " /time : " + time);
+            yield return StartLeataDialogueEvent(_influence);;
+        }
+        yield return CinematicFirstEnd();
     }
 
-    public IEnumerator CinematicFirstEnd(Door door) {
+    public IEnumerator CinematicFirstEnd() {
         yield return StartDialogueEvent(_A_EndFirst);
 //        door.LightToGreen();
-        yield return StartDialogueEvent(_A_EndSecond);
+        yield return StartLeataDialogueEvent(_A_EndSecond);
+        yield return new WaitForSeconds(cutLightTimer);
+        StoryManager.Instance.resetLights();
     }
     
     public IEnumerator CinematicSecondEnd(InputA _inputA) {
         _inputA.LightToRed();
-        yield return StartDialogueEvent(_B_EndFirst);
-        yield return StartDialogueEvent(_B_EndSecond);
+        yield return StartLeataDialogueEvent(_endSecond);
+        StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(EndLighthouseHum());
+        yield return new WaitForSeconds(cutLightTimer);
+        StoryManager.Instance.resetLights();
+    }
+
+    public IEnumerator EndLighthouseHum()
+    {
+        yield return StartSoundEvent(_lighthouseHum, 2, false);
     }
 }

@@ -20,11 +20,14 @@ public class InputB : InputX
     private void Update() {
         switch (StoryManager.Instance.StageEnum) {
             case 6:
-                if (isTouchingOneTime() && currentLedColor() == ColorLed.Red) {
-                    LightToYellow();
-                }
-                if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
-                    LightToRed();
+                if (StoryManager.Instance._interactiveStage6.CanControl) {
+                    if (isTouchingOneTime() && currentLedColor() == ColorLed.Red) {
+                        LightToYellow();
+                    }
+
+                    if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
+                        LightToRed();
+                    }
                 }
                 break;
         }

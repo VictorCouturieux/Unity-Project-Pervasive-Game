@@ -2,11 +2,6 @@
 using UnityEngine.UI;
 
 public class InputA : InputX {
-    private bool _firstTouchingInputAStage3 = false;
-    public bool FirstTouchingInputAStage3{
-        get { return _firstTouchingInputAStage3; }
-        set { _firstTouchingInputAStage3 = value; }
-    }
     
     public override bool isTouching() {
         return Input.GetKey(KeyCode.A);
@@ -23,17 +18,12 @@ public class InputA : InputX {
     private void Update() {
         switch (StoryManager.Instance.StageEnum) {
             case 3:
-                if (isTouchingOneTime()) {
-                    if (!_firstTouchingInputAStage3) {
-                        _firstTouchingInputAStage3 = true;
-                        StoryManager.Instance.StartStageCoroutineTimeLine(StoryManager.Instance.InteractiveStage3.CinematicStageFirstTouch());
-                    }
+                if (isTouchingOneTime() && currentLedColor() == ColorLed.Red) {
+                    StoryManager.Instance.StopCoroutineRadio1VoiceLine();
+                    StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch());
                     LightToYellow();
-                    StoryManager.Instance.Radio.StartHelpMode(
-                        StoryManager.Instance._interactiveStage3._timeLapsHelpToApnea, 
-                        StoryManager.Instance._interactiveStage3._helpToApnea);
                 }
-                if (isLetTouchOneTime()) {
+                if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
                     LightToRed();
                     StoryManager.Instance.Radio.StartHelpMode(
                         StoryManager.Instance._interactiveStage3._timeLapsHelpContact, 
@@ -41,11 +31,18 @@ public class InputA : InputX {
                 }
                 break;
             case 6 :
-                if (isTouchingOneTime() && currentLedColor() == ColorLed.Red && StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green && StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
-                    LightToYellow();
-                }
-                if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow && StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green && StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
-                    LightToRed();
+                if (StoryManager.Instance._interactiveStage6.CanControl) {
+                    if (isTouchingOneTime() && currentLedColor() == ColorLed.Red &&
+                        StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green &&
+                        StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
+                        LightToYellow();
+                    }
+
+                    if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow &&
+                        StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green &&
+                        StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
+                        LightToRed();
+                    }
                 }
                 break;
         }

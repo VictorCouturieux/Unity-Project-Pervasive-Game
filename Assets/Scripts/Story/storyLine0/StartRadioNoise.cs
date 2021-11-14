@@ -19,13 +19,17 @@ public class StartRadioNoise : InteractiveStage {
         yield return new WaitForSeconds(_lightOffLapsSec);
         radio.LightToBlue();
         door.LightToRed();
-        grpA.StartBlinking();
+        grpA.StartRedBlinking();
 
-        yield return StartSoundEvent(_radioNoise, _startRadioSoundFadeDuration);
+        yield return StartSoundEvent(_radioNoise, _startRadioSoundFadeDuration, false);
         
         StageEnum = 0;
-        while (true) {
+        StoryManager.Instance.WaitingLoop = true;
+        while (StoryManager.Instance.WaitingLoop) {
             yield return StartDialogueEvent(_allo);
+            if (!StoryManager.Instance.WaitingLoop){
+                break;
+            }
             yield return new WaitForSeconds(_AlloLaps);
         }
     }

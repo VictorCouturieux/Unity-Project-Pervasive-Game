@@ -39,4 +39,32 @@ public class VoiceEvent : MonoBehaviour {
         
     }
     
+    public IEnumerator StartLeataDialogueNow(Dialogue dialogueStr) {
+        if (_asLeata.isPlaying) {
+            _asLeata.Stop();
+        }
+        _asLeata.clip = dialogueStr.chooseRandomAudioClip();
+        yield return new WaitForSeconds(0.01f);
+        
+        _asLeata.Play();
+        while (_asLeata.isPlaying)
+        {
+            yield return null;
+        }
+        _asLeata.Stop();
+        yield break;
+        
+    }
+
+    public void stopForceSound()
+    {
+        if (_asLeata.isPlaying) {
+            _asLeata.Stop();
+        }
+        
+        if (_asPhare.isPlaying) {
+            _asPhare.Stop();
+        }
+    }
+    
 }

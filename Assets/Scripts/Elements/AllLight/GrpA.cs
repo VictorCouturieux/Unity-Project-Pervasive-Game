@@ -39,8 +39,15 @@ public class GrpA : Element {
         }
     }
 
-    public void StartBlinking() {
+    public void StartRedBlinking() {
+        StopBlinking();
         _blinkingCoroutine = BlinkingRed();
+        StartCoroutine(_blinkingCoroutine);
+    }
+    
+    public void StartBlueBlinking() {
+        StopBlinking();
+        _blinkingCoroutine = BlinkingBlue();
         StartCoroutine(_blinkingCoroutine);
     }
 
@@ -55,6 +62,15 @@ public class GrpA : Element {
     private IEnumerator BlinkingRed() {
         while (true) {
             LightToRed();
+            yield return new WaitForSeconds(_blinkingLapsInSec);
+            LightOff();
+            yield return new WaitForSeconds(_blinkingLapsInSec);
+        }
+    }
+    
+    private IEnumerator BlinkingBlue() {
+        while (true) {
+            LightToBlue();
             yield return new WaitForSeconds(_blinkingLapsInSec);
             LightOff();
             yield return new WaitForSeconds(_blinkingLapsInSec);

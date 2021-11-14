@@ -9,63 +9,92 @@ public class Radio : Element {
 
     private IEnumerator _routineLetContact = null;
     private IEnumerator _routineHelpMode = null;
-    private Dialogue _currantHelpDialogue;
+    // private bool _startingCoroutineHelpMode = false;
+    private bool _isHelpWaiting = false;
+    private float lapsTimeLoop;
+    private Dialogue dialogue;
     
-    public bool isTouching() {
+    public bool IsTouching() {
         return Input.GetKey(KeyCode.R);
     }
     
-    public bool isTouchingOneTime() {
+    public bool IsTouchingOneTime() {
         return Input.GetKeyDown(KeyCode.R);
     }
 
-    public bool isLetTouchOneTime() {
+    public bool IsLetTouchOneTime() {
         return Input.GetKeyUp(KeyCode.R);
     }
     
     private void Update() {
-        if (StoryManager.Instance.StageEnum >= 0) {
-            if (currentLedColor() != ColorLed.Red && currentLedColor() != ColorLed.Green) {
-                if (isTouchingOneTime()) {
-                    if (_routineLetContact != null) {
-                        StopCoroutine(_routineLetContact);
-                        _routineLetContact = null;
-                    }
-                    LightToYellow();
+        if (StoryManager.Instance.StageEnum >= 0 && currentLedColor() != ColorLed.Red && currentLedColor() != ColorLed.Green) {
+            if (IsTouchingOneTime()) {
+                if (_routineLetContact != null) {
+                    StopCoroutine(_routineLetContact);
+                    _routineLetContact = null;
                 }
-                else if (isLetTouchOneTime()) {
-                    _routineLetContact = CoroutineRadioLetContact();
-                    StartCoroutine(_routineLetContact);
-                }
+                LightToYellow();
+            }
+            else if (IsLetTouchOneTime()) {
+                _routineLetContact = CoroutineRadioLetContact();
+                StartCoroutine(_routineLetContact);
             }
         }
+        if (IsTouchingOneTime() && StoryManager.Instance.StageEnum == 7) {
+            LightToGreen();
+            StoryManager.Instance.StopForceCoroutineRadio1();
+            StoryManager.Instance.StartCoroutineRadio1VoiceLine(
+                StoryManager.Instance._interactiveStage7.CinematicFirstEnd());
+        }
         
-        if (_routineHelpMode != null && isTouchingOneTime()) {
-            StopCoroutine(_routineHelpMode);
-            StartCoroutine(_routineHelpMode);
+        
+        if (IsTouchingOneTime() && _isHelpWaiting) {
+            StoryManager.Instance.StopForceCoroutineRadio1();
+            _isHelpWaiting = false;
+            _routineHelpMode = RestartCoroutineHelpLoop(lapsTimeLoop, dialogue);
+            StoryManager.Instance.StartCoroutineRadio1VoiceLine(_routineHelpMode);
         }
     }
 
-    public void StartHelpMode(float lapsTimeLoop, Dialogue dialogue) {
-        StopCurrantHelpMode();
-        _currantHelpDialogue = dialogue;
+    public void StartHelpMode(float lapsTimeLoop, Dialogue dialogue)
+    {
+        StoryManager.Instance.StopCoroutineRadio1VoiceLine();
+        this.dialogue = dialogue;
+        this.lapsTimeLoop = lapsTimeLoop;
         _routineHelpMode = CoroutineHelpMode(lapsTimeLoop, dialogue);
-        StartCoroutine(_routineHelpMode);
+        StoryManager.Instance.StartCoroutineRadio1VoiceLine(_routineHelpMode);
     }
 
-    public void StopCurrantHelpMode() {
-        if (_routineHelpMode != null) {
-            StopCoroutine(_routineHelpMode);
-            _routineHelpMode = null;
-        }
+    public void StopCurrantHelpMode()
+    {
+        StoryManager.Instance.WaitingLoop = false;
     }
-    
-    private IEnumerator CoroutineHelpMode(float lapsTimeLoop, Dialogue helpDialogue) {
-        while (true) {
-            yield return new WaitForSeconds(lapsTimeLoop);
-            StoryManager.Instance.StartStageCoroutineTimeLine(CinematicHelpCLip(helpDialogue));
-            yield return StoryManager.Instance.CurrentCinematicCoroutine;
+
+    private IEnumerator CoroutineHelpMode(float lapsTimeLoop, Dialogue helpDialogue)
+    {
+        StoryManager.Instance.WaitingLoop = true;
+        yield return new WaitForSeconds(lapsTimeLoop);
+        if (!StoryManager.Instance.WaitingLoop){
+            yield break;
         }
+        yield return RestartCoroutineHelpLoop(lapsTimeLoop, helpDialogue);
+    }
+
+    private IEnumerator RestartCoroutineHelpLoop(float lapsTimeLoop, Dialogue helpDialogue) {
+        StoryManager.Instance.WaitingLoop = true;
+        while (StoryManager.Instance.WaitingLoop) {
+            yield return CinematicHelpCLip(helpDialogue);
+            if (!StoryManager.Instance.WaitingLoop){
+                break;
+            }
+            _isHelpWaiting = true;
+            yield return new WaitForSeconds(lapsTimeLoop);
+            _isHelpWaiting = false;
+        }
+        this.dialogue = null;
+        this.lapsTimeLoop = 0;
+        StoryManager.Instance.WaitingLoop = false;
+        _routineHelpMode = null;
     }
 
     public IEnumerator CinematicHelpCLip(Dialogue helpDialogue) {
@@ -75,7 +104,7 @@ public class Radio : Element {
 
     public IEnumerator CoroutineRadioLetContact() {
         yield return new WaitForSeconds(ledLetContactTimeInSec);
-        if (isTouching()) {
+        if (IsTouching()) {
             LightToYellow();
         }
         else {
@@ -86,7 +115,7 @@ public class Radio : Element {
     
     public IEnumerator CoroutineRadioInteractPositiveAnswer() {
         if (currentLedColor() == ColorLed.Yellow) {
-            while (isTouching()) {
+            while (IsTouching()) {
                 LightToGreen();
                 yield return new WaitForSeconds(0.1f);
             }
@@ -96,7 +125,7 @@ public class Radio : Element {
     
     public IEnumerator CoroutineRadioInteractNegativeAnswer() {
         if (currentLedColor() == ColorLed.Yellow) {
-            while (isTouching()) {
+            while (IsTouching()) {
                 LightToRed();
                 yield return new WaitForSeconds(0.1f);
             }

@@ -16,10 +16,9 @@ public class SoundEvent : MonoBehaviour {
         Debug.Log("<color=red>" + soundEffect.text + "</color>");
     }
     
-    public IEnumerator StartPhareAmbientNow(SoundEffect soundEffect, float fadeInDuration) {
-        if (_ambient0.isPlaying) {
-            _ambient0.Stop();
-        }
+    public IEnumerator StartPhareAmbientNow(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped)
+    {
+        stopForceSound();
         _ambient0.clip = soundEffect.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
@@ -29,8 +28,19 @@ public class SoundEvent : MonoBehaviour {
         {
             yield return null;
         }
+        if (isLevel6Looped)
+        {
+            StoryManager.Instance.EventRestartLevel6ToRestSong();
+        }
         _ambient0.Stop();
         yield break;
+    }
+
+    public void stopForceSound()
+    {
+        if (_ambient0.isPlaying) {
+            _ambient0.Stop();
+        }
     }
 
 }

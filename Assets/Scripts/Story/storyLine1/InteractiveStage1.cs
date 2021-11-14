@@ -15,9 +15,15 @@ public class InteractiveStage1 : InteractiveStage {
         grpA.StopBlinking();
         yield return StartDialogueEvent(_thankGod);
         yield return StartDialogueEvent(_understoodQuestion);
-        
-        while (true) {
+    }
+
+    public IEnumerator CinematicLoop() {
+        StoryManager.Instance.WaitingLoop = true;
+        while (StoryManager.Instance.WaitingLoop) {
             yield return new WaitForSeconds(_timeLapsTryAgain);
+            if (!StoryManager.Instance.WaitingLoop){
+                break;
+            }
             yield return StartDialogueEvent(_negativeAnswer);
         }
     }

@@ -12,7 +12,8 @@ public class Door : Element {
     private void Update() {
         if (isTouchingOneTime() && StoryManager.Instance.StageEnum == 7) {
             LightToGreen();
-            StoryManager.Instance.StartStageCoroutineTimeLine(StoryManager.Instance.InteractiveStage7.CinematicFirstEnd(this));
+            StoryManager.Instance.StopForceCoroutineRadio1();
+            StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage7.CinematicFirstEnd());
         }
     }
 

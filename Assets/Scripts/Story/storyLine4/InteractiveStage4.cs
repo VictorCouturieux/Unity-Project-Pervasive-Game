@@ -3,21 +3,45 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class InteractiveStage4 : InteractiveStage{
+public class InteractiveStage4 : InteractiveStage
+{
     public Dialogue _question;
     public float _answerTimeLapsInSec = 12f;
-    public Dialogue _answer;
-    
-    public IEnumerator CinematicStageIn(InputA _inputA, Radio _radio) {
-        _inputA.LightToGreen();
-        _radio.StopCurrantHelpMode();
-        yield return StartDialogueEvent(_question);
+
+    private bool _isWaiting = false;
+
+    public IEnumerator CinematicStageIn(InputA _inputA, Radio _radio)
+    {
         StageEnum = 4;
-        yield return new WaitForSeconds(_answerTimeLapsInSec);
-        yield return StartDialogueEvent(_answer);
+        _radio.StopCurrantHelpMode();
+        yield return GreenLedSomeSec(_inputA);
+        yield return StartDialogueEvent(_question);
     }
 
-    public IEnumerator CinematicStageOut() {
-        yield return StartDialogueEvent(_answer);
+    public IEnumerator GreenLedSomeSec(InputA _inputA)
+    {
+        _inputA.LightToGreen();
+        yield return new WaitForSeconds(2);
+        _inputA.LightToRed();
+    }
+
+    public IEnumerator CinematicTimeLapsOut()
+    {
+        _isWaiting = true;
+        yield return new WaitForSeconds(_answerTimeLapsInSec);
+        _isWaiting = false;
+        StoryManager.Instance.StopCoroutineRadio1VoiceLine();
+        StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
+            .CinematicStageIn());
+    }
+
+    public void StopTimeLapsOut()
+    {
+        if (_isWaiting)
+        {
+            StoryManager.Instance.StopForceCoroutineRadio1();
+            StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
+                .CinematicStageIn());
+        }
     }
 }

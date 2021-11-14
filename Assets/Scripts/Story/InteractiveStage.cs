@@ -25,9 +25,14 @@ public class InteractiveStage
         VoiceEvent.DialogueEvent(dialogue);
         yield return VoiceEvent.StartPhareDialogueNow(dialogue);
     }
+    
+    public IEnumerator StartLeataDialogueEvent(Dialogue dialogue) {
+        VoiceEvent.DialogueEvent(dialogue);
+        yield return VoiceEvent.StartLeataDialogueNow(dialogue);
+    }
 
-    public IEnumerator StartSoundEvent(SoundEffect soundEffect, float fadeInDuration) {
+    public IEnumerator StartSoundEvent(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped) {
         SoundEvent.SoundEffectEvent(soundEffect);
-        yield return SoundEvent.StartPhareAmbientNow(soundEffect, fadeInDuration);
+        yield return SoundEvent.StartPhareAmbientNow(soundEffect, fadeInDuration, isLevel6Looped);
     }
 }

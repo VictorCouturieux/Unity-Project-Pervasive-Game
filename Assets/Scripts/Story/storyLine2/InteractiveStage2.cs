@@ -15,8 +15,16 @@ public class InteractiveStage2 : InteractiveStage {
         StageEnum = 2;
         VoiceEvent.DialogueEvent(_question);
 //        yield return StartDialogueEvent(_question);
-        while (true) {
+        yield return null;
+    }
+    
+    public IEnumerator CinematicLoop() {
+        StoryManager.Instance.WaitingLoop = true;
+        while (StoryManager.Instance.WaitingLoop) {
             yield return new WaitForSeconds(_noAnswerTimeLapsInSec);
+            if (!StoryManager.Instance.WaitingLoop){
+                break;
+            }
             yield return StartDialogueEvent(_noAnswer);
         }
     }
@@ -27,6 +35,7 @@ public class InteractiveStage2 : InteractiveStage {
     }
 
     public IEnumerator CinematicStageOut() {
+        StageEnum = -1;
         yield return StartDialogueEvent(_posAnswer);
         yield return StartDialogueEvent(_endDialogue);
     }
