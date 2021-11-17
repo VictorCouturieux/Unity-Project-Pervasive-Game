@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using System.IO.Ports;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -41,18 +43,42 @@ public class Input_Arduino : MonoBehaviour
 
     void OnEnable()
     {
-        stream = new SerialPort(portsArduino.port, portsArduino.baudRate);
-        stream.ReadTimeout = 100;
-        stream.Open();
+        try
+        {
+            stream = new SerialPort(portsArduino.port, portsArduino.baudRate);
+            stream.ReadTimeout = 100;
+            stream.Open();
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine(e + portsArduino.port);
+            throw;
+        }
+        
+        try
+        {
+            stream2 = new SerialPort(portsArduino.port2, portsArduino.baudRate);
+            stream2.ReadTimeout = 100;
+            stream2.Open();
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine(e + portsArduino.port2);
+            throw;
+        }
 
-        stream2 = new SerialPort(portsArduino.port2, portsArduino.baudRate);
-        stream2.ReadTimeout = 100;
-        stream2.Open();
-
-        stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
-        stream3.ReadTimeout = 100;
-        stream3.Open();
-
+        try
+        {
+            stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
+            stream3.ReadTimeout = 100;
+            stream3.Open();
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine(e + portsArduino.port3);
+            throw;
+        }
+            
         Valve2_Off();
         Valve1_Off();
 
@@ -61,13 +87,10 @@ public class Input_Arduino : MonoBehaviour
 
     private void OnDisable()
     {
-        if (stream3.IsOpen)
-        {
-            SendMessageToServo("0");
-        }
-        if (stream.IsOpen) stream.Close();
-        if (stream2.IsOpen) stream2.Close();
-        if (stream3.IsOpen) stream3.Close();
+        SendMessageToServo("0");
+        if (stream2 != null && stream.IsOpen) stream.Close();
+        if (stream2 != null && stream2.IsOpen) stream2.Close();
+        if (stream3 != null && stream3.IsOpen) stream3.Close();
     }
 
 
@@ -75,19 +98,31 @@ public class Input_Arduino : MonoBehaviour
 
     public void Valve1_On()
     {
-        stream2.Write("0");
+        if (stream2 != null && stream2.IsOpen)
+        {
+            stream2.Write("0");
+        }
     }
     public void Valve1_Off()
-    {        
-        stream2.Write("1");
+    {
+        if (stream2 != null && stream2.IsOpen)
+        {
+            stream2.Write("1");
+        }
     }
     public void Valve2_On()
     {
-        stream2.Write("2");
+        if (stream2 != null && stream2.IsOpen)
+        {
+            stream2.Write("2");
+        }
     }
     public void Valve2_Off()
     {
-        stream2.Write("3");
+        if (stream2 != null && stream2.IsOpen)
+        {
+            stream2.Write("3");
+        }
     }
 
 
@@ -95,23 +130,38 @@ public class Input_Arduino : MonoBehaviour
 // Communication Arduino du changement de couleur en fonction du mood
     public void MoodNeutral()
     {
-        stream.Write("4");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("4");
+        }
     }
     public void MoodRed()
     {
-        stream.Write("5");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("5");
+        }
     }
     public void MoodBlue()
     {
-        stream.Write("6");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("6");
+        }
     }
     public void MoodGreen()
     {
-        stream.Write("7");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("7");
+        }
     }
     public void MoodBrown()
     {
-        stream.Write("8");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("8");
+        }
     }
 
 // Changement de mood dans le jeu
