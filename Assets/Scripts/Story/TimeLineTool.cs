@@ -31,8 +31,8 @@ public class TimeLineTool : MonoBehaviour
         StoryManager.Instance.resetLights();
         StoryManager.Instance.StageEnum = -1;
         StoryManager.Instance._interactiveStage6.CanControl = false;
-        StoryManager.Instance.SoundEvent.stopForceSound();
-        StoryManager.Instance.VoiceEvent.stopForceSound();
+        StoryManager.Instance.SoundEvent.StopForceSound();
+        StoryManager.Instance.VoiceEvent.StopForceSound();
     }
 
     private void storyLineLoading_0()

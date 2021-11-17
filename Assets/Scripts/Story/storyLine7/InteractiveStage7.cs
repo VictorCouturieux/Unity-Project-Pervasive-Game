@@ -23,7 +23,7 @@ public class InteractiveStage7 : InteractiveStage {
         while (time <= _winTimer) {
             yield return new WaitForSeconds(_influenceTimeLapsInSec);
             time += _influenceTimeLapsInSec;
-            Debug.Log("_winTimer : " + _winTimer + " /_influenceTimeLapsInSec : " + _influenceTimeLapsInSec + " /time : " + time);
+            // Debug.Log("_winTimer : " + _winTimer + " /_influenceTimeLapsInSec : " + _influenceTimeLapsInSec + " /time : " + time);
             yield return StartLeataDialogueEvent(_influence);;
         }
         yield return CinematicFirstEnd();
@@ -47,6 +47,6 @@ public class InteractiveStage7 : InteractiveStage {
 
     public IEnumerator EndLighthouseHum()
     {
-        yield return StartSoundEvent(_lighthouseHum, 2, false);
+        yield return StartSoundEvent(_lighthouseHum, 3, false);
     }
 }

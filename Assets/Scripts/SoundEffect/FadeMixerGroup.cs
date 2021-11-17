@@ -33,6 +33,12 @@ public class FadeMixerGroup : MonoBehaviour
         yield break;
     }
 
+    public static void SetVolume(AudioMixer audioMixer, string exposedParam, float targetVolume)
+    {
+        float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
+        audioMixer.SetFloat(exposedParam, Mathf.Log10(targetValue) * 20);
+    }
+
 
 
 

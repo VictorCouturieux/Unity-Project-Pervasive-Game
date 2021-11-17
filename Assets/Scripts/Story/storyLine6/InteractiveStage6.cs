@@ -6,8 +6,7 @@ using UnityEngine.Serialization;
 [Serializable]
 public class InteractiveStage6 : InteractiveStage {
     public float _helpTimeLapsInSec = 3f;
-    public Dialogue _helpInput1;
-    public Dialogue _helpInput2;
+    public Dialogue _helpInput;
     public Dialogue _helpInputA;
     
     public SoundEffect _timerSound;
@@ -33,7 +32,7 @@ public class InteractiveStage6 : InteractiveStage {
         _inputB.LightToRed();
         _inputC.LightToRed();
         _canControl = true;
-        _radio.StartHelpMode(_helpTimeLapsInSec, _helpInput1);
+        _radio.StartHelpMode(_helpTimeLapsInSec, _helpInput);
         yield return null;
     }
 
@@ -47,7 +46,6 @@ public class InteractiveStage6 : InteractiveStage {
             _isFirstLoopLevel6 = false;
         }
         _canControl = true;
-        _radio.StartHelpMode(_helpTimeLapsInSec, _helpInput2);
     }
     
     public IEnumerator CinematicTouchingSecond(InputB _inputB, InputC _inputC, Radio _radio) {
@@ -69,7 +67,6 @@ public class InteractiveStage6 : InteractiveStage {
             _isFirstLoopLevel6 = false;
         }
         _canControl = true;
-        _radio.StartHelpMode(_helpTimeLapsInSec, _helpInput2);
     }
 
     public IEnumerator CinematicStageOut(InputA _inputA, Radio _radio, Door _door, GrpA _grpA) {

@@ -23,9 +23,8 @@ public class VoiceEvent : MonoBehaviour {
     }
 
     public IEnumerator StartPhareDialogueNow(Dialogue dialogueStr) {
-        if (_asPhare.isPlaying) {
-            _asPhare.Stop();
-        }
+        StopForceSound();
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientParam", 1);
         _asPhare.clip = dialogueStr.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
@@ -40,9 +39,8 @@ public class VoiceEvent : MonoBehaviour {
     }
     
     public IEnumerator StartLeataDialogueNow(Dialogue dialogueStr) {
-        if (_asLeata.isPlaying) {
-            _asLeata.Stop();
-        }
+        StopForceSound();
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientParam", 1);
         _asLeata.clip = dialogueStr.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
@@ -53,10 +51,14 @@ public class VoiceEvent : MonoBehaviour {
         }
         _asLeata.Stop();
         yield break;
-        
     }
 
-    public void stopForceSound()
+    public IEnumerator StopFadeOut()
+    {
+        yield return FadeMixerGroup.StartFade(_audioMixer, "DialogueParam", 1, 0);
+    }
+
+    public void StopForceSound()
     {
         if (_asLeata.isPlaying) {
             _asLeata.Stop();

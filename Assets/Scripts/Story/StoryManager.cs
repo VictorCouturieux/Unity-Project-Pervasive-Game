@@ -45,7 +45,17 @@ public class StoryManager : MonoBehaviour {
     private Queue<IEnumerator> routineList;
 
     private IEnumerator currentCinematicCoroutine;
-    private IEnumerator AdditionalCoroutine;
+    public IEnumerator CurrentCinematicCoroutine
+    {
+        get { return currentCinematicCoroutine; }
+        set { currentCinematicCoroutine = value; }
+    }
+    private IEnumerator _additionalCoroutine;
+    public IEnumerator AdditionalCoroutine
+    {
+        get { return _additionalCoroutine; }
+        set { _additionalCoroutine = value; }
+    }
     
     private bool _waitingLoop = false;
     public bool WaitingLoop
@@ -111,7 +121,7 @@ public class StoryManager : MonoBehaviour {
 
     private void Update() {
         if (_stageEnum == 0 && _radio.IsTouchingOneTime()) {
-            StopCoroutineRadio1VoiceLine();
+            StopForceCoroutineRadio1();
             StartCoroutineRadio1VoiceLine(_interactiveStage1.CinematicStageIn(_grpA), _interactiveStage1.CinematicLoop() );
         }
     }
@@ -237,18 +247,21 @@ public class StoryManager : MonoBehaviour {
 
     public void StartAdditionalCoroutinePlayedWithMain(IEnumerator coroutineTimeLine)
     {
-        AdditionalCoroutine = coroutineTimeLine;
-        StartCoroutine(AdditionalCoroutine);
+        if (_additionalCoroutine == null)
+        {
+            _additionalCoroutine = coroutineTimeLine;
+            StartCoroutine(_additionalCoroutine);
+        }
     }
     
     public void StopAdditionalCoroutineTimeLine6()
     {
-        if (AdditionalCoroutine != null)
+        if (_additionalCoroutine != null)
         {
-            StopCoroutine(AdditionalCoroutine);
-            AdditionalCoroutine = null;
+            StopCoroutine(_additionalCoroutine);
+            _additionalCoroutine = null;
             StopForceCoroutineRadio1();
-            SoundEvent.stopForceSound();
+            SoundEvent.StopForceSound();
             StartCoroutineRadio1VoiceLine(_interactiveStage6.CinematicTouchingSecond(_inputB, _inputC, _radio));
         }
     }
@@ -267,6 +280,11 @@ public class StoryManager : MonoBehaviour {
 
     public void StopCoroutineRadio1VoiceLine()
     {
+        if (_radio.IsRunningHelpMode())
+        {
+            StopForceCoroutineRadio1();
+            _radio.RoutineHelpMode = null;
+        }
         _waitingLoop = false;
         routineList.Clear();
     }
@@ -275,7 +293,12 @@ public class StoryManager : MonoBehaviour {
     {
         _waitingLoop = false;
         routineList.Clear();
-        StopCoroutine(currentCinematicCoroutine);
+        if (currentCinematicCoroutine != null)
+        {
+            StopCoroutine(currentCinematicCoroutine);
+        }
+        SoundEvent.StopForceSound();
+        VoiceEvent.StopForceSound();
         currentCinematicCoroutine = null;
     }
 

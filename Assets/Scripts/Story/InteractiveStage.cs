@@ -34,5 +34,6 @@ public class InteractiveStage
     public IEnumerator StartSoundEvent(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped) {
         SoundEvent.SoundEffectEvent(soundEffect);
         yield return SoundEvent.StartPhareAmbientNow(soundEffect, fadeInDuration, isLevel6Looped);
+        StoryManager.Instance.AdditionalCoroutine = null;
     }
 }

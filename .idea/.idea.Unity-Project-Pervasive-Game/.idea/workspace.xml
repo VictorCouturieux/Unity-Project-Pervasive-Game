@@ -2,33 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="486e890c-cc6b-4a7b-b1a8-75354223c60e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/GrpA.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/GrpA.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sprites/Map.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Sprites/Map.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/FadeMixerGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/FadeMixerGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEffect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/InteractiveStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/InteractiveStage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0/StartRadioNoise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0/StartRadioNoise.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine2/InteractiveStage2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine2/InteractiveStage2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sound/GlobalSoundMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sound/GlobalSoundMixer.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sound/Test/CrossFadeMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sound/Test/CrossFadeMixer.mixer" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_SCENE_.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_SCENE_.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -238,6 +228,8 @@
       <workItem from="1636729125401" duration="7494000" />
       <workItem from="1636814671025" duration="3980000" />
       <workItem from="1636900435214" duration="7632000" />
+      <workItem from="1636973710332" duration="12189000" />
+      <workItem from="1637054978871" duration="5404000" />
     </task>
     <servers />
   </component>

@@ -12,6 +12,11 @@ public class InteractiveStage3 : InteractiveStage {
     public Dialogue _helpToApnea;
     
     private bool _firstTouchingInputAStage3 = false;
+    public bool FirstTouchingInputAStage3
+    {
+        get { return _firstTouchingInputAStage3; }
+        set { _firstTouchingInputAStage3 = value; }
+    }
 
     public IEnumerator CinematicStageIn(InputA _inputA, Radio radio) {
         StageEnum = -1;
@@ -22,13 +27,25 @@ public class InteractiveStage3 : InteractiveStage {
         radio.StartHelpMode(_timeLapsHelpContact, _helpContact);
     }
 
-    public IEnumerator CinematicStageFirstTouch() {
-        if (!_firstTouchingInputAStage3) {
-            Debug.Log("_contactInputA");
-            yield return StartDialogueEvent(_contactInputA);
+    public IEnumerator CinematicStageFirstTouch(InputA _inputA) {
+        if (!_firstTouchingInputAStage3)
+        {
             _firstTouchingInputAStage3 = true;
+            yield return StartDialogueEvent(_contactInputA);
+        }
+        if (_inputA.currentLedColor() == ColorLed.Green)
+        {
+            yield break;
         }
         StoryManager.Instance.Radio.StartHelpMode(_timeLapsHelpToApnea, _helpToApnea);
+        yield return null;
+    }
+
+    public IEnumerator StartHelpContact()
+    {
+        StoryManager.Instance.Radio.StartHelpMode(
+            _timeLapsHelpContact, 
+            _helpContact);
         yield return null;
     }
 }

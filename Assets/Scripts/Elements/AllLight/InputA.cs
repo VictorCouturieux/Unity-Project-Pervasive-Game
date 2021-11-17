@@ -20,14 +20,15 @@ public class InputA : InputX {
             case 3:
                 if (isTouchingOneTime() && currentLedColor() == ColorLed.Red) {
                     StoryManager.Instance.StopCoroutineRadio1VoiceLine();
-                    StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch());
+                    StoryManager.Instance.StartCoroutineRadio1VoiceLine(
+                        StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch(this));
                     LightToYellow();
                 }
                 if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
                     LightToRed();
-                    StoryManager.Instance.Radio.StartHelpMode(
-                        StoryManager.Instance._interactiveStage3._timeLapsHelpContact, 
-                        StoryManager.Instance._interactiveStage3._helpContact);
+                    StoryManager.Instance.StopCoroutineRadio1VoiceLine();
+                    StoryManager.Instance.StartCoroutineRadio1VoiceLine(
+                        StoryManager.Instance._interactiveStage3.StartHelpContact());
                 }
                 break;
             case 6 :

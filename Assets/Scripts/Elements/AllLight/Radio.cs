@@ -9,7 +9,11 @@ public class Radio : Element {
 
     private IEnumerator _routineLetContact = null;
     private IEnumerator _routineHelpMode = null;
-    // private bool _startingCoroutineHelpMode = false;
+    public IEnumerator RoutineHelpMode {
+        get { return _routineHelpMode; }
+        set { _routineHelpMode = value; }
+    }
+    
     private bool _isHelpWaiting = false;
     private float lapsTimeLoop;
     private Dialogue dialogue;
@@ -70,6 +74,11 @@ public class Radio : Element {
         StoryManager.Instance.WaitingLoop = false;
     }
 
+    public bool IsRunningHelpMode()
+    {
+        return _routineHelpMode != null;
+    }
+
     private IEnumerator CoroutineHelpMode(float lapsTimeLoop, Dialogue helpDialogue)
     {
         StoryManager.Instance.WaitingLoop = true;
@@ -91,7 +100,7 @@ public class Radio : Element {
             yield return new WaitForSeconds(lapsTimeLoop);
             _isHelpWaiting = false;
         }
-        this.dialogue = null;
+        dialogue = null;
         this.lapsTimeLoop = 0;
         StoryManager.Instance.WaitingLoop = false;
         _routineHelpMode = null;
