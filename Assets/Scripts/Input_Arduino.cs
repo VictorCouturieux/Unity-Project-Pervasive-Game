@@ -15,9 +15,9 @@ public class Input_Arduino : MonoBehaviour
     private SerialPort stream2;
     private SerialPort stream3;
 
-    public string message;
+    [Range(0, 9)]
+    public int message;
     private float lastSend = 0;
-    public float delayBetweenMessage;
 
     public PortsArduino portsArduino;
 
@@ -61,6 +61,10 @@ public class Input_Arduino : MonoBehaviour
 
     private void OnDisable()
     {
+        if (stream3.IsOpen)
+        {
+            SendMessageToServo("0");
+        }
         if (stream.IsOpen) stream.Close();
         if (stream2.IsOpen) stream2.Close();
         if (stream3.IsOpen) stream3.Close();
@@ -160,15 +164,13 @@ public class Input_Arduino : MonoBehaviour
     }
 
     private void Update()
-    {       
+    {
         //SendMessageToServo(message);
-
-         if (Time.time > lastSend + delayBetweenMessage)
-         {
-             SendMessageToServo(message);
-             lastSend = Time.time;
-             Debug.Log(message);
-         }
-
+        int msg = StoryManager.Instance.StageEnum + 1;
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SendMessageToServo((message * 10).ToString());
+            Debug.Log(message);
+        }
     }
 }

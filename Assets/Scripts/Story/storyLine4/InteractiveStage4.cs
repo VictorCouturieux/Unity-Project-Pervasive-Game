@@ -13,6 +13,7 @@ public class InteractiveStage4 : InteractiveStage
     public IEnumerator CinematicStageIn(InputA _inputA, Radio _radio)
     {
         StageEnum = 4;
+        Event_Arduino.Instance.SendEventArduino();
         _radio.StopCurrantHelpMode();
         yield return GreenLedSomeSec(_inputA);
         yield return StartDialogueEvent(_question);

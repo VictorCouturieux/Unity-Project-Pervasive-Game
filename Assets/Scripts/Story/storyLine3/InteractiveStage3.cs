@@ -24,6 +24,7 @@ public class InteractiveStage3 : InteractiveStage {
         _inputA.LightToRed();
         yield return StartDialogueEvent(_reload);
         StageEnum = 3;
+        Event_Arduino.Instance.SendEventArduino();
         radio.StartHelpMode(_timeLapsHelpContact, _helpContact);
     }
 

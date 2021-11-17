@@ -7,9 +7,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PortsArduino", menuName = "Tile Movement Tutorial ep4/PortsArduino", order = 1)]
 public class PortsArduino : ScriptableObject
 {
-	public string port = "COM10";
-	public string port2 = "COM9";
-	public string port3 = "COM3";
+	public string port = "COM3";
+	public string port2 = "COM4";
+	public string port3 = "COM9";
 
 	public int baudRate = 9600;
 }

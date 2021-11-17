@@ -19,6 +19,7 @@ public class InteractiveStage7 : InteractiveStage {
     
     public IEnumerator CinematicStageIn(Door _door, Radio radio) {
         StageEnum = 7;
+        Event_Arduino.Instance.SendEventArduino();
         float time = 0;
         while (time <= _winTimer) {
             yield return new WaitForSeconds(_influenceTimeLapsInSec);

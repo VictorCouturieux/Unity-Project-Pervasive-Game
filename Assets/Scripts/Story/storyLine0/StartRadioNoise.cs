@@ -24,6 +24,7 @@ public class StartRadioNoise : InteractiveStage {
         yield return StartSoundEvent(_radioNoise, _startRadioSoundFadeDuration, false);
         
         StageEnum = 0;
+        Event_Arduino.Instance.SendEventArduino();
         StoryManager.Instance.WaitingLoop = true;
         while (StoryManager.Instance.WaitingLoop) {
             yield return StartDialogueEvent(_allo);

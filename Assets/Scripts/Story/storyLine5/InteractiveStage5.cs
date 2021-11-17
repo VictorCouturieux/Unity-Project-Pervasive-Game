@@ -11,6 +11,7 @@ public class InteractiveStage5 : InteractiveStage {
 
     public IEnumerator CinematicStageIn() {
         StageEnum = 5;
+        Event_Arduino.Instance.SendEventArduino();
         yield return StartDialogueEvent(scrambled);
         yield return StartDialogueEvent(_question);
     }

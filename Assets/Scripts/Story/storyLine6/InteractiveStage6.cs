@@ -28,6 +28,7 @@ public class InteractiveStage6 : InteractiveStage {
 
     public IEnumerator CinematicStageIn(InputA _inputA, InputB _inputB, InputC _inputC, Radio _radio) {
         StageEnum = 6;
+        Event_Arduino.Instance.SendEventArduino();
         _inputA.LightToRed();
         _inputB.LightToRed();
         _inputC.LightToRed();

@@ -13,6 +13,7 @@ public class InteractiveStage2 : InteractiveStage {
     
     public IEnumerator CinematicStageIn() {
         StageEnum = 2;
+        Event_Arduino.Instance.SendEventArduino();
         VoiceEvent.DialogueEvent(_question);
 //        yield return StartDialogueEvent(_question);
         yield return null;
