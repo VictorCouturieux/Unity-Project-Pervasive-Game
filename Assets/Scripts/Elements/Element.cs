@@ -6,8 +6,10 @@ public class Element : MonoBehaviour
 {
     protected Image _ledVisual;
 
+    public Input_Arduino input_Arduino;
     private void Awake() {
         _ledVisual = GetComponent<Image>();
+        input_Arduino = FindObjectOfType<Input_Arduino>();
     }
     
     public ColorLed currentLedColor() {

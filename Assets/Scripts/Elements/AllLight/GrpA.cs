@@ -13,13 +13,9 @@ public class GrpA : Element {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
         }
+        input_Arduino.MoodNeutral();
     }
     
-    public void LightToWight() {
-        if (_ledVisual != null) {
-            _ledVisual.sprite = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
-        }
-    }
 
     public void LightToRed() {
         if (_ledVisual != null) {

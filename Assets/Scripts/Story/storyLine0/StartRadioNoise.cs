@@ -5,7 +5,6 @@ using UnityEngine.Serialization;
 
 [Serializable]
 public class StartRadioNoise : InteractiveStage {
-    public float _lightWhiteLapsSec = 3;
     public float _lightOffLapsSec = 3;
     public SoundEffect _radioNoise;
     public float _startRadioSoundFadeDuration = 3;
@@ -13,8 +12,6 @@ public class StartRadioNoise : InteractiveStage {
     public float _AlloLaps = 3;
 
     public IEnumerator StartingGame(GrpA grpA, Door door, Radio radio) {
-        grpA.LightToWight();
-        yield return new WaitForSeconds(_lightWhiteLapsSec);
         grpA.LightOff();
         yield return new WaitForSeconds(_lightOffLapsSec);
         radio.LightToBlue();
