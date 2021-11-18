@@ -62,10 +62,7 @@ public class Input_Arduino : MonoBehaviour
 
     private void OnDisable()
     {
-        if (stream3.IsOpen)
-        {
-            SendMessageToServo("0");
-        }
+        SendMessageToServo("0");
         if (stream.IsOpen) stream.Close();
         if (stream3.IsOpen) stream3.Close();
     }
@@ -75,15 +72,24 @@ public class Input_Arduino : MonoBehaviour
 // Communication Arduino du changement de couleur en fonction du mood
     public void GrpARed()
     {
-        stream.Write("1");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("1");
+        }
     }
     public void GrpABlack()
     {
-        stream.Write("2");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("2");
+        }
     }
     public void GrpACrossToBlue()
     {
-        stream.Write("3");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("3");
+        }
     }
     public void GrpABlue()
     {
@@ -122,67 +128,115 @@ public class Input_Arduino : MonoBehaviour
     }
     public void RadioBlack()
     {
-        stream.Write("9");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("9");
+        }
     }
     public void InputABlue()
     {
-        stream.Write("10");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("10");
+        }
     }
     public void InputAYellow()
     {
-        stream.Write("11");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("11");
+        }
     }
     public void InputAGreen()
     {
-        stream.Write("12");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("12");
+        }
     }
     public void InputABlack()
     {
-        stream.Write("13");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("13");
+        }
     }
     public void InputBRed()
     {
-        stream.Write("14");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("14");
+        }
     }
     public void InputBYellow()
     {
-        stream.Write("15");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("15");
+        }
     }
     public void InputBGreen()
     {
-        stream.Write("16");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("16");
+        }
     }
     public void InputBBlack()
     {
-        stream.Write("17");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("17");
+        }
     }
     public void InputCRed()
     {
-        stream.Write("18");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("18");
+        }
     }
     public void InputCYellow()
     {
-        stream.Write("19");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("19");
+        }
     }
     public void InputCGreen()
     {
-        stream.Write("20");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("20");
+        }
     }
     public void InputCBlack()
     {
-        stream.Write("21");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("21");
+        }
     }
     public void DoorRed()
     {
-        stream.Write("22");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("22");
+        }
     }
     public void DoorGreen()
     {
-        stream.Write("23");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("23");
+        }
     }
     public void DoorBlack()
     {
-        stream.Write("24");
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("24");
+        }
     }
 
     // Changement de mood dans le jeu
@@ -224,13 +278,11 @@ public class Input_Arduino : MonoBehaviour
 
     public void SendMessageToServo(string message)
     {
-
         if (stream3 != null && stream3.IsOpen)
         {
             stream3.WriteLine(message);
             stream3.BaseStream.Flush();
            // Debug.Log(message);
-
         }
     }
 
