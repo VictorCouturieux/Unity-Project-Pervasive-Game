@@ -21,17 +21,20 @@ public class Door : Element {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
         }
+        input_Arduino.DoorBlack();
     }
     
     public void LightToGreen() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
         }
+        input_Arduino.DoorGreen();
     }
     
     public void LightToRed() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
+        input_Arduino.DoorRed();
     }
 }

@@ -129,11 +129,11 @@ public class TileMap : MonoBehaviour {
 		selectedUnit.transform.position = TileCoordToWorldCoord(x, y);
 
 		TileType currentTile = tileTypes[tiles[x, y]];
-		Input_Arduino inputArduinoInstance = Input_Arduino.GetInstance();
+		/*Input_Arduino inputArduinoInstance = Input_Arduino.GetInstance();
 		if (inputArduinoInstance != null)
 		{
 			inputArduinoInstance.UpdateState(currentTile);
-		}
+		}*/
 		//Input_Arduino inputArduinoInstance = GameObject.Find("Arduino").GetComponent<Input_Arduino>();
 	}
 

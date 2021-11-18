@@ -38,23 +38,27 @@ public class InputB : InputX
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
         }
+        input_Arduino.InputBBlack();
     }
     
     public void LightToYellow() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/YellowRound");
         }
+        input_Arduino.InputBYellow();
     }
     
     public void LightToGreen() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
         }
+        input_Arduino.InputBGreen();
     }
     
     public void LightToRed() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
+        input_Arduino.InputBRed();
     }
 }

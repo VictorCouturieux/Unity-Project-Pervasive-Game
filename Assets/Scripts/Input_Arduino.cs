@@ -14,12 +14,10 @@ using System.Runtime.InteropServices.WindowsRuntime;
 public class Input_Arduino : MonoBehaviour
 {
     private SerialPort stream;
-    private SerialPort stream2;
     private SerialPort stream3;
 
     [Range(0, 9)]
     public int message;
-    private float lastSend = 0;
 
     public PortsArduino portsArduino;
 
@@ -67,105 +65,140 @@ public class Input_Arduino : MonoBehaviour
             throw;
         }
 
-        try
-        {
-            stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
-            stream3.ReadTimeout = 100;
-            stream3.Open();
-        }
-        catch (IOException e)
-        {
-            Console.WriteLine(e + portsArduino.port3);
-            throw;
-        }
-            
-        Valve2_Off();
-        Valve1_Off();
+        stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
+        stream3.ReadTimeout = 100;
+        stream3.Open();
 
         Input_Arduino.singletonInstance = this;
     }
 
     private void OnDisable()
     {
-        SendMessageToServo("0");
-        if (stream2 != null && stream.IsOpen) stream.Close();
-        if (stream2 != null && stream2.IsOpen) stream2.Close();
-        if (stream3 != null && stream3.IsOpen) stream3.Close();
-    }
-
-
-//***************** BREATHE ****************//
-
-    public void Valve1_On()
-    {
-        if (stream2 != null && stream2.IsOpen)
+        if (stream3.IsOpen)
         {
-            stream2.Write("0");
+            SendMessageToServo("0");
         }
-    }
-    public void Valve1_Off()
-    {
-        if (stream2 != null && stream2.IsOpen)
-        {
-            stream2.Write("1");
-        }
-    }
-    public void Valve2_On()
-    {
-        if (stream2 != null && stream2.IsOpen)
-        {
-            stream2.Write("2");
-        }
-    }
-    public void Valve2_Off()
-    {
-        if (stream2 != null && stream2.IsOpen)
-        {
-            stream2.Write("3");
-        }
+        if (stream.IsOpen) stream.Close();
+        if (stream3.IsOpen) stream3.Close();
     }
 
 
 //******************* MOOD *****************//
 // Communication Arduino du changement de couleur en fonction du mood
-    public void MoodNeutral()
+    public void GrpARed()
+    {
+        stream.Write("1");
+    }
+    public void GrpABlack()
+    {
+        stream.Write("2");
+    }
+    public void GrpACrossToBlue()
+    {
+        stream.Write("3");
+    }
+    public void GrpABlue()
     {
         if (stream != null && stream.IsOpen)
         {
             stream.Write("4");
         }
     }
-    public void MoodRed()
+    public void RadioBlue()
     {
         if (stream != null && stream.IsOpen)
         {
             stream.Write("5");
         }
     }
-    public void MoodBlue()
+    public void RadioGreen()
     {
         if (stream != null && stream.IsOpen)
         {
             stream.Write("6");
         }
     }
-    public void MoodGreen()
+    public void RadioRed()
     {
         if (stream != null && stream.IsOpen)
         {
             stream.Write("7");
         }
     }
-    public void MoodBrown()
+    public void RadioYellow()
     {
         if (stream != null && stream.IsOpen)
         {
             stream.Write("8");
         }
     }
+    public void RadioBlack()
+    {
+        stream.Write("9");
+    }
+    public void InputABlue()
+    {
+        stream.Write("10");
+    }
+    public void InputAYellow()
+    {
+        stream.Write("11");
+    }
+    public void InputAGreen()
+    {
+        stream.Write("12");
+    }
+    public void InputABlack()
+    {
+        stream.Write("13");
+    }
+    public void InputBRed()
+    {
+        stream.Write("14");
+    }
+    public void InputBYellow()
+    {
+        stream.Write("15");
+    }
+    public void InputBGreen()
+    {
+        stream.Write("16");
+    }
+    public void InputBBlack()
+    {
+        stream.Write("17");
+    }
+    public void InputCRed()
+    {
+        stream.Write("18");
+    }
+    public void InputCYellow()
+    {
+        stream.Write("19");
+    }
+    public void InputCGreen()
+    {
+        stream.Write("20");
+    }
+    public void InputCBlack()
+    {
+        stream.Write("21");
+    }
+    public void DoorRed()
+    {
+        stream.Write("22");
+    }
+    public void DoorGreen()
+    {
+        stream.Write("23");
+    }
+    public void DoorBlack()
+    {
+        stream.Write("24");
+    }
 
-// Changement de mood dans le jeu
-    public void UpdateState(TileType currentTile)
+    // Changement de mood dans le jeu
+    /*public void UpdateState(TileType currentTile)
     {
         if (currentTile == null)
         {
@@ -199,7 +232,7 @@ public class Input_Arduino : MonoBehaviour
                 MoodNeutral();
                 break;
         }
-    }
+    }*/
 
     public void SendMessageToServo(string message)
     {

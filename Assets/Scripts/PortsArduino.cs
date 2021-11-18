@@ -8,7 +8,6 @@ using UnityEngine;
 public class PortsArduino : ScriptableObject
 {
 	public string port = "COM3";
-	public string port2 = "COM4";
 	public string port3 = "COM9";
 
 	public int baudRate = 9600;

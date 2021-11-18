@@ -146,30 +146,35 @@ public class Radio : Element {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
         }
+        input_Arduino.RadioBlack();
     }
     
     public void LightToBlue() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
         }
+        input_Arduino.RadioBlue();
     } 
     
     public void LightToYellow() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/YellowRound");
         }
+        input_Arduino.RadioYellow();
     }
     
     public void LightToGreen() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
         }
+        input_Arduino.RadioGreen();
     }
     
     public void LightToRed() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
+        input_Arduino.RadioRed();
     }
     
     

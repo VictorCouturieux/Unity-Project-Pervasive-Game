@@ -13,7 +13,7 @@ public class GrpA : Element {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
         }
-        input_Arduino.MoodNeutral();
+        input_Arduino.GrpABlack();
     }
     
 
@@ -21,18 +21,21 @@ public class GrpA : Element {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
+        input_Arduino.GrpARed();
     }
     
     public void LightToBlue() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
         }
+        input_Arduino.GrpABlue();
     }
 
     public void FadeToBlue() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
         }
+        input_Arduino.GrpACrossToBlue();
     }
 
     public void StartRedBlinking() {
