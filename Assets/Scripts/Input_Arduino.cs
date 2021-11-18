@@ -52,18 +52,6 @@ public class Input_Arduino : MonoBehaviour
             Console.WriteLine(e + portsArduino.port);
             throw;
         }
-        
-        try
-        {
-            stream2 = new SerialPort(portsArduino.port2, portsArduino.baudRate);
-            stream2.ReadTimeout = 100;
-            stream2.Open();
-        }
-        catch (IOException e)
-        {
-            Console.WriteLine(e + portsArduino.port2);
-            throw;
-        }
 
         stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
         stream3.ReadTimeout = 100;
