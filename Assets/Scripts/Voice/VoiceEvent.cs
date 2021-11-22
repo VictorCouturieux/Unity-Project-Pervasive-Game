@@ -13,9 +13,14 @@ public class VoiceEvent : MonoBehaviour {
 
     private IEnumerator _currentDialogue;
 
+    private VoiceM voiceMood;
+
     private void Awake() {
         _asPhare = GameObject.Find("DialoguePhare").GetComponent<AudioSource>();
         _asLeata = GameObject.Find("DialogueLeata").GetComponent<AudioSource>();
+
+        voiceMood = gameObject.AddComponent<VoiceM>();
+        VoiceM._audioMixer = _audioMixer;
     }
 
     public void DialogueEvent(Dialogue dialogueStr) {
@@ -24,7 +29,7 @@ public class VoiceEvent : MonoBehaviour {
 
     public IEnumerator StartPhareDialogueNow(Dialogue dialogueStr) {
         StopForceSound();
-        FadeMixerGroup.SetVolume(_audioMixer, "AmbientParam", 1);
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 1);
         _asPhare.clip = dialogueStr.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
@@ -40,7 +45,7 @@ public class VoiceEvent : MonoBehaviour {
     
     public IEnumerator StartLeataDialogueNow(Dialogue dialogueStr) {
         StopForceSound();
-        FadeMixerGroup.SetVolume(_audioMixer, "AmbientParam", 1);
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 1);
         _asLeata.clip = dialogueStr.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
@@ -55,7 +60,7 @@ public class VoiceEvent : MonoBehaviour {
 
     public IEnumerator StopFadeOut()
     {
-        yield return FadeMixerGroup.StartFade(_audioMixer, "DialogueParam", 1, 0);
+        yield return FadeMixerGroup.StartVolumeFade(_audioMixer, "DialogueVolParam", 1, 0);
     }
 
     public void StopForceSound()

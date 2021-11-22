@@ -10,7 +10,7 @@ using UnityEngine;
 
 public class FadeMixerGroup : MonoBehaviour
 {
-    public static IEnumerator StartFade (AudioMixer audioMixer, string exposedParam, float duration, float targetVolume)
+    public static IEnumerator StartVolumeFade (AudioMixer audioMixer, string exposedParam, float duration, float targetVolume)
     {
         float currentTime = 0;
         float currentVol;
@@ -39,7 +39,29 @@ public class FadeMixerGroup : MonoBehaviour
         audioMixer.SetFloat(exposedParam, Mathf.Log10(targetValue) * 20);
     }
 
+    public static IEnumerator StartParamsFade (AudioMixer audioMixer, string exposedParam, float duration, float targetVal)
+    {
+        float currentTime = 0;
+        float currentVol;
+        audioMixer.GetFloat(exposedParam, out currentVol);
+        // currentVol = Mathf.Pow(10, currentVol / 20);
+        // float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
 
+//        Debug.Log("currentTime : " + currentTime + " / currentVol : " + currentVol);
+        
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetVal, currentTime / duration);
+            // audioMixer.SetFloat(exposedParam, Mathf.Log10(newVol) * 20);
+            audioMixer.SetFloat(exposedParam, newVol);
+            
+//            Debug.Log("currentTime : " + currentTime + " / currentVol : " + currentVol);
+            yield return null;
+        }
+
+        yield break;
+    }
 
 
 }

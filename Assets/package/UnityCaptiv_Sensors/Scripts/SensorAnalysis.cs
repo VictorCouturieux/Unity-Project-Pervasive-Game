@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,12 +72,24 @@ public class SensorAnalysis : MonoBehaviour
     // 3 : Zone 3
     // 4 : Zone 4
     //La zone neutre est la zone par défaut.
+    private int m_zone = 0;
     private int zone = 0;
-    public double Zone { get => zone; } 
+    public double Zone { get => zone; }
+    public delegate void OnVariableChangeDelegate(int zone);
+    public event OnVariableChangeDelegate OnZoneChange;
 
     private void Start()
     {
         StartCoroutine(RefreshData());
+    }
+
+    private void Update()
+    {
+        if (zone != m_zone && OnZoneChange != null)
+        {
+            m_zone = zone;
+            OnZoneChange(zone);
+        }
     }
 
     private IEnumerator RefreshData()

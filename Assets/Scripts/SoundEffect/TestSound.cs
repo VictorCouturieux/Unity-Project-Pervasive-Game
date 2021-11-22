@@ -16,15 +16,15 @@ public class TestSound : MonoBehaviour {
 
     public void fadeSoundToAmbient() {
         if (audioMixer != null) {
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "ambientVol", 5, 1));
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "gouldVol", 5, 0));
+            StartCoroutine(FadeMixerGroup.StartVolumeFade(audioMixer, "ambientVol", 5, 1));
+            StartCoroutine(FadeMixerGroup.StartVolumeFade(audioMixer, "gouldVol", 5, 0));
         }
     }
     
     public void fadeSoundToGould() {
         if (audioMixer != null) {
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "ambientVol", 5, 0));
-            StartCoroutine(FadeMixerGroup.StartFade(audioMixer, "gouldVol", 5, 1));
+            StartCoroutine(FadeMixerGroup.StartVolumeFade(audioMixer, "ambientVol", 5, 0));
+            StartCoroutine(FadeMixerGroup.StartVolumeFade(audioMixer, "gouldVol", 5, 1));
         }
     }
 }

@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="486e890c-cc6b-4a7b-b1a8-75354223c60e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/FadeMixerGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/FadeMixerGroup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/TestSound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/TestSound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sound/GlobalSoundMixer.mixer" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sound/GlobalSoundMixer.mixer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_SCENE_.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_SCENE_.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/package/UnityCaptiv_Sensors/Scripts/SensorAnalysis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/package/UnityCaptiv_Sensors/Scripts/SensorAnalysis.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +41,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine2/InteractiveStage2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.2.14/Editor/Recording/TimelineRecordingContextualResponder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,6 +67,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Door.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/package/UnityCaptiv_Sensors/Scripts/SensorServer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -217,7 +223,9 @@
       <workItem from="1636973710332" duration="12189000" />
       <workItem from="1637054978871" duration="5404000" />
       <workItem from="1637164151856" duration="3047000" />
-      <workItem from="1637227598720" duration="1891000" />
+      <workItem from="1637227598720" duration="9809000" />
+      <workItem from="1637315476944" duration="7996000" />
+      <workItem from="1637424090703" duration="9175000" />
     </task>
     <servers />
   </component>

@@ -19,22 +19,22 @@ public class SoundEvent : MonoBehaviour {
     public IEnumerator StartPhareAmbientNow(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped)
     {
         StopForceSound();
-        FadeMixerGroup.SetVolume(_audioMixer, "AmbientParam", 0);
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 0);
         
         _ambient0.clip = soundEffect.ChooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
         _ambient0.Play();
-        StartCoroutine(FadeMixerGroup.StartFade(_audioMixer, "AmbientParam", fadeInDuration, 1));
+        StartCoroutine(FadeMixerGroup.StartVolumeFade(_audioMixer, "AmbientVolParam", fadeInDuration, 1));
         float totalTime = 0;
         bool oneTime = false;
         while (_ambient0.isPlaying)
         {
-            Debug.Log("Audio clip length : " + _ambient0.clip.length);
+            // Debug.Log("Audio clip length : " + _ambient0.clip.length);
             totalTime += Time.deltaTime;
             if (totalTime > _ambient0.clip.length - fadeInDuration && !oneTime)
             {
-                StartCoroutine(FadeMixerGroup.StartFade(_audioMixer, "AmbientParam", fadeInDuration, 0));
+                StartCoroutine(FadeMixerGroup.StartVolumeFade(_audioMixer, "AmbientVolParam", fadeInDuration, 0));
                 oneTime = true;
             }
             yield return null;
