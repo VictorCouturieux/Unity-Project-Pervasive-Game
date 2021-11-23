@@ -85,6 +85,7 @@ public class BarDeflate : MonoBehaviour
         }
         if (mask.fillAmount >= 1 && !apneaIsValid) {
             StoryManager.Instance.InteractApnea();
+            activeTime = 0f;
             apneaIsValid = true;
         }
     }
