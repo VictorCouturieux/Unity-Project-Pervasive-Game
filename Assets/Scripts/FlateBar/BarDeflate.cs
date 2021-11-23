@@ -62,7 +62,7 @@ public class BarDeflate : MonoBehaviour
             //Debug.Log("slope deflate : " + slope);
             if (slope < 1 && slope != 0 || Input.GetKey("down"))
             {
-                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
+                activeTime += Time.time;//respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
             else if (slope >= 1)
             {
