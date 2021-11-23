@@ -18,7 +18,7 @@ public class FadeMixerGroup : MonoBehaviour
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
 
-//        Debug.Log("currentTime : " + currentTime + " / currentVol : " + currentVol);
+        Debug.Log("currentTime : " + currentTime + " / currentVol : " + currentVol);
         
         while (currentTime < duration)
         {
@@ -35,8 +35,7 @@ public class FadeMixerGroup : MonoBehaviour
 
     public static void SetVolume(AudioMixer audioMixer, string exposedParam, float targetVolume)
     {
-        float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
-        audioMixer.SetFloat(exposedParam, Mathf.Log10(targetValue) * 20);
+        audioMixer.SetFloat(exposedParam, targetVolume);
     }
 
     public static IEnumerator StartParamsFade (AudioMixer audioMixer, string exposedParam, float duration, float targetVal)

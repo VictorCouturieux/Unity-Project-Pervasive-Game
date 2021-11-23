@@ -29,7 +29,7 @@ public class VoiceEvent : MonoBehaviour {
 
     public IEnumerator StartPhareDialogueNow(Dialogue dialogueStr) {
         StopForceSound();
-        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 1);
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", -80);
         _asPhare.clip = dialogueStr.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
@@ -45,7 +45,7 @@ public class VoiceEvent : MonoBehaviour {
     
     public IEnumerator StartLeataDialogueNow(Dialogue dialogueStr) {
         StopForceSound();
-        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 1);
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 0);
         _asLeata.clip = dialogueStr.chooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         

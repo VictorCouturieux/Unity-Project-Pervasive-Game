@@ -31,14 +31,17 @@ public class InteractiveStage7 : InteractiveStage {
     }
 
     public IEnumerator CinematicFirstEnd() {
+        StoryManager.Instance.StageEnum = -1;
         yield return StartDialogueEvent(_A_EndFirst);
 //        door.LightToGreen();
         yield return StartLeataDialogueEvent(_A_EndSecond);
+        StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(EndLighthouseHum());
         yield return new WaitForSeconds(cutLightTimer);
         StoryManager.Instance.resetLights();
     }
     
     public IEnumerator CinematicSecondEnd(InputA _inputA) {
+        StoryManager.Instance.StageEnum = -1;
         _inputA.LightToRed();
         yield return StartLeataDialogueEvent(_endSecond);
         StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(EndLighthouseHum());
@@ -48,6 +51,6 @@ public class InteractiveStage7 : InteractiveStage {
 
     public IEnumerator EndLighthouseHum()
     {
-        yield return StartSoundEvent(_lighthouseHum, 3, false);
+        yield return StartSoundEvent(_lighthouseHum, 3, false, 0.1f);
     }
 }
