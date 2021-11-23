@@ -1,35 +1,26 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityCaptiv.Sensors;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-// L'inspiration. La barre se remplit quand le joueur inspire. 
-// pour le moment la respiration est simul�e par les fl�ches haut et bas du clavier.
-// UI et fonction pour la commande Arduino.
-
-// /!\ ATTENTION ne marche pas s'il n'y a pas 2 cartes Arduino branch�es et connect�es aux bons ports s�ries. Pas pratique, d�so je me suis pas pench�e sur le prb.
-
-
-[ExecuteInEditMode()]
-public class BarDeflate : MonoBehaviour
+public class BarApnea : MonoBehaviour
 {
     public float timeMaxReachInSec = 6;
     private float activeTime = 0f;
     
-    private bool deflateIsValid = false;
+    private bool apneaIsValid = false;
     public Image mask;
 
     public SensorStatistics respirationStatistics;
-    private double lastAmplBreathing;
+    private double lastAverageBreathing;
 
     private void Start()
     {
         if (respirationStatistics != null)
         {
-            lastAmplBreathing = respirationStatistics.Average;
+            lastAverageBreathing = respirationStatistics.Average;
             StartCoroutine(RefreshData());
         }
     }
@@ -41,31 +32,30 @@ public class BarDeflate : MonoBehaviour
             //Attente jusqu'au prochain tic de mise à jour
             yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
 
-            double slope = respirationStatistics.Average - lastAmplBreathing;
+            double slope = respirationStatistics.Average - lastAverageBreathing;
             //Debug.Log("slope deflate : " + slope);
-            if (slope < -1f || Input.GetKey("down"))
+            if (slope >= -1f && slope <= 1f  || Input.GetKey("right"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope >= 1f)
+            else if (slope < -1f || slope > 1f)
             {
                 activeTime = 0f;
-                deflateIsValid = false;
+                apneaIsValid = false;
             }
             GetCurrentFill();
 
-            lastAmplBreathing = respirationStatistics.Average;
+            lastAverageBreathing = respirationStatistics.Average;
         }
     }
 
     void GetCurrentFill()
     {
         mask.fillAmount = Mathf.Lerp(0, 1, activeTime / timeMaxReachInSec);
-        if (mask.fillAmount >= 1 && !deflateIsValid) {
-            StoryManager.Instance.InteractPositiveAnswer();
+        if (mask.fillAmount >= 1 && !apneaIsValid) {
+            StoryManager.Instance.InteractApnea();
             activeTime = 0f;
-            deflateIsValid = true;
+            apneaIsValid = true;
         }
     }
-
 }

@@ -18,8 +18,7 @@ public class BarInflate : MonoBehaviour
     public float timeMaxReachInSec = 6;
     private float activeTime = 0f;
     
-    public bool inflateIsValid = false;
-    public bool apneaIsValid = false;
+    private bool inflateIsValid = false;
     public Image mask;
 
     public SensorStatistics respirationStatistics;
@@ -34,23 +33,6 @@ public class BarInflate : MonoBehaviour
         }
     }
     
-    void Update()
-    {
-        // if (Input.GetKey("up"))
-        // {
-        //     activeTime += Time.deltaTime;
-        // }
-        // else 
-        // { 
-        //     activeTime = 0f;
-        //     inflateIsValid = false;
-        //     apneaIsValid = false;
-        // }
-        //
-        // GetCurrentFill();
-    }
-    
-    
     private IEnumerator RefreshData()
     {
         while (true)
@@ -58,15 +40,14 @@ public class BarInflate : MonoBehaviour
             //Attente jusqu'au prochain tic de mise à jour
             double slope = respirationStatistics.Average - lastAmplBreathing;
             //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope > 0.5f || Input.GetKey("up"))
+            if (slope > 1f || Input.GetKey("up"))
             {
-                activeTime += Time.deltaTime; //respirationStatistics.TimeWindowSize;//Time.deltaTime;
+                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope <= -0.5f)
+            else if (slope <= -1f)
             {
                 activeTime = 0f;
                 inflateIsValid = false;
-                apneaIsValid = false;
             }
 
             GetCurrentFill();
@@ -78,14 +59,10 @@ public class BarInflate : MonoBehaviour
     {
         float fillAmount = Mathf.Lerp(0, 1, activeTime / timeMaxReachInSec);
         mask.fillAmount = fillAmount;
-        if (mask.fillAmount >= 0.5 && !inflateIsValid) {
+        if (mask.fillAmount >= 1 && !inflateIsValid) {
             StoryManager.Instance.InteractNegativeAnswer();
-            inflateIsValid = true;
-        }
-        if (mask.fillAmount >= 1 && !apneaIsValid) {
-            StoryManager.Instance.InteractApnea();
             activeTime = 0f;
-            apneaIsValid = true;
+            inflateIsValid = true;
         }
     }
 
