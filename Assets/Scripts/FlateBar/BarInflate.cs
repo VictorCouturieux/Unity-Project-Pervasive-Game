@@ -56,24 +56,21 @@ public class BarInflate : MonoBehaviour
         while (true)
         {
             //Attente jusqu'au prochain tic de mise à jour
-            if (respirationStatistics.sensorSource != null)
+            double slope = respirationStatistics.Average - lastAmplBreathing;
+            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope > 0.5f || Input.GetKey("up"))
             {
-                double slope = respirationStatistics.Average - lastAmplBreathing;
-                //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-                if (slope > 0.5f || Input.GetKey("up"))
-                {
-                    activeTime += Time.deltaTime; //respirationStatistics.TimeWindowSize;//Time.deltaTime;
-                }
-                else if (slope <= -0.5f)
-                {
-                    activeTime = 0f;
-                    inflateIsValid = false;
-                    apneaIsValid = false;
-                }
-
-                GetCurrentFill();
-                lastAmplBreathing = respirationStatistics.Average;
+                activeTime += Time.deltaTime; //respirationStatistics.TimeWindowSize;//Time.deltaTime;
             }
+            else if (slope <= -0.5f)
+            {
+                activeTime = 0f;
+                inflateIsValid = false;
+                apneaIsValid = false;
+            }
+
+            GetCurrentFill();
+            lastAmplBreathing = respirationStatistics.Average;
         }
     }
 
