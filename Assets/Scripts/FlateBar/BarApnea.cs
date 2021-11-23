@@ -16,12 +16,52 @@ public class BarApnea : MonoBehaviour
     public SensorStatistics respirationStatistics;
     private double lastAverageBreathing;
 
+    private double slope = 0;
+
     private void Start()
     {
         if (respirationStatistics != null)
         {
             lastAverageBreathing = respirationStatistics.Average;
-            StartCoroutine(RefreshData());
+            // StartCoroutine(RefreshData());
+        }
+    }
+
+    private void Update()
+    {
+        if (respirationStatistics == null)
+        {
+            if (Input.GetKey("right"))
+            {
+                activeTime += Time.deltaTime;
+            }
+            else
+            {
+                activeTime = 0f;
+                apneaIsValid = false;
+            }
+            
+            GetCurrentFill();
+        }
+        else
+        {
+            if (respirationStatistics.Average != lastAverageBreathing)
+            {
+                slope = respirationStatistics.Average - lastAverageBreathing;
+            }
+            // Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope >= -1f && slope <= 1f && respirationStatistics.Average != 0 || Input.GetKey("right"))
+            {
+                activeTime += Time.deltaTime;
+            }
+            else if (slope < -1f || slope > 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("right"))
+            {
+                activeTime = 0f;
+                apneaIsValid = false;
+            }
+            GetCurrentFill();
+
+            lastAverageBreathing = respirationStatistics.Average;
         }
     }
 
@@ -32,13 +72,13 @@ public class BarApnea : MonoBehaviour
             //Attente jusqu'au prochain tic de mise à jour
             yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
 
-            double slope = respirationStatistics.Average - lastAverageBreathing;
-            //Debug.Log("slope deflate : " + slope);
-            if (slope >= -1f && slope <= 1f  || Input.GetKey("right"))
+            slope = respirationStatistics.Average - lastAverageBreathing;
+            // Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope >= -1f && slope <= 1f && respirationStatistics.Average != 0 || Input.GetKey("right"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope < -1f || slope > 1f)
+            else if (slope < -1f || slope > 1f || respirationStatistics.Average == 0.0f)
             {
                 activeTime = 0f;
                 apneaIsValid = false;

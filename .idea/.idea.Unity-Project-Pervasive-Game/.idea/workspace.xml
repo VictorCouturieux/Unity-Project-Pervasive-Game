@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="486e890c-cc6b-4a7b-b1a8-75354223c60e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarApnea.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarApnea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarApnea.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarInflate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarInflate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scene_2.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scene_2.unity.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityCaptiv.Sensors;
@@ -15,43 +16,84 @@ using UnityEngine.UI;
 [ExecuteInEditMode()]
 public class BarInflate : MonoBehaviour
 {
-    public float timeMaxReachInSec = 6;
+    public float timeMaxReachInSec = 3;
     private float activeTime = 0f;
     
     private bool inflateIsValid = false;
     public Image mask;
 
     public SensorStatistics respirationStatistics;
-    private double lastAmplBreathing;
+    private double lastAverageBreathing;
+    
+    private double slope = 0;
 
     private void Start()
     {
         if (respirationStatistics != null)
         {
-            lastAmplBreathing = respirationStatistics.Average;
-            StartCoroutine(RefreshData());
+            lastAverageBreathing = respirationStatistics.Average;
+            // StartCoroutine(RefreshData());
         }
     }
-    
-    private IEnumerator RefreshData()
+
+    private void Update()
     {
-        while (true)
+        if (respirationStatistics == null)
         {
-            //Attente jusqu'au prochain tic de mise à jour
-            double slope = respirationStatistics.Average - lastAmplBreathing;
-            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope > 1f || Input.GetKey("up"))
+            if (Input.GetKey("up"))
             {
-                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
+                activeTime += Time.deltaTime;
             }
-            else if (slope <= -1f)
+            else 
             {
                 activeTime = 0f;
                 inflateIsValid = false;
             }
 
             GetCurrentFill();
-            lastAmplBreathing = respirationStatistics.Average;
+        } else {
+            if (respirationStatistics.Average != lastAverageBreathing)
+            {
+                slope = respirationStatistics.Average - lastAverageBreathing;
+            }
+            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope > 1f && respirationStatistics.Average != 0 || Input.GetKey("up"))
+            {
+                activeTime += Time.deltaTime;
+            }
+            else if (slope <= -1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("up"))
+            {
+                activeTime = 0f;
+                inflateIsValid = false;
+            }
+
+            GetCurrentFill();
+            lastAverageBreathing = respirationStatistics.Average;
+        }
+    }
+
+    private IEnumerator RefreshData()
+    {
+        while (true)
+        {
+            //Attente jusqu'au prochain tic de mise à jour
+            yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
+            
+            //Attente jusqu'au prochain tic de mise à jour
+            slope = respirationStatistics.Average - lastAverageBreathing;
+            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope > 1f && respirationStatistics.Average != 0 || Input.GetKey("up"))
+            {
+                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
+            }
+            else if (slope <= -1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("up"))
+            {
+                activeTime = 0f;
+                inflateIsValid = false;
+            }
+
+            GetCurrentFill();
+            lastAverageBreathing = respirationStatistics.Average;
         }
     }
 

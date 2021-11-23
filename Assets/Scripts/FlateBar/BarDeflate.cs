@@ -16,21 +16,61 @@ using UnityEngine.UI;
 [ExecuteInEditMode()]
 public class BarDeflate : MonoBehaviour
 {
-    public float timeMaxReachInSec = 6;
+    public float timeMaxReachInSec = 3;
     private float activeTime = 0f;
     
     private bool deflateIsValid = false;
     public Image mask;
 
     public SensorStatistics respirationStatistics;
-    private double lastAmplBreathing;
+    private double lastAverageBreathing;
 
+    private double slope = 0;
+    
     private void Start()
     {
         if (respirationStatistics != null)
         {
-            lastAmplBreathing = respirationStatistics.Average;
-            StartCoroutine(RefreshData());
+            lastAverageBreathing = respirationStatistics.Average;
+            // StartCoroutine(RefreshData());
+        }
+    }
+
+    private void Update()
+    {
+        if (respirationStatistics == null)
+        {
+            if (Input.GetKey("down"))
+            {
+                activeTime += Time.deltaTime;
+            }
+            else 
+            {
+                activeTime = 0f;
+                deflateIsValid = false;
+            }
+            GetCurrentFill();
+        }
+        else
+        {
+            if (respirationStatistics.Average != lastAverageBreathing)
+            {
+                slope = respirationStatistics.Average - lastAverageBreathing;
+            }
+
+            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope < -1f && respirationStatistics.Average != 0 || Input.GetKey("down"))
+            {
+                activeTime += Time.deltaTime;
+            }
+            else if (slope >= 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("down"))
+            {
+                activeTime = 0f;
+                deflateIsValid = false;
+            }
+            GetCurrentFill();
+
+            lastAverageBreathing = respirationStatistics.Average;
         }
     }
 
@@ -41,20 +81,20 @@ public class BarDeflate : MonoBehaviour
             //Attente jusqu'au prochain tic de mise à jour
             yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
 
-            double slope = respirationStatistics.Average - lastAmplBreathing;
-            //Debug.Log("slope deflate : " + slope);
-            if (slope < -1f || Input.GetKey("down"))
+            double slope = respirationStatistics.Average - lastAverageBreathing;
+            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
+            if (slope < -1f && respirationStatistics.Average != 0 || Input.GetKey("down"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope >= 1f)
+            else if (slope >= 1f || respirationStatistics.Average == 0.0f)
             {
                 activeTime = 0f;
                 deflateIsValid = false;
             }
             GetCurrentFill();
 
-            lastAmplBreathing = respirationStatistics.Average;
+            lastAverageBreathing = respirationStatistics.Average;
         }
     }
 
