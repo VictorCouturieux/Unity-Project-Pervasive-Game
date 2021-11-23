@@ -64,8 +64,8 @@ public class BarInflate : MonoBehaviour
             {
                 activeTime += respirationStatistics.TimeWindowSize;//Time.deltaTime;
             }
-            else
-            { 
+            else if (slope <= -1)
+            {
                 activeTime = 0f;
                 inflateIsValid = false;
                 apneaIsValid = false;
