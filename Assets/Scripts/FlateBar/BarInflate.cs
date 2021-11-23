@@ -60,7 +60,7 @@ public class BarInflate : MonoBehaviour
 
             double slope = respirationStatistics.Average - lastAmplBreathing;
             Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope > 0 || Input.GetKey("up"))
+            if (slope > -1 && slope != 0 || Input.GetKey("up"))
             {
                 activeTime += respirationStatistics.TimeWindowSize;//Time.deltaTime;
             }
