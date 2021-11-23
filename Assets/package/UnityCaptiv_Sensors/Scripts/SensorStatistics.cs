@@ -29,6 +29,8 @@ namespace UnityCaptiv
                 }
             }
 
+	    public int sensorChannel = 1;  			//
+
             private double dataMinValue = 0.0f;                     //Valeur minimale des données du capteur sur les <paramref name="TimeWindowSize"/> dernières secondess d'enregistrement.
             private double dataMaxValue = 0.0f;                     //Valeur maximale des données du capteur sur les <paramref name="TimeWindowSize"/> dernières secondess d'enregistrement.
 
@@ -82,22 +84,22 @@ namespace UnityCaptiv
                         //Mise à jour des valeurs minimales et maximales.
                         if (sensorData.Length > 0)
                         {
-                            dataMinValue = sensorData[0][1];
-                            dataMaxValue = sensorData[0][1];
+                            dataMinValue = sensorData[0][sensorChannel];
+                            dataMaxValue = sensorData[0][sensorChannel];
                         }
 
                         for (int i = 0; i < sensorData.Length; i++)
                         {
-                            if (sensorData[i][1] < dataMinValue)
+                            if (sensorData[i][sensorChannel] < dataMinValue)
                             {
-                                dataMinValue = sensorData[i][1];
+                                dataMinValue = sensorData[i][sensorChannel];
                             }
-                            if (sensorData[i][1] > dataMaxValue)
+                            if (sensorData[i][sensorChannel] > dataMaxValue)
                             {
-                                dataMaxValue = sensorData[i][1];
+                                dataMaxValue = sensorData[i][sensorChannel];
                             }
 
-                            mean += sensorData[i][1];
+                            mean += sensorData[i][sensorChannel];
                         }
 
                         //Mise à jour de l'amplitude et de la moyenne des données.
