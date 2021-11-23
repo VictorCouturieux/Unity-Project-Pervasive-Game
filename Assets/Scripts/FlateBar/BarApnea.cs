@@ -74,11 +74,11 @@ public class BarApnea : MonoBehaviour
 
             slope = respirationStatistics.Average - lastAverageBreathing;
             // Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope >= -1f && slope <= 1f && respirationStatistics.Average != 0 || Input.GetKey("right"))
+            if (slope >= -5f && slope <= 5f && respirationStatistics.Average != 0 || Input.GetKey("right"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope < -1f || slope > 1f || respirationStatistics.Average == 0.0f)
+            else if (slope < -5f || slope > 5f || respirationStatistics.Average == 0.0f)
             {
                 activeTime = 0f;
                 apneaIsValid = false;
@@ -94,7 +94,6 @@ public class BarApnea : MonoBehaviour
         mask.fillAmount = Mathf.Lerp(0, 1, activeTime / timeMaxReachInSec);
         if (mask.fillAmount >= 1 && !apneaIsValid) {
             StoryManager.Instance.InteractApnea();
-            activeTime = 0f;
             apneaIsValid = true;
         }
     }

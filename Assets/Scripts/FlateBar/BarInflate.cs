@@ -82,11 +82,11 @@ public class BarInflate : MonoBehaviour
             //Attente jusqu'au prochain tic de mise à jour
             slope = respirationStatistics.Average - lastAverageBreathing;
             //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope > 1f && respirationStatistics.Average != 0 || Input.GetKey("up"))
+            if (slope > 5f && respirationStatistics.Average != 0 || Input.GetKey("up"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope <= -1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("up"))
+            else if (slope <= -5f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("up"))
             {
                 activeTime = 0f;
                 inflateIsValid = false;
@@ -103,7 +103,6 @@ public class BarInflate : MonoBehaviour
         mask.fillAmount = fillAmount;
         if (mask.fillAmount >= 1 && !inflateIsValid) {
             StoryManager.Instance.InteractNegativeAnswer();
-            activeTime = 0f;
             inflateIsValid = true;
         }
     }

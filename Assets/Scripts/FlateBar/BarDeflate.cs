@@ -83,11 +83,11 @@ public class BarDeflate : MonoBehaviour
 
             double slope = respirationStatistics.Average - lastAverageBreathing;
             //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope < -1f && respirationStatistics.Average != 0 || Input.GetKey("down"))
+            if (slope < -5f && respirationStatistics.Average != 0 || Input.GetKey("down"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope >= 1f || respirationStatistics.Average == 0.0f)
+            else if (slope >= 5f || respirationStatistics.Average == 0.0f)
             {
                 activeTime = 0f;
                 deflateIsValid = false;
@@ -103,7 +103,6 @@ public class BarDeflate : MonoBehaviour
         mask.fillAmount = Mathf.Lerp(0, 1, activeTime / timeMaxReachInSec);
         if (mask.fillAmount >= 1 && !deflateIsValid) {
             StoryManager.Instance.InteractPositiveAnswer();
-            activeTime = 0f;
             deflateIsValid = true;
         }
     }
