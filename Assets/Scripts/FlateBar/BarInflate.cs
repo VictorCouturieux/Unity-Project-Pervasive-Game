@@ -61,7 +61,7 @@ public class BarInflate : MonoBehaviour
             {
                 activeTime += Time.deltaTime;
             }
-            else if (slope <= -1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("up"))
+            else //if (slope <= -1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("up"))
             {
                 activeTime = 0f;
                 inflateIsValid = false;

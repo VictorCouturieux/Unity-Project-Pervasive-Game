@@ -54,7 +54,7 @@ public class BarApnea : MonoBehaviour
             {
                 activeTime += Time.deltaTime;
             }
-            else if (slope < -1f || slope > 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("right"))
+            else //if (slope < -1f || slope > 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("right"))
             {
                 activeTime = 0f;
                 apneaIsValid = false;

@@ -63,7 +63,7 @@ public class BarDeflate : MonoBehaviour
             {
                 activeTime += Time.deltaTime;
             }
-            else if (slope >= 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("down"))
+            else //if (slope >= 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("down"))
             {
                 activeTime = 0f;
                 deflateIsValid = false;
