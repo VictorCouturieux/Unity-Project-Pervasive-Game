@@ -5,14 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarInflate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarInflate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/FadeMixerGroup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/FadeMixerGroup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundEffect/SoundEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/InteractiveStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/InteractiveStage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceEvent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_SCENE_.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_SCENE_.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/package/UnityCaptiv_Sensors/Scripts/SensorAnalysis.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/package/UnityCaptiv_Sensors/Scripts/SensorAnalysis.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +222,7 @@
       <workItem from="1637315476944" duration="7996000" />
       <workItem from="1637424090703" duration="9175000" />
       <workItem from="1637611777428" duration="1847000" />
-      <workItem from="1637658206988" duration="4273000" />
+      <workItem from="1637658206988" duration="4948000" />
     </task>
     <servers />
   </component>

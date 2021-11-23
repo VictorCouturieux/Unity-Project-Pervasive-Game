@@ -59,6 +59,7 @@ public class BarDeflate : MonoBehaviour
             yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
 
             double slope = respirationStatistics.Amplitude - lastAmplBreathing;
+            Debug.Log("slope deflate : " + slope);
             if (slope > 0 || Input.GetKey("down"))
             {
                 activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
