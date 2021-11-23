@@ -40,7 +40,7 @@ public class InteractiveStage6 : InteractiveStage {
     public IEnumerator CinematicTouchingFirstB( InputB _inputB, Radio _radio) {
         _canControl = false;
         _inputB.LightToGreen();
-        StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(StartSoundEvent(_timerSound, 1, true));
+        StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(StartSoundEvent(_timerSound, 1, true, 0.1f));
         if (IsFirstLoopLevel6)
         {
             yield return StartDialogueEvent(_dontForget);

@@ -31,9 +31,9 @@ public class InteractiveStage
         yield return VoiceEvent.StartLeataDialogueNow(dialogue);
     }
 
-    public IEnumerator StartSoundEvent(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped) {
+    public IEnumerator StartSoundEvent(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped, float volume = 1) {
         SoundEvent.SoundEffectEvent(soundEffect);
-        yield return SoundEvent.StartPhareAmbientNow(soundEffect, fadeInDuration, isLevel6Looped);
+        yield return SoundEvent.StartPhareAmbientNow(soundEffect, fadeInDuration, isLevel6Looped, volume);
         StoryManager.Instance.AdditionalCoroutine = null;
     }
 }

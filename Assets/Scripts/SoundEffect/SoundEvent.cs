@@ -16,16 +16,16 @@ public class SoundEvent : MonoBehaviour {
         Debug.Log("<color=red>" + soundEffect.text + "</color>");
     }
     
-    public IEnumerator StartPhareAmbientNow(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped)
+    public IEnumerator StartPhareAmbientNow(SoundEffect soundEffect, float fadeInDuration, bool isLevel6Looped, float targetVolume = 1)
     {
         StopForceSound();
-        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", 0);
+        FadeMixerGroup.SetVolume(_audioMixer, "AmbientVolParam", -80);
         
         _ambient0.clip = soundEffect.ChooseRandomAudioClip();
         yield return new WaitForSeconds(0.01f);
         
         _ambient0.Play();
-        StartCoroutine(FadeMixerGroup.StartVolumeFade(_audioMixer, "AmbientVolParam", fadeInDuration, 1));
+        StartCoroutine(FadeMixerGroup.StartVolumeFade(_audioMixer, "AmbientVolParam", fadeInDuration, targetVolume));
         float totalTime = 0;
         bool oneTime = false;
         while (_ambient0.isPlaying)

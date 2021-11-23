@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityCaptiv.Sensors;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,30 +22,56 @@ public class BarDeflate : MonoBehaviour
     private bool deflateIsValid = false;
     public bool apneaIsValid = false;
     public Image mask;
-//    public Input_Arduino inputArduinoInstance;
+
+    public SensorStatistics respirationStatistics;
+    private double lastAmplBreathing;
+
+    private void Start()
+    {
+        if (respirationStatistics != null)
+        {
+            lastAmplBreathing = respirationStatistics.Amplitude;
+            StartCoroutine(RefreshData());
+        }
+    }
 
     void Update()
     {
 
-        if (Input.GetKey("down"))
-        {
-            activeTime += Time.deltaTime;
-//            if (inputArduinoInstance)
-//            {
-//                inputArduinoInstance.Valve2_On();
-//            }
-        }
-        else {
-            activeTime = 0f;
-            deflateIsValid = false;
-            apneaIsValid = false;
-//            if (inputArduinoInstance)
-//            {
-//                inputArduinoInstance.Valve2_Off();
-//            }
-        }
+        // if (Input.GetKey("down"))
+        // {
+        //     activeTime += Time.deltaTime;
+        // }
+        // else {
+        //     activeTime = 0f;
+        //     deflateIsValid = false;
+        //     apneaIsValid = false;
+        // }
+        //
+        // GetCurrentFill();
+    }
 
-        GetCurrentFill();
+    private IEnumerator RefreshData()
+    {
+        while (true)
+        {
+            //Attente jusqu'au prochain tic de mise à jour
+            yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
+
+            double slope = respirationStatistics.Amplitude - lastAmplBreathing;
+            if (slope > 0 || Input.GetKey("down"))
+            {
+                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
+            }
+            else {
+                activeTime = 0f;
+                deflateIsValid = false;
+                apneaIsValid = false;
+            }
+            GetCurrentFill();
+
+            lastAmplBreathing = respirationStatistics.Amplitude;
+        }
     }
 
     void GetCurrentFill()

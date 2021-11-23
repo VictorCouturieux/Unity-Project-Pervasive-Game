@@ -150,12 +150,23 @@ public class SensorAnalysis : MonoBehaviour
                 //      zone = 2;
                 //  }
 
-                if (GSR_amp > GSR_Amp_ref)
+                if (GSR_amp > GSR_Amp_ref && RESP_amp > RESP_amp_ref && CFM_avg < CFM_avg_ref && TEMP_avg > TEMP_avg_ref)
                 {
                     zone = 1;
+                } else if (GSR_amp > GSR_Amp_ref && Math.Abs(RESP_amp - RESP_amp_ref) < 0.1f && CFM_avg > CFM_avg_ref && TEMP_avg > TEMP_avg_ref)
+                {
+                    zone = 2;
+                }
+                else if (GSR_amp > GSR_Amp_ref && RESP_amp > RESP_amp_ref && CFM_avg > CFM_avg_ref && TEMP_avg < TEMP_avg_ref)
+                {
+                    zone = 3;
+                }
+                else if (Math.Abs(GSR_amp - GSR_Amp_ref) < 0.1f && Math.Abs(RESP_amp - RESP_amp_ref) < 0.1f && CFM_avg < CFM_avg_ref && TEMP_avg < TEMP_avg_ref)
+                {
+                    zone = 4;
                 }
                 else {
-                    zone = 2;
+                    zone = 0;
                 }
 
                 //<-------------------------------->
