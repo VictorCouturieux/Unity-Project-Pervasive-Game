@@ -30,7 +30,7 @@ public class BarDeflate : MonoBehaviour
     {
         if (respirationStatistics != null)
         {
-            lastAmplBreathing = respirationStatistics.Amplitude;
+            lastAmplBreathing = respirationStatistics.Average;
             StartCoroutine(RefreshData());
         }
     }
@@ -58,7 +58,7 @@ public class BarDeflate : MonoBehaviour
             //Attente jusqu'au prochain tic de mise à jour
             yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
 
-            double slope = respirationStatistics.Amplitude - lastAmplBreathing;
+            double slope = respirationStatistics.Average - lastAmplBreathing;
             //Debug.Log("slope deflate : " + slope);
             if (slope < 1 || Input.GetKey("down"))
             {
@@ -71,7 +71,7 @@ public class BarDeflate : MonoBehaviour
             }
             GetCurrentFill();
 
-            lastAmplBreathing = respirationStatistics.Amplitude;
+            lastAmplBreathing = respirationStatistics.Average;
         }
     }
 
