@@ -60,11 +60,11 @@ public class BarDeflate : MonoBehaviour
 
             double slope = respirationStatistics.Average - lastAmplBreathing;
             //Debug.Log("slope deflate : " + slope);
-            if (slope < 1 && slope != 0 || Input.GetKey("down"))
+            if (slope < -0.5f || Input.GetKey("down"))
             {
-                activeTime += Time.time;//respirationStatistics.TimeWindowSize; //Time.deltaTime;
+                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
             }
-            else if (slope >= 1)
+            else if (slope >= 0.5f)
             {
                 activeTime = 0f;
                 deflateIsValid = false;

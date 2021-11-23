@@ -56,14 +56,13 @@ public class BarInflate : MonoBehaviour
         while (true)
         {
             //Attente jusqu'au prochain tic de mise à jour
-            yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
             if (respirationStatistics.sensorSource != null)
             {
                 double slope = respirationStatistics.Average - lastAmplBreathing;
                 //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-                if (slope > -0.5f && slope != 0 || Input.GetKey("up"))
+                if (slope > 0.5f || Input.GetKey("up"))
                 {
-                    activeTime += Time.time; //respirationStatistics.TimeWindowSize;//Time.deltaTime;
+                    activeTime += Time.deltaTime; //respirationStatistics.TimeWindowSize;//Time.deltaTime;
                 }
                 else if (slope <= -0.5f)
                 {
