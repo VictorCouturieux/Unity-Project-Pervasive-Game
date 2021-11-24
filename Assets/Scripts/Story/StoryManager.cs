@@ -201,14 +201,14 @@ public class StoryManager : MonoBehaviour
                     break;
                 case 6:
                     StopCoroutineRadio1VoiceLine();
-                    if (_inputB.currentLedColor() == ColorLed.Green && _inputC.currentLedColor() == ColorLed.Green) {
+                    if (_inputB.currentLedColor() == ColorLed.Green && _inputC.currentLedColor() == ColorLed.Green && _interactiveStage6.CanControl) {
                         _inputA.LightToGreen();
                         StartCoroutineRadio1VoiceLine(_interactiveStage6.CinematicStageOut(_inputA, _radio, _door, _grpA), _interactiveStage7.CinematicStageIn(_door, _radio));
                     }
                     break;
                 case 7:
                     StopForceCoroutineRadio1();
-                    _inputA.LightToRed();
+                    _inputA.LightToBlue();
                     StartCoroutineRadio1VoiceLine(_interactiveStage7.CinematicSecondEnd(_inputA));
                     break;
             }
@@ -222,7 +222,7 @@ public class StoryManager : MonoBehaviour
                         _inputB.LightToGreen();
                         StartCoroutineRadio1VoiceLine(_interactiveStage6.CinematicTouchingFirstB(_inputB, _radio));
                     }
-                    else if (_inputC.currentLedColor() == ColorLed.Green) {
+                    else if (_inputC.currentLedColor() == ColorLed.Green && _interactiveStage6.CanControl) {
                         StopCoroutineRadio1VoiceLine();
                         _inputB.LightToGreen();
                         StopAdditionalCoroutineTimeLine6();
@@ -239,7 +239,7 @@ public class StoryManager : MonoBehaviour
                         _inputC.LightToGreen();
                         StartCoroutineRadio1VoiceLine(_interactiveStage6.CinematicTouchingFirstC(_inputC, _radio));
                     }
-                    else if (_inputB.currentLedColor() == ColorLed.Green) {
+                    else if (_inputB.currentLedColor() == ColorLed.Green && _interactiveStage6.CanControl) {
                         StopCoroutineRadio1VoiceLine();
                         _inputC.LightToGreen();
                         StopAdditionalCoroutineTimeLine6();

@@ -22,7 +22,7 @@ public class InteractiveStage3 : InteractiveStage {
         ShowStageNUM = 3;
         StageEnum = -1;
         _firstTouchingInputAStage3 = false;
-        _inputA.LightToRed();
+        _inputA.LightToBlue();
         yield return StartDialogueEvent(_reload);
         StageEnum = 3;
         Event_Arduino.Instance.SendEventArduino();

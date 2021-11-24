@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class InputB : InputX
 {
+    
+    public float ledLetContactTimeInSec = 1;
+    private IEnumerator _routineLetContact = null;
+    
     public override bool isTouching() {
         return Input.GetKey(KeyCode.B) || Input.GetKey(KeyCode.F);
     }
@@ -20,18 +24,33 @@ public class InputB : InputX
     private void Update() {
         switch (StoryManager.Instance.StageEnum) {
             case 6:
-                if (StoryManager.Instance._interactiveStage6.CanControl) {
-                    if (isTouchingOneTime() && currentLedColor() == ColorLed.Red) {
+                if (currentLedColor() == ColorLed.Red || currentLedColor() == ColorLed.Yellow) {
+                    if (isTouchingOneTime()) {
+                        if (_routineLetContact != null) {
+                            StopCoroutine(_routineLetContact);
+                            _routineLetContact = null;
+                        }
                         LightToYellow();
                     }
-
-                    if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
-                        LightToRed();
+                    else if (isLetTouchOneTime()) {
+                        _routineLetContact = CoroutineRadioLetContact();
+                        StartCoroutine(_routineLetContact);
                     }
                 }
                 break;
         }
-
+    }
+    
+    
+    public IEnumerator CoroutineRadioLetContact() {
+        yield return new WaitForSeconds(ledLetContactTimeInSec);
+        if (isTouching()) {
+            LightToYellow();
+        }
+        else {
+            LightToRed();
+        }
+        _routineLetContact = null;
     }
     
     public void LightOff() {

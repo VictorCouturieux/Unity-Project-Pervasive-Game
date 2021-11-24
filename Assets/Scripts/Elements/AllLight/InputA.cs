@@ -1,7 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class InputA : InputX {
+    
+    public float ledLetContactTimeInSec = 1;
+    private IEnumerator _routineLetContact = null;
     
     public override bool isTouching() {
         return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q);
@@ -18,36 +22,60 @@ public class InputA : InputX {
     private void Update() {
         switch (StoryManager.Instance.StageEnum) {
             case 3:
-                if (isTouchingOneTime() && currentLedColor() == ColorLed.Red) {
-                    StoryManager.Instance.StopCoroutineRadio1VoiceLine();
-                    StoryManager.Instance.StartCoroutineRadio1VoiceLine(
-                        StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch(this));
-                    LightToYellow();
-                    Debug.Log("isTouchingOneTime input A");
-                }
-                if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
-                    LightToRed();
-                    StoryManager.Instance.StopCoroutineRadio1VoiceLine();
-                    StoryManager.Instance.StartCoroutineRadio1VoiceLine(
-                        StoryManager.Instance._interactiveStage3.StartHelpContact());
+                if (currentLedColor() == ColorLed.Blue || currentLedColor() == ColorLed.Yellow)
+                {
+                    if (isTouchingOneTime()) {
+                        if (_routineLetContact != null) {
+                            StopCoroutine(_routineLetContact);
+                            _routineLetContact = null;
+                        }
+                        LightToYellow();
+                        StoryManager.Instance.StopCoroutineRadio1VoiceLine();
+                        StoryManager.Instance.StartCoroutineRadio1VoiceLine(
+                            StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch(this));
+                    }
+                    else if (isLetTouchOneTime()) {
+                        _routineLetContact = CoroutineRadioLetContact();
+                        StartCoroutine(_routineLetContact);
+                    }
                 }
                 break;
             case 6 :
-                if (StoryManager.Instance._interactiveStage6.CanControl) {
-                    if (isTouchingOneTime() && currentLedColor() == ColorLed.Red &&
-                        StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green &&
-                        StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
+                if (StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green &&
+                    StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green 
+                    && (currentLedColor() == ColorLed.Blue || currentLedColor() == ColorLed.Yellow)) {
+                    
+                    if (isTouchingOneTime()) {
+                        if (_routineLetContact != null) {
+                            StopCoroutine(_routineLetContact);
+                            _routineLetContact = null;
+                        }
                         LightToYellow();
                     }
-
-                    if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow &&
-                        StoryManager.Instance.InputB.currentLedColor() == ColorLed.Green &&
-                        StoryManager.Instance.InputC.currentLedColor() == ColorLed.Green) {
-                        LightToRed();
+                    else if (isLetTouchOneTime()) {
+                        _routineLetContact = CoroutineRadioLetContact();
+                        StartCoroutine(_routineLetContact);
                     }
                 }
                 break;
         }
+    }
+    
+    public IEnumerator CoroutineRadioLetContact() {
+        yield return new WaitForSeconds(ledLetContactTimeInSec);
+        if (isTouching()) {
+            LightToYellow();
+        }
+        else {
+            LightToBlue();
+            if (StoryManager.Instance.StageEnum == 3)
+            {
+                StoryManager.Instance.StopCoroutineRadio1VoiceLine();
+                StoryManager.Instance.StartCoroutineRadio1VoiceLine(
+                    StoryManager.Instance._interactiveStage3.StartHelpContact());
+            }
+        }
+        _routineLetContact = null;
     }
 
     public void LightOff() {
@@ -71,9 +99,9 @@ public class InputA : InputX {
         input_Arduino.InputAGreen();
     }
     
-    public void LightToRed() { //BLUE
+    public void LightToBlue() { //BLUE
         if (_ledVisual != null) {
-            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
         }
         input_Arduino.InputABlue();
     }

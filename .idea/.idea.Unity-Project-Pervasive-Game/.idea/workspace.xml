@@ -4,14 +4,16 @@
     <list default="true" id="486e890c-cc6b-4a7b-b1a8-75354223c60e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input_Arduino.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input_Arduino.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0/StartRadioNoise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0/StartRadioNoise.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +44,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine2/InteractiveStage2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TMP_TextParsingUtilities.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.2.14/Editor/Recording/TimelineRecordingContextualResponder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" root0="FORCE_HIGHLIGHTING" />
@@ -233,6 +236,7 @@
       <workItem from="1637681306380" duration="566000" />
       <workItem from="1637704332253" duration="1541000" />
       <workItem from="1637746856214" duration="8170000" />
+      <workItem from="1637791254106" duration="4055000" />
     </task>
     <servers />
   </component>

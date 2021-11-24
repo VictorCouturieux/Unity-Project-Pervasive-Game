@@ -35,7 +35,7 @@ public class InteractiveStage6 : InteractiveStage {
         yield return new WaitForSeconds(1);
         _radio.LightToBlue();
         yield return new WaitForSeconds(1);
-        _inputA.LightToRed();
+        _inputA.LightToBlue();
         yield return new WaitForSeconds(1);
         _inputB.LightToRed();
         yield return new WaitForSeconds(1);
@@ -93,8 +93,6 @@ public class InteractiveStage6 : InteractiveStage {
         _radio.StopCurrantHelpMode();
         yield return new WaitForSeconds(1);
         _inputA.LightToGreen();
-        yield return new WaitForSeconds(1);
-        _door.LightToGreen();
         yield return new WaitForSeconds(1);
         _grpA.StartBlueBlinking();
         yield return StartLeataDialogueEvent(_inputASuccess);

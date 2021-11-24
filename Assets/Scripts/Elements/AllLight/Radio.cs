@@ -31,7 +31,7 @@ public class Radio : Element {
     }
     
     private void Update() {
-        if (StoryManager.Instance.StageEnum >= 0 && currentLedColor() != ColorLed.Red && currentLedColor() != ColorLed.Green) {
+        if (StoryManager.Instance.ShowStageNUM >= 0 && currentLedColor() != ColorLed.Red && currentLedColor() != ColorLed.Green) {
             if (IsTouchingOneTime()) {
                 if (_routineLetContact != null) {
                     StopCoroutine(_routineLetContact);

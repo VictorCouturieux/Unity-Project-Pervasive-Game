@@ -24,7 +24,7 @@ public class InteractiveStage4 : InteractiveStage
     {
         _inputA.LightToGreen();
         yield return new WaitForSeconds(2);
-        _inputA.LightToRed();
+        _inputA.LightToBlue();
     }
 
     public IEnumerator CinematicTimeLapsOut(GrpA grpA)

@@ -43,7 +43,7 @@ public class InteractiveStage7 : InteractiveStage {
     
     public IEnumerator CinematicSecondEnd(InputA _inputA) {
         StoryManager.Instance.StageEnum = -1;
-        _inputA.LightToRed();
+        _inputA.LightToBlue();
         yield return StartLeataDialogueEvent(_endSecond);
         StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(EndLighthouseHum());
         yield return new WaitForSeconds(cutLightTimer);
