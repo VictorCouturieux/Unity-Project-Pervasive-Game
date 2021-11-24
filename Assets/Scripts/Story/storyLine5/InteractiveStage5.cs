@@ -17,6 +17,7 @@ public class InteractiveStage5 : InteractiveStage {
         grpA.StartBlueBlinking();
         yield return StartSoundEvent(scrambled, 1, false, volumeScrambled);
         grpA.StopBlinking();
+        yield return new WaitForSeconds(1);
         grpA.LightToRed();
         yield return StartDialogueEvent(_question);
     }

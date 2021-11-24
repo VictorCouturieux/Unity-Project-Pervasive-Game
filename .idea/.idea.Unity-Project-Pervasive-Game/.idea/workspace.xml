@@ -5,22 +5,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarApnea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarApnea.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarDeflate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarInflate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FlateBar/BarInflate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/InteractiveStage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/InteractiveStage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input_Arduino.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Input_Arduino.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0/StartRadioNoise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine0/StartRadioNoise.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine1/InteractiveStage1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine2/InteractiveStage2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine2/InteractiveStage2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine5/InteractiveStage5.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceM.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Voice/VoiceM.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +232,7 @@
       <workItem from="1637658206988" duration="9030000" />
       <workItem from="1637681306380" duration="566000" />
       <workItem from="1637704332253" duration="1541000" />
-      <workItem from="1637746856214" duration="4882000" />
+      <workItem from="1637746856214" duration="8170000" />
     </task>
     <servers />
   </component>

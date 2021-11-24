@@ -38,7 +38,7 @@ public class InteractiveStage7 : InteractiveStage {
         yield return StartLeataDialogueEvent(_A_EndSecond);
         StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(EndLighthouseHum());
         yield return new WaitForSeconds(cutLightTimer);
-        StoryManager.Instance.resetLights();
+        yield return StoryManager.Instance.resetLights();
     }
     
     public IEnumerator CinematicSecondEnd(InputA _inputA) {
@@ -47,7 +47,7 @@ public class InteractiveStage7 : InteractiveStage {
         yield return StartLeataDialogueEvent(_endSecond);
         StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(EndLighthouseHum());
         yield return new WaitForSeconds(cutLightTimer);
-        StoryManager.Instance.resetLights();
+        yield return StoryManager.Instance.resetLights();
     }
 
     public IEnumerator EndLighthouseHum()

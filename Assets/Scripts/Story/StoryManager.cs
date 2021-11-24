@@ -126,7 +126,7 @@ public class StoryManager : MonoBehaviour
     }
 
     private void Start() {
-        resetLights();
+        //resetLights();
         
         StartCoroutineRadio1VoiceLine(_startRadioNoise.StartingGame(_grpA, _door, _radio));
     }
@@ -255,12 +255,6 @@ public class StoryManager : MonoBehaviour
         StageEnum = -1;
         _radio.StopCurrantHelpMode();
         _interactiveStage6.CanControl = false;
-        resetLights();
-        _radio.LightToBlue();
-        _door.LightToRed();
-        _inputA.LightToRed();
-        _inputB.LightToRed();
-        _inputC.LightToRed();
         StartCoroutineRadio1VoiceLine(_interactiveStage6.CinematicStageIn(_inputA, _inputB, _inputC, _radio));
     }
 
@@ -343,14 +337,19 @@ public class StoryManager : MonoBehaviour
         currentCinematicCoroutine = null;
     }
 
-    public void resetLights() {
+    public IEnumerator resetLights() {
         _inputA.LightOff();
+        yield return new WaitForSeconds(1);
         _inputB.LightOff();
+        yield return new WaitForSeconds(1);
         _inputC.LightOff();
-        _door.LightOff();
+        yield return new WaitForSeconds(1);
         _grpA.LightOff();
+        yield return new WaitForSeconds(1);
         _grpA.StopBlinking();
+        yield return new WaitForSeconds(1);
         _radio.LightOff();
+        yield return new WaitForSeconds(1);
     }
 
 }

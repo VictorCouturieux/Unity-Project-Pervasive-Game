@@ -15,11 +15,9 @@ public class StartRadioNoise : InteractiveStage {
     public IEnumerator StartingGame(GrpA grpA, Door door, Radio radio)
     {
         ShowStageNUM = 0;
-        //grpA.LightOff();
+        grpA.LightOff();
         yield return new WaitForSeconds(_lightOffLapsSec);
         radio.LightToBlue();
-        yield return new WaitForSeconds(1);
-        door.LightToRed();
         yield return new WaitForSeconds(1); 
         grpA.StartRedBlinking();
 

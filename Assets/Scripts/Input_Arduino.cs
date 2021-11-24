@@ -75,7 +75,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("1");
-            stream.BaseStream.Flush();
+            Debug.Log("<color=green>GrpA Red</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>GrpA Red</color>");
         }
     }
     public void GrpABlack()
@@ -83,7 +87,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("2");
-            stream.BaseStream.Flush();
+            Debug.Log("<color=green>GrpA Black</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>GrpA Black</color>");
         }
     }
     public void GrpACrossToBlue()
@@ -91,7 +99,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("3");
-            stream.BaseStream.Flush();
+            Debug.Log("<color=green>GrpA Blue</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>GrpA Blue</color>");
         }
     }
     public void GrpABlue()
@@ -99,7 +111,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("4");
-            stream.BaseStream.Flush();
+            Debug.Log("<color=green>GrpA Blue</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>GrpA Blue</color>");
         }
     }
     public void RadioBlue()
@@ -107,7 +123,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("5");
-            Debug.Log("Radio Blue");
+            Debug.Log("<color=green>Radio Blue</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>Radio Blue</color>");
         }
     }
     public void RadioGreen()
@@ -115,7 +135,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("6");
-            Debug.Log("Radio Green");
+            Debug.Log("<color=green>Radio Green</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>Radio Green</color>");
         }
     }
     public void RadioRed()
@@ -123,7 +147,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("7");
-            Debug.Log("Radio Red");
+            Debug.Log("<color=green>Radio Red</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>Radio Red</color>");
         }
     }
     public void RadioYellow()
@@ -131,7 +159,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("8");
-            Debug.Log("Radio Yellow");
+            Debug.Log("<color=green>Radio Yellow</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>Radio Yellow</color>");
         }
     }
     public void RadioBlack()
@@ -139,7 +171,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("9");
-            Debug.Log("Radio OFF");
+            Debug.Log("<color=green>Radio OFF</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>Radio OFF</color>");
         }
     }
     public void InputABlue()
@@ -147,6 +183,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("10");
+            Debug.Log("<color=green>InputA Blue</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputA Blue</color>");
         }
     }
     public void InputAYellow()
@@ -154,6 +195,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("11");
+            Debug.Log("<color=green>InputA Yellow</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputA Yellow</color>");
         }
     }
     public void InputAGreen()
@@ -161,6 +207,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("12");
+            Debug.Log("<color=green>InputA Green</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputA Green</color>");
         }
     }
     public void InputABlack()
@@ -168,6 +219,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("13");
+            Debug.Log("<color=green>InputA Black</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputA Black</color>");
         }
     }
     public void InputBRed()
@@ -175,6 +231,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("14");
+            Debug.Log("<color=green>InputB Red</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputB Red</color>");
         }
     }
     public void InputBYellow()
@@ -182,6 +243,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("15");
+            Debug.Log("<color=green>InputB Yellow</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputB Yellow</color>");
         }
     }
     public void InputBGreen()
@@ -189,6 +255,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("16");
+            Debug.Log("<color=green>InputB Green</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputB Green</color>");
         }
     }
     public void InputBBlack()
@@ -196,6 +267,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("17");
+            Debug.Log("<color=green>InputB Black</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputB Black</color>");
         }
     }
     public void InputCRed()
@@ -203,6 +279,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("18");
+            Debug.Log("<color=green>InputC Red</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputC Red</color>");
         }
     }
     public void InputCYellow()
@@ -210,6 +291,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("19");
+            Debug.Log("<color=green>InputC Yellow</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputC Yellow</color>");
         }
     }
     public void InputCGreen()
@@ -217,6 +303,11 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("20");
+            Debug.Log("<color=green>InputC Green</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputC Green</color>");
         }
     }
     public void InputCBlack()
@@ -224,7 +315,13 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("21");
+            Debug.Log("<color=green>InputC Black</color>");
         }
+        else
+        {
+            Debug.Log("<color=green>InputC Black</color>");
+        }
+        
     }
     public void DoorRed()
     {

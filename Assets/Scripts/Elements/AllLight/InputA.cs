@@ -23,6 +23,7 @@ public class InputA : InputX {
                     StoryManager.Instance.StartCoroutineRadio1VoiceLine(
                         StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch(this));
                     LightToYellow();
+                    Debug.Log("isTouchingOneTime input A");
                 }
                 if (isLetTouchOneTime() && currentLedColor() == ColorLed.Yellow) {
                     LightToRed();

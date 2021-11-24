@@ -123,21 +123,17 @@ public class Radio : Element {
     }
     
     public IEnumerator CoroutineRadioInteractPositiveAnswer() {
-        if (currentLedColor() == ColorLed.Yellow) {
-            while (IsTouching()) {
-                LightToGreen();
-                yield return new WaitForSeconds(0.1f);
-            }
+        if (currentLedColor() == ColorLed.Yellow && IsTouching()) {
+            LightToGreen();
+            yield return new WaitForSeconds(2f);
             LightToBlue();
         }
     }
     
     public IEnumerator CoroutineRadioInteractNegativeAnswer() {
-        if (currentLedColor() == ColorLed.Yellow) {
-            while (IsTouching()) {
-                LightToRed();
-                yield return new WaitForSeconds(0.1f);
-            }
+        if (currentLedColor() == ColorLed.Yellow && IsTouching()) {
+            LightToRed();
+            yield return new WaitForSeconds(2f);
             LightToBlue();
         }
     }

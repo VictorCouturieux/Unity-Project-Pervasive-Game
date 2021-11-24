@@ -31,9 +31,16 @@ public class InteractiveStage6 : InteractiveStage {
     public IEnumerator CinematicStageIn(InputA _inputA, InputB _inputB, InputC _inputC, Radio _radio) {
         StageEnum = 6;
         Event_Arduino.Instance.SendEventArduino();
+        
+        yield return new WaitForSeconds(1);
+        _radio.LightToBlue();
+        yield return new WaitForSeconds(1);
         _inputA.LightToRed();
+        yield return new WaitForSeconds(1);
         _inputB.LightToRed();
+        yield return new WaitForSeconds(1);
         _inputC.LightToRed();
+        
         _canControl = true;
         _radio.StartHelpMode(_helpTimeLapsInSec, _helpInput);
         yield return null;
@@ -58,6 +65,7 @@ public class InteractiveStage6 : InteractiveStage {
     public IEnumerator CinematicTouchingSecond(InputB _inputB, InputC _inputC, Radio _radio) {
         _canControl = false;
         _inputB.LightToGreen();
+        yield return new WaitForSeconds(1);
         _inputC.LightToGreen();
         yield return StartDialogueEvent(_inputBCSuccess);
         _canControl = true;
@@ -83,8 +91,11 @@ public class InteractiveStage6 : InteractiveStage {
     public IEnumerator CinematicStageOut(InputA _inputA, Radio _radio, Door _door, GrpA _grpA) {
         ShowStageNUM = 7;
         _radio.StopCurrantHelpMode();
+        yield return new WaitForSeconds(1);
         _inputA.LightToGreen();
+        yield return new WaitForSeconds(1);
         _door.LightToGreen();
+        yield return new WaitForSeconds(1);
         _grpA.StartBlueBlinking();
         yield return StartLeataDialogueEvent(_inputASuccess);
     }
