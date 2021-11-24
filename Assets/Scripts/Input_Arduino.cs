@@ -44,7 +44,7 @@ public class Input_Arduino : MonoBehaviour
         try
         {
             stream = new SerialPort(portsArduino.port, portsArduino.baudRate);
-            stream.ReadTimeout = 100;
+            //stream.ReadTimeout = 100;
             stream.Open();
         }
         catch (IOException e)
@@ -52,10 +52,10 @@ public class Input_Arduino : MonoBehaviour
             Console.WriteLine(e + portsArduino.port);
             throw;
         }
-
+        /*
         stream3 = new SerialPort(portsArduino.port3, portsArduino.baudRate);
         stream3.ReadTimeout = 100;
-        stream3.Open();
+        stream3.Open();*/
 
         Input_Arduino.singletonInstance = this;
     }
@@ -64,7 +64,7 @@ public class Input_Arduino : MonoBehaviour
     {
         SendMessageToServo("0");
         if (stream.IsOpen) stream.Close();
-        if (stream3.IsOpen) stream3.Close();
+        //if (stream3.IsOpen) stream3.Close();
     }
 
 
@@ -75,6 +75,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("1");
+            stream.BaseStream.Flush();
         }
     }
     public void GrpABlack()
@@ -82,6 +83,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("2");
+            stream.BaseStream.Flush();
         }
     }
     public void GrpACrossToBlue()
@@ -89,6 +91,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("3");
+            stream.BaseStream.Flush();
         }
     }
     public void GrpABlue()
@@ -96,6 +99,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("4");
+            stream.BaseStream.Flush();
         }
     }
     public void RadioBlue()
@@ -103,6 +107,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("5");
+            Debug.Log("Radio Blue");
         }
     }
     public void RadioGreen()
@@ -110,6 +115,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("6");
+            Debug.Log("Radio Green");
         }
     }
     public void RadioRed()
@@ -117,6 +123,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("7");
+            Debug.Log("Radio Red");
         }
     }
     public void RadioYellow()
@@ -124,6 +131,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("8");
+            Debug.Log("Radio Yellow");
         }
     }
     public void RadioBlack()
@@ -131,6 +139,7 @@ public class Input_Arduino : MonoBehaviour
         if (stream != null && stream.IsOpen)
         {
             stream.Write("9");
+            Debug.Log("Radio OFF");
         }
     }
     public void InputABlue()
@@ -219,24 +228,24 @@ public class Input_Arduino : MonoBehaviour
     }
     public void DoorRed()
     {
-        if (stream != null && stream.IsOpen)
+        /*if (stream != null && stream.IsOpen)
         {
             stream.Write("22");
-        }
+        }*/
     }
     public void DoorGreen()
     {
-        if (stream != null && stream.IsOpen)
+        /*if (stream != null && stream.IsOpen)
         {
             stream.Write("23");
-        }
+        }*/
     }
     public void DoorBlack()
     {
-        if (stream != null && stream.IsOpen)
+        /*if (stream != null && stream.IsOpen)
         {
             stream.Write("24");
-        }
+        }*/
     }
 
     // Changement de mood dans le jeu
@@ -278,22 +287,26 @@ public class Input_Arduino : MonoBehaviour
 
     public void SendMessageToServo(string message)
     {
-        if (stream3 != null && stream3.IsOpen)
+        /*if (stream3 != null && stream3.IsOpen)
         {
             stream3.WriteLine(message);
             stream3.BaseStream.Flush();
            // Debug.Log(message);
-        }
+        }*/
     }
 
     private void Update()
     {
         //SendMessageToServo(message);
-        int msg = StoryManager.Instance.StageEnum + 1;
+        /*int msg = StoryManager.Instance.StageEnum + 1;
         if (Input.GetKeyDown(KeyCode.P))
         {
             SendMessageToServo((message * 10).ToString());
             Debug.Log(message);
+        }*/
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            InputCRed();
         }
     }
 }
