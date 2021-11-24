@@ -8,10 +8,13 @@ public class InteractiveStage2 : InteractiveStage {
     public float _noAnswerTimeLapsInSec = 3f;
     public Dialogue _noAnswer;
     public Dialogue _posAnswer;
-    public Dialogue _negAnswer;
+    public SoundEffect _negAnswer;
+    public float volumeNegAnswer = 0.5f;
+    
     public Dialogue _endDialogue;
     
     public IEnumerator CinematicStageIn() {
+        ShowStageNUM = 2;
         StageEnum = 2;
         Event_Arduino.Instance.SendEventArduino();
         VoiceEvent.DialogueEvent(_question);
@@ -31,7 +34,7 @@ public class InteractiveStage2 : InteractiveStage {
     }
     
     public IEnumerator CinematicStageNegAnswer() {
-        yield return StartDialogueEvent(_negAnswer);
+        yield return StartSoundEvent(_negAnswer, 1, false, volumeNegAnswer);
         yield return StartDialogueEvent(_endDialogue);
     }
 

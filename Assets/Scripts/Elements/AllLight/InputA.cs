@@ -4,15 +4,15 @@ using UnityEngine.UI;
 public class InputA : InputX {
     
     public override bool isTouching() {
-        return Input.GetKey(KeyCode.A);
+        return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q);
     }
     
     public override bool isTouchingOneTime() {
-        return Input.GetKeyDown(KeyCode.A);
+        return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q);
     }
 
     public override bool isLetTouchOneTime() {
-        return Input.GetKeyUp(KeyCode.A);
+        return Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.Q);
     }
 
     private void Update() {

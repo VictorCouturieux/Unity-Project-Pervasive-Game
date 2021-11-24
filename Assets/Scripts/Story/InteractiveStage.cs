@@ -14,8 +14,13 @@ public class InteractiveStage
     public SoundEvent SoundEvent{
         get { return StoryManager.Instance.SoundEvent; }
     }
+
+    public int ShowStageNUM
+    {
+        get { return StoryManager.Instance.ShowStageNUM; }
+        set { StoryManager.Instance.ShowStageNUM = value; }
+    }
     
-    private int _stageEnum;
     public int StageEnum {
         get { return StoryManager.Instance.StageEnum; }
         set { StoryManager.Instance.StageEnum = value; }

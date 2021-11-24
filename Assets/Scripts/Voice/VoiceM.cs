@@ -20,7 +20,7 @@ public class VoiceM : MonoBehaviour
         new VoiceEffect ("EchoDrymix_Dia", 0, 1),
         
         new VoiceEffect ("FlangeDrymix_Dia", 0, 0.45f),
-        new VoiceEffect ("FlangeDepth_Dia", 0.01f, 1),
+        new VoiceEffect ("FlangeDepth_Dia", 0.01f, 0.40f),
         new VoiceEffect ("FlangeRate_Dia", 0, 8),
         
         new VoiceEffect ("PitchShifterPitch_Dia", 1, 0.92f),

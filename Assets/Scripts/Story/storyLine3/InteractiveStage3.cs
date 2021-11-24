@@ -19,6 +19,7 @@ public class InteractiveStage3 : InteractiveStage {
     }
 
     public IEnumerator CinematicStageIn(InputA _inputA, Radio radio) {
+        ShowStageNUM = 3;
         StageEnum = -1;
         _firstTouchingInputAStage3 = false;
         _inputA.LightToRed();

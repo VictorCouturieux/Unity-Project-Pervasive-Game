@@ -12,6 +12,7 @@ public class InteractiveStage4 : InteractiveStage
 
     public IEnumerator CinematicStageIn(InputA _inputA, Radio _radio)
     {
+        ShowStageNUM = 4;
         StageEnum = 4;
         Event_Arduino.Instance.SendEventArduino();
         _radio.StopCurrantHelpMode();
@@ -26,23 +27,23 @@ public class InteractiveStage4 : InteractiveStage
         _inputA.LightToRed();
     }
 
-    public IEnumerator CinematicTimeLapsOut()
+    public IEnumerator CinematicTimeLapsOut(GrpA grpA)
     {
         _isWaiting = true;
         yield return new WaitForSeconds(_answerTimeLapsInSec);
         _isWaiting = false;
         StoryManager.Instance.StopCoroutineRadio1VoiceLine();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
-            .CinematicStageIn());
+            .CinematicStageIn(grpA));
     }
 
-    public void StopTimeLapsOut()
+    public void StopTimeLapsOut(GrpA grpA)
     {
         if (_isWaiting)
         {
             StoryManager.Instance.StopForceCoroutineRadio1();
             StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
-                .CinematicStageIn());
+                .CinematicStageIn(grpA));
         }
     }
 }

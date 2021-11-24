@@ -5,7 +5,12 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class StoryManager : MonoBehaviour {
+public class StoryManager : MonoBehaviour
+{
+
+    public Text _stageEnumShowText;
+
+    public float _breathingSlopeTolerance = 5f;
     
     public StartRadioNoise _startRadioNoise;
     public InteractiveStage1 _interactiveStage1;
@@ -74,6 +79,13 @@ public class StoryManager : MonoBehaviour {
         get { return _soundEvent; }
     }
     
+    private int toggleShowStageNUM = -1;
+    private int _showStageNUM = -1;
+    public int ShowStageNUM {
+        get { return _showStageNUM; }
+        set { _showStageNUM = value; }
+    }
+    
     private int _stageEnum = -1;
     public int StageEnum {
         get { return _stageEnum; }
@@ -124,6 +136,13 @@ public class StoryManager : MonoBehaviour {
             StopForceCoroutineRadio1();
             StartCoroutineRadio1VoiceLine(_interactiveStage1.CinematicStageIn(_grpA), _interactiveStage1.CinematicLoop() );
         }
+        
+        if (_stageEnumShowText != null && toggleShowStageNUM != ShowStageNUM)
+        {
+            _stageEnumShowText.text = ShowStageNUM.ToString();
+        }
+
+        toggleShowStageNUM = ShowStageNUM;
     }
     
     public void InteractPositiveAnswer() {
@@ -139,7 +158,7 @@ public class StoryManager : MonoBehaviour {
                     StartCoroutineRadio1VoiceLine(_interactiveStage2.CinematicStageOut(), _interactiveStage3.CinematicStageIn(_inputA, _radio));
                     break;
                 case 4:
-                    _interactiveStage4.StopTimeLapsOut();
+                    _interactiveStage4.StopTimeLapsOut(_grpA);
                     break;
                 case 5:
                     StopCoroutineRadio1VoiceLine();
@@ -162,7 +181,7 @@ public class StoryManager : MonoBehaviour {
                     StartCoroutineRadio1VoiceLine(_interactiveStage2.CinematicStageNegAnswer(), _interactiveStage3.CinematicStageIn(_inputA, _radio));
                     break;
                 case 4:
-                    _interactiveStage4.StopTimeLapsOut();
+                    _interactiveStage4.StopTimeLapsOut(_grpA);
                     break;
                 case 5:
                     StopCoroutineRadio1VoiceLine();
@@ -178,7 +197,7 @@ public class StoryManager : MonoBehaviour {
                 case 3:
                     StopCoroutineRadio1VoiceLine();
                     _inputA.LightToGreen();
-                    StartCoroutineRadio1VoiceLine(_interactiveStage4.CinematicStageIn(_inputA, _radio), _interactiveStage4.CinematicTimeLapsOut());
+                    StartCoroutineRadio1VoiceLine(_interactiveStage4.CinematicStageIn(_inputA, _radio), _interactiveStage4.CinematicTimeLapsOut(_grpA));
                     break;
                 case 6:
                     StopCoroutineRadio1VoiceLine();

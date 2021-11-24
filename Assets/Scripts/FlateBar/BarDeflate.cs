@@ -32,7 +32,6 @@ public class BarDeflate : MonoBehaviour
         if (respirationStatistics != null)
         {
             lastAverageBreathing = respirationStatistics.Average;
-            // StartCoroutine(RefreshData());
         }
     }
 
@@ -59,35 +58,11 @@ public class BarDeflate : MonoBehaviour
             }
 
             //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope < -1f && respirationStatistics.Average != 0 || Input.GetKey("down"))
+            if (slope < -StoryManager.Instance._breathingSlopeTolerance && respirationStatistics.Average != 0 || Input.GetKey("down"))
             {
                 activeTime += Time.deltaTime;
             }
             else //if (slope >= 1f || respirationStatistics.Average == 0.0f || Input.GetKeyUp("down"))
-            {
-                activeTime = 0f;
-                deflateIsValid = false;
-            }
-            GetCurrentFill();
-
-            lastAverageBreathing = respirationStatistics.Average;
-        }
-    }
-
-    private IEnumerator RefreshData()
-    {
-        while (true)
-        {
-            //Attente jusqu'au prochain tic de mise à jour
-            yield return new WaitForSecondsRealtime(respirationStatistics.TimeWindowSize);
-
-            double slope = respirationStatistics.Average - lastAverageBreathing;
-            //Debug.Log("slope : " + slope + " // Average : " + respirationStatistics.Average);
-            if (slope < -5f && respirationStatistics.Average != 0 || Input.GetKey("down"))
-            {
-                activeTime += respirationStatistics.TimeWindowSize; //Time.deltaTime;
-            }
-            else if (slope >= 5f || respirationStatistics.Average == 0.0f)
             {
                 activeTime = 0f;
                 deflateIsValid = false;

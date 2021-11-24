@@ -19,15 +19,15 @@ public class Radio : Element {
     private Dialogue dialogue;
     
     public bool IsTouching() {
-        return Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.W);
+        return Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.Z);
     }
     
     public bool IsTouchingOneTime() {
-        return Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.W);
+        return Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Z);
     }
 
     public bool IsLetTouchOneTime() {
-        return Input.GetKeyUp(KeyCode.R) || Input.GetKeyUp(KeyCode.W);
+        return Input.GetKeyUp(KeyCode.R) || Input.GetKeyUp(KeyCode.Z);
     }
     
     private void Update() {

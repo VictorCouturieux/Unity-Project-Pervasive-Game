@@ -4,19 +4,25 @@ using UnityEngine;
 
 [Serializable]
 public class InteractiveStage5 : InteractiveStage {
-    public Dialogue scrambled;
+    public SoundEffect scrambled;
+    public float volumeScrambled = 0.5f;
     public Dialogue _question;
     public Dialogue _positivAnswer;
     public Dialogue _negativAnswer;
 
-    public IEnumerator CinematicStageIn() {
+    public IEnumerator CinematicStageIn(GrpA grpA) {
+        ShowStageNUM = 5;
         StageEnum = 5;
         Event_Arduino.Instance.SendEventArduino();
-        yield return StartDialogueEvent(scrambled);
+        grpA.StartBlueBlinking();
+        yield return StartSoundEvent(scrambled, 1, false, volumeScrambled);
+        grpA.StopBlinking();
+        grpA.LightToRed();
         yield return StartDialogueEvent(_question);
     }
 
     public IEnumerator CinematicStagePosOut() {
+        ShowStageNUM = 6;
         yield return StartDialogueEvent(_positivAnswer);
     }
     

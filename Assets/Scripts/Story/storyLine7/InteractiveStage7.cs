@@ -16,6 +16,7 @@ public class InteractiveStage7 : InteractiveStage {
 
     public float cutLightTimer = 4;
     public SoundEffect _lighthouseHum;
+    public float volumeLighthouseHum = 0.4f;
     
     public IEnumerator CinematicStageIn(Door _door, Radio radio) {
         StageEnum = 7;
@@ -51,6 +52,6 @@ public class InteractiveStage7 : InteractiveStage {
 
     public IEnumerator EndLighthouseHum()
     {
-        yield return StartSoundEvent(_lighthouseHum, 3, false, 0.1f);
+        yield return StartSoundEvent(_lighthouseHum, 3, false, volumeLighthouseHum);
     }
 }
