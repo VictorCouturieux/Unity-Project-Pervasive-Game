@@ -7,13 +7,6 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputB.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/Radio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/StoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/TimeLineTool.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine4/InteractiveStage4.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine6/InteractiveStage6.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine7/InteractiveStage7.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scene_ 1.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +229,8 @@
       <workItem from="1637681306380" duration="566000" />
       <workItem from="1637704332253" duration="1541000" />
       <workItem from="1637746856214" duration="8170000" />
-      <workItem from="1637791254106" duration="4055000" />
+      <workItem from="1637791254106" duration="4130000" />
+      <workItem from="1637826859881" duration="243000" />
     </task>
     <servers />
   </component>

@@ -29,7 +29,10 @@ public class InputA : InputX {
                             StopCoroutine(_routineLetContact);
                             _routineLetContact = null;
                         }
-                        LightToYellow();
+                        if (currentLedColor() != ColorLed.Yellow)
+                        {
+                            LightToYellow();
+                        }
                         StoryManager.Instance.StopCoroutineRadio1VoiceLine();
                         StoryManager.Instance.StartCoroutineRadio1VoiceLine(
                             StoryManager.Instance._interactiveStage3.CinematicStageFirstTouch(this));
@@ -50,7 +53,10 @@ public class InputA : InputX {
                             StopCoroutine(_routineLetContact);
                             _routineLetContact = null;
                         }
-                        LightToYellow();
+                        if (currentLedColor() != ColorLed.Yellow)
+                        {
+                            LightToYellow();
+                        }
                     }
                     else if (isLetTouchOneTime()) {
                         _routineLetContact = CoroutineRadioLetContact();

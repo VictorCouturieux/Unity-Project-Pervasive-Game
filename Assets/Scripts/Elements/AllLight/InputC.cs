@@ -30,7 +30,11 @@ public class InputC : InputX
                             StopCoroutine(_routineLetContact);
                             _routineLetContact = null;
                         }
-                        LightToYellow();
+
+                        if (currentLedColor() != ColorLed.Yellow)
+                        {
+                            LightToYellow();
+                        }
                     }
                     else if (isLetTouchOneTime()) {
                         _routineLetContact = CoroutineRadioLetContact();

@@ -37,7 +37,10 @@ public class Radio : Element {
                     StopCoroutine(_routineLetContact);
                     _routineLetContact = null;
                 }
-                LightToYellow();
+                if (currentLedColor() != ColorLed.Yellow)
+                {
+                    LightToYellow();
+                }
             }
             else if (IsLetTouchOneTime()) {
                 _routineLetContact = CoroutineRadioLetContact();
