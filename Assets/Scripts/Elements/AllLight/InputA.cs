@@ -64,6 +64,25 @@ public class InputA : InputX {
                     }
                 }
                 break;
+            case 7 :
+                if (currentLedColor() == ColorLed.Green || currentLedColor() == ColorLed.Yellow) {
+                    
+                    if (isTouchingOneTime()) {
+                        if (_routineLetContact != null) {
+                            StopCoroutine(_routineLetContact);
+                            _routineLetContact = null;
+                        }
+                        if (currentLedColor() != ColorLed.Yellow)
+                        {
+                            LightToYellow();
+                        }
+                    }
+                    else if (isLetTouchOneTime()) {
+                        _routineLetContact = CoroutineRadioLetContact();
+                        StartCoroutine(_routineLetContact);
+                    }
+                }
+                break;
         }
     }
     
@@ -82,6 +101,9 @@ public class InputA : InputX {
             } else if (StoryManager.Instance.StageEnum == 6)
             {
                 LightToRed();
+            } else if (StoryManager.Instance.StageEnum == 7)
+            {
+                LightToGreen();
             }
         }
         _routineLetContact = null;

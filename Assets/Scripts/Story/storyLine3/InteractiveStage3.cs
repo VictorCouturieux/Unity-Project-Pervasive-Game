@@ -22,6 +22,7 @@ public class InteractiveStage3 : InteractiveStage {
         ShowStageNUM = 3;
         StageEnum = -1;
         _firstTouchingInputAStage3 = false;
+        yield return new WaitForSeconds(1);
         _inputA.LightToBlue();
         yield return StartDialogueEvent(_reload);
         StageEnum = 3;
