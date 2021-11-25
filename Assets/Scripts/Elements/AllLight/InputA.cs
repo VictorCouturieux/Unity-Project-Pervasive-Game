@@ -22,7 +22,7 @@ public class InputA : InputX {
     private void Update() {
         switch (StoryManager.Instance.StageEnum) {
             case 3:
-                if (currentLedColor() == ColorLed.Red || currentLedColor() == ColorLed.Yellow)
+                if (currentLedColor() == ColorLed.Blue || currentLedColor() == ColorLed.Yellow)
                 {
                     if (isTouchingOneTime()) {
                         if (_routineLetContact != null) {
@@ -73,12 +73,15 @@ public class InputA : InputX {
             LightToYellow();
         }
         else {
-            LightToRed();
             if (StoryManager.Instance.StageEnum == 3)
             {
+                LightToBlue();
                 StoryManager.Instance.StopCoroutineRadio1VoiceLine();
                 StoryManager.Instance.StartCoroutineRadio1VoiceLine(
                     StoryManager.Instance._interactiveStage3.StartHelpContact());
+            } else if (StoryManager.Instance.StageEnum == 6)
+            {
+                LightToRed();
             }
         }
         _routineLetContact = null;
