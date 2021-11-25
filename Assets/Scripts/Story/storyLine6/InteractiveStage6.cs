@@ -35,7 +35,7 @@ public class InteractiveStage6 : InteractiveStage {
         yield return new WaitForSeconds(1);
         _radio.LightToBlue();
         yield return new WaitForSeconds(1);
-        _inputA.LightToBlue();
+        _inputA.LightToRed();
         yield return new WaitForSeconds(1);
         _inputB.LightToRed();
         yield return new WaitForSeconds(1);
@@ -48,7 +48,9 @@ public class InteractiveStage6 : InteractiveStage {
 
     public IEnumerator CinematicTouchingFirstB( InputB _inputB, Radio _radio) {
         _canControl = false;
+        yield return new WaitForSeconds(1);
         _inputB.LightToGreen();
+        yield return new WaitForSeconds(1);
         if (IsFirstLoopLevel6)
         {
             StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(StartSoundEvent(_timerSound, 1, true, firstVolumeTimerSound));
@@ -64,6 +66,7 @@ public class InteractiveStage6 : InteractiveStage {
     
     public IEnumerator CinematicTouchingSecond(InputB _inputB, InputC _inputC, Radio _radio) {
         _canControl = false;
+        yield return new WaitForSeconds(1);
         _inputB.LightToGreen();
         yield return new WaitForSeconds(1);
         _inputC.LightToGreen();
@@ -74,7 +77,9 @@ public class InteractiveStage6 : InteractiveStage {
     
     public IEnumerator CinematicTouchingFirstC(InputC _inputC, Radio _radio) {
         _canControl = false;
+        yield return new WaitForSeconds(1);
         _inputC.LightToGreen();
+        yield return new WaitForSeconds(1);
         if (IsFirstLoopLevel6)
         {
             StoryManager.Instance.StartAdditionalCoroutinePlayedWithMain(StartSoundEvent(_timerSound, 1, true, firstVolumeTimerSound));
