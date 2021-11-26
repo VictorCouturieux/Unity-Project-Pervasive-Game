@@ -149,7 +149,7 @@ public class SensorAnalysis : MonoBehaviour
                 //  {
                 //      zone = 2;
                 //  }
-
+/*
                 if (GSR_amp > GSR_Amp_ref && RESP_amp > RESP_amp_ref && CFM_avg < CFM_avg_ref && TEMP_avg > TEMP_avg_ref)
                 {
                     zone = 1;
@@ -168,7 +168,8 @@ public class SensorAnalysis : MonoBehaviour
                 else {
                     zone = 0;
                 }
-
+*/
+                zone = 0;
                 //<-------------------------------->
             }
         }

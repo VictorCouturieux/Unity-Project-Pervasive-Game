@@ -108,7 +108,9 @@ public class StoryManager : MonoBehaviour
             return m_instance; 
         } 
     }
-    
+
+    private bool isPlayed = false;
+
     private void Awake() {
         if (m_instance != null && m_instance != this) {
             Destroy(gameObject);
@@ -136,10 +138,15 @@ public class StoryManager : MonoBehaviour
     private void Start() {
         //resetLights();
         
-        StartCoroutineRadio1VoiceLine(_startRadioNoise.StartingGame(_grpA, _door, _radio));
+        //StartCoroutineRadio1VoiceLine(_startRadioNoise.StartingGame(_grpA, _door, _radio));
     }
 
     private void Update() {
+        if (!isPlayed && Input.GetKeyDown(KeyCode.Return))
+        {
+            StartCoroutineRadio1VoiceLine(_startRadioNoise.StartingGame(_grpA, _door, _radio));
+        }
+        
         if (_stageEnum == 0 && _radio.IsTouchingOneTime()) {
             StopForceCoroutineRadio1();
             StartCoroutineRadio1VoiceLine(_interactiveStage1.CinematicStageIn(_grpA), _interactiveStage1.CinematicLoop() );
