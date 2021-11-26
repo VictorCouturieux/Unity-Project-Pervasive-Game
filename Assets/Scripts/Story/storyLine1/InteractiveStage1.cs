@@ -13,10 +13,11 @@ public class InteractiveStage1 : InteractiveStage {
     public IEnumerator CinematicStageIn(GrpA grpA) {
         ShowStageNUM = 1;
         StageEnum = 1;
-        Event_Arduino.Instance.SendEventArduino();
+        // Event_Arduino.Instance.SendEventArduino();
+        yield return new WaitForSeconds(1); 
+        StoryManager.Instance.InputArduino.StartScene1();
         yield return new WaitForSeconds(1);
         grpA.StopBlinking();
-        yield return new WaitForSeconds(1);
         grpA.LightToRed();
         yield return StartDialogueEvent(_thankGod);
         yield return StartDialogueEvent(_understoodQuestion);

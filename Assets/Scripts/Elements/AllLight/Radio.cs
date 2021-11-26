@@ -148,11 +148,16 @@ public class Radio : Element {
         input_Arduino.RadioBlack();
     }
     
-    public void LightToBlue() {
+    public void LightToBlue()
+    {
+        Ltb();
+        input_Arduino.RadioBlue();
+    } 
+    
+    public void Ltb() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
         }
-        input_Arduino.RadioBlue();
     } 
     
     public void LightToYellow() {

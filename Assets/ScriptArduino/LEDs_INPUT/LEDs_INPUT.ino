@@ -179,14 +179,173 @@ void loop() {
     break; 
 
     
-  case 23: //DOOR GREEN
-      digitalWrite(doorRed, HIGH);
-      digitalWrite(doorGreen, LOW);    
+  case 23: //Reset light
+    
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, LOW);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, LOW);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
     break;                    
-  case 24: //DOOR BLACK
-      digitalWrite(doorRed, HIGH);
-      digitalWrite(doorGreen, HIGH);    
-    break;   
+  case 24: //Inputs to red
+    digitalWrite(inputaRed, HIGH);
+    digitalWrite(inputaBlue, LOW);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, HIGH);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, HIGH);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
+    break;
+  case 25: //Start scene 0
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, LOW);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
+    break;
+  case 26: //Start scene 1
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, LOW);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
+    break;
+  case 27: //Start scene 2
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, LOW);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
+    break;
+  case 28: //Start scene 3
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, HIGH);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
+    break;
+  case 29: //Start scene 4
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, HIGH);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW); 
+    break;
+  case 30: //Start scene 5
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, HIGH);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW);   
+    break;
+  case 31: //Start scene 6
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, HIGH);
+    digitalWrite(inputaGreen, LOW);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, LOW);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, LOW);  
+    break;
+  case 32: //Start scene 7
+    digitalWrite(radioRed, LOW);
+    digitalWrite(radioBlue, HIGH);
+    digitalWrite(radioGreen, LOW);
+  
+    digitalWrite(inputaRed, LOW);
+    digitalWrite(inputaBlue, LOW);
+    digitalWrite(inputaGreen, HIGH);
+  
+    digitalWrite(inputbRed, LOW);
+    digitalWrite(inputbBlue, LOW);
+    digitalWrite(inputbGreen, HIGH);
+    
+    digitalWrite(inputcRed, LOW);
+    digitalWrite(inputcBlue, LOW);
+    digitalWrite(inputcGreen, HIGH);  
+    break;
                 
   default:
     break;

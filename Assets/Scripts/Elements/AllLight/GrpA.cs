@@ -16,6 +16,11 @@ public class GrpA : Element {
         input_Arduino.GrpABlack();
     }
     
+    public void Lo() {
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/NoneRound");
+        }
+    }
 
     public void LightToRed() {
         if (_ledVisual != null) {
@@ -53,7 +58,7 @@ public class GrpA : Element {
     public void StopBlinking() {
         if (_blinkingCoroutine != null) {
             StopCoroutine(_blinkingCoroutine);
-            LightOff();
+            // LightOff();
             _blinkingCoroutine = null;
         }
     }

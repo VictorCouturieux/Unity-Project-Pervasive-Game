@@ -21,6 +21,12 @@ public class StoryManager : MonoBehaviour
     public InteractiveStage6 _interactiveStage6;
     public InteractiveStage7 _interactiveStage7;
 
+    private Input_Arduino input_Arduino;
+    public Input_Arduino InputArduino
+    {
+        get { return input_Arduino; }
+    }
+    
     private InputA _inputA;
     public InputA InputA{
         get { return _inputA; }
@@ -111,6 +117,8 @@ public class StoryManager : MonoBehaviour
             m_instance = this;
         }
         
+        input_Arduino = FindObjectOfType<Input_Arduino>();
+        
         _inputA = FindObjectOfType<InputA>();
         _inputB = FindObjectOfType<InputB>();
         _inputC = FindObjectOfType<InputC>();
@@ -151,7 +159,7 @@ public class StoryManager : MonoBehaviour
             switch (_stageEnum) {
                 case 1:
                     StopCoroutineRadio1VoiceLine();
-                    StartCoroutineRadio1VoiceLine(_interactiveStage1.CinematicStageOut(), _interactiveStage2.CinematicStageIn(), _interactiveStage2.CinematicLoop());
+                    StartCoroutineRadio1VoiceLine(_interactiveStage1.CinematicStageOut(), _interactiveStage2.CinematicStageIn(_grpA), _interactiveStage2.CinematicLoop());
                     break;
                 case 2:
                     StopCoroutineRadio1VoiceLine();
@@ -161,8 +169,12 @@ public class StoryManager : MonoBehaviour
                     _interactiveStage4.StopTimeLapsOut(_grpA);
                     break;
                 case 5:
-                    StopCoroutineRadio1VoiceLine();
-                    StartCoroutineRadio1VoiceLine(_interactiveStage5.CinematicStagePosOut(), _interactiveStage6.CinematicStageIn(_inputA, _inputB, _inputC, _radio));
+                    if (_interactiveStage5.IsWaiting)
+                    {
+                        StopCoroutineRadio1VoiceLine();
+                        StartCoroutineRadio1VoiceLine(_interactiveStage5.CinematicStagePosOut(), 
+                            _interactiveStage6.CinematicStageIn(_inputA, _inputB, _inputC, _radio));
+                    }
                     break;
             }
         }
@@ -184,8 +196,13 @@ public class StoryManager : MonoBehaviour
                     _interactiveStage4.StopTimeLapsOut(_grpA);
                     break;
                 case 5:
-                    StopCoroutineRadio1VoiceLine();
-                    StartCoroutineRadio1VoiceLine(_interactiveStage5.CinematicStageNegOut(), _interactiveStage6.CinematicStageIn(_inputA, _inputB, _inputC, _radio));
+                    if (_interactiveStage5.IsWaiting)
+                    {
+                        StopCoroutineRadio1VoiceLine();
+                        StartCoroutineRadio1VoiceLine(_interactiveStage5.CinematicStageNegOut(), 
+                            _interactiveStage6.CinematicStageIn(_inputA, _inputB, _inputC, _radio));
+                    }
+
                     break;
             }
         }
@@ -337,19 +354,13 @@ public class StoryManager : MonoBehaviour
         currentCinematicCoroutine = null;
     }
 
-    public IEnumerator resetLights() {
-        _inputA.LightOff();
+    public IEnumerator ResetLightsRoutine() {
         yield return new WaitForSeconds(1);
-        _inputB.LightOff();
-        yield return new WaitForSeconds(1);
-        _inputC.LightOff();
-        yield return new WaitForSeconds(1);
-        _grpA.LightOff();
-        yield return new WaitForSeconds(1);
-        _grpA.StopBlinking();
-        yield return new WaitForSeconds(1);
-        _radio.LightOff();
-        yield return new WaitForSeconds(1);
+        input_Arduino.ResetLight();
+    }
+    
+    public void ResetLights() {
+        input_Arduino.ResetLight();
     }
 
 }

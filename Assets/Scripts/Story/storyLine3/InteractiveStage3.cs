@@ -22,11 +22,16 @@ public class InteractiveStage3 : InteractiveStage {
         ShowStageNUM = 3;
         StageEnum = -1;
         _firstTouchingInputAStage3 = false;
+        
+        yield return new WaitForSeconds(1); 
+        StoryManager.Instance.InputArduino.StartScene3();
         yield return new WaitForSeconds(1);
-        _inputA.LightToBlue();
+        StoryManager.Instance.GrpA.StopBlinking();
+        StoryManager.Instance.GrpA.LightToRed();
+        
         yield return StartDialogueEvent(_reload);
         StageEnum = 3;
-        Event_Arduino.Instance.SendEventArduino();
+        //Event_Arduino.Instance.SendEventArduino();
         radio.StartHelpMode(_timeLapsHelpContact, _helpContact);
     }
 

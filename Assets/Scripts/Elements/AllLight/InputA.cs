@@ -123,18 +123,27 @@ public class InputA : InputX {
         input_Arduino.InputAYellow();
     }
     
-    public void LightToGreen() {
-        if (_ledVisual != null) {
-            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
-        }
+    public void LightToGreen()
+    {
+        Ltg();
         input_Arduino.InputAGreen();
     }
     
+    public void Ltg() {
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
+        }
+    }
+    
     public void LightToBlue() { //BLUE
+        Ltb();
+        input_Arduino.InputABlue();
+    }
+    
+    public void Ltb() { //BLUE
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/BlueRound");
         }
-        input_Arduino.InputABlue();
     }
 
     public void LightToRed() { 
@@ -142,6 +151,11 @@ public class InputA : InputX {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
         input_Arduino.InputARed();
+    }
+    public void Ltr() { 
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
+        }
     }
 
     

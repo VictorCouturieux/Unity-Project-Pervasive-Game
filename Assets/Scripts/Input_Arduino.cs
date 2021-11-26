@@ -127,7 +127,7 @@ public class Input_Arduino : MonoBehaviour
         }
         else
         {
-            //Debug.Log("<color=green>Radio Blue</color>");
+            Debug.Log("<color=green>Radio Blue</color>");
         }
     }
     public void RadioGreen()
@@ -139,7 +139,7 @@ public class Input_Arduino : MonoBehaviour
         }
         else
         {
-            //Debug.Log("<color=green>Radio Green</color>");
+            Debug.Log("<color=green>Radio Green</color>");
         }
     }
     public void RadioRed()
@@ -151,7 +151,7 @@ public class Input_Arduino : MonoBehaviour
         }
         else
         {
-            //Debug.Log("<color=green>Radio Red</color>");
+            Debug.Log("<color=green>Radio Red</color>");
         }
     }
     public void RadioYellow()
@@ -163,7 +163,7 @@ public class Input_Arduino : MonoBehaviour
         }
         else
         {
-            //Debug.Log("<color=green>Radio Yellow</color>");
+            Debug.Log("<color=green>Radio Yellow</color>");
         }
     }
     public void RadioBlack()
@@ -175,7 +175,7 @@ public class Input_Arduino : MonoBehaviour
         }
         else
         {
-            //Debug.Log("<color=green>Radio OFF</color>");
+            Debug.Log("<color=green>Radio OFF</color>");
         }
     }
     public void InputABlue()
@@ -188,18 +188,6 @@ public class Input_Arduino : MonoBehaviour
         else
         {
             Debug.Log("<color=green>InputA Blue</color>");
-        }
-    }
-    public void InputARed()
-    {
-        if (stream3 != null && stream3.IsOpen)
-        {
-            stream3.Write("22");
-            Debug.Log("<color=green>InputA Red</color>");
-        }
-        else
-        {
-            Debug.Log("<color=green>InputA Red</color>");
         }
     }
     public void InputAYellow()
@@ -335,26 +323,106 @@ public class Input_Arduino : MonoBehaviour
         }
         
     }
-    public void DoorRed()
+    public void InputARed()
     {
-        /*if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("22");
-        }*/
+            stream3.Write("22");
+            Debug.Log("<color=green>InputA Red</color>");
+        }
+        else
+        {
+            Debug.Log("<color=green>InputA Red</color>");
+        }
     }
-    public void DoorGreen()
+    public void ResetLight()
     {
-        /*if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("23");
-        }*/
+            stream3.Write("23");
+        }
     }
-    public void DoorBlack()
+    public void InputsRed()
     {
-        /*if (stream != null && stream.IsOpen)
+        StoryManager.Instance.InputA.Ltr();
+        StoryManager.Instance.InputB.Ltr();
+        StoryManager.Instance.InputC.Ltr();
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("24");
-        }*/
+            stream3.Write("24");
+        }
+    }
+    public void StartScene0()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        StoryManager.Instance.GrpA.Lo();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("25");
+        }
+    }
+    public void StartScene1()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("26");
+        }
+    }
+    public void StartScene2()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("27");
+        }
+    }
+    public void StartScene3()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        StoryManager.Instance.InputA.Ltb();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("28");
+        }
+    }
+    public void StartScene4()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        StoryManager.Instance.InputA.Ltb();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("29");
+        }
+    }
+    public void StartScene5()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        StoryManager.Instance.InputA.Ltb();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("30");
+        }
+    }
+    public void StartScene6()
+    {
+        StoryManager.Instance.Radio.Ltb();
+        StoryManager.Instance.InputA.Ltb();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("31");
+        }
+    }
+    public void StartScene7()
+    { 
+        StoryManager.Instance.Radio.Ltb();
+        StoryManager.Instance.InputA.Ltg();
+        StoryManager.Instance.InputB.Ltg();
+        StoryManager.Instance.InputC.Ltg();
+        if (stream != null && stream.IsOpen)
+        {
+            stream.Write("32");
+        }
     }
 
     // Changement de mood dans le jeu

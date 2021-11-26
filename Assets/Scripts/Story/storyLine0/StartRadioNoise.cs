@@ -15,10 +15,10 @@ public class StartRadioNoise : InteractiveStage {
     public IEnumerator StartingGame(GrpA grpA, Door door, Radio radio)
     {
         ShowStageNUM = 0;
-        grpA.LightOff();
-        yield return new WaitForSeconds(_lightOffLapsSec);
-        radio.LightToBlue();
         yield return new WaitForSeconds(1); 
+        StoryManager.Instance.InputArduino.StartScene0();
+        yield return new WaitForSeconds(_lightOffLapsSec);
+        grpA.StopBlinking();
         grpA.StartRedBlinking();
 
         yield return StartSoundEvent(_radioNoise, _startRadioSoundFadeDuration, false, volumeRadioNoise);

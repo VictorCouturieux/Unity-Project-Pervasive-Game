@@ -13,13 +13,18 @@ public class InteractiveStage2 : InteractiveStage {
     
     public Dialogue _endDialogue;
     
-    public IEnumerator CinematicStageIn() {
+    public IEnumerator CinematicStageIn(GrpA grpA) {
         ShowStageNUM = 2;
-        StageEnum = 2;
-        Event_Arduino.Instance.SendEventArduino();
+        StageEnum = -1;
+        //Event_Arduino.Instance.SendEventArduino();
+        yield return new WaitForSeconds(1); 
+        StoryManager.Instance.InputArduino.StartScene2();
+        yield return new WaitForSeconds(1);
+        grpA.StopBlinking();
+        grpA.LightToRed();
         VoiceEvent.DialogueEvent(_question);
+        StageEnum = 2;
 //        yield return StartDialogueEvent(_question);
-        yield return null;
     }
     
     public IEnumerator CinematicLoop() {

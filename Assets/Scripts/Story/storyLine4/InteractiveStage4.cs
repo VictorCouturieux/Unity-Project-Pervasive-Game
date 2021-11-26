@@ -14,8 +14,13 @@ public class InteractiveStage4 : InteractiveStage
     {
         ShowStageNUM = 4;
         StageEnum = 4;
-        Event_Arduino.Instance.SendEventArduino();
+        //Event_Arduino.Instance.SendEventArduino();
         _radio.StopCurrantHelpMode();
+        yield return new WaitForSeconds(1); 
+        StoryManager.Instance.InputArduino.StartScene4();
+        yield return new WaitForSeconds(1);
+        StoryManager.Instance.GrpA.StopBlinking();
+        StoryManager.Instance.GrpA.LightToRed();
         yield return GreenLedSomeSec(_inputA);
         yield return StartDialogueEvent(_question);
     }
@@ -34,7 +39,7 @@ public class InteractiveStage4 : InteractiveStage
         _isWaiting = false;
         StoryManager.Instance.StopCoroutineRadio1VoiceLine();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
-            .CinematicStageIn(grpA));
+            .CinematicStageIn(grpA), StoryManager.Instance._interactiveStage5.CinematicTimeLapsOut());
     }
 
     public void StopTimeLapsOut(GrpA grpA)
@@ -43,7 +48,7 @@ public class InteractiveStage4 : InteractiveStage
         {
             StoryManager.Instance.StopForceCoroutineRadio1();
             StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
-                .CinematicStageIn(grpA));
+                .CinematicStageIn(grpA), StoryManager.Instance._interactiveStage5.CinematicTimeLapsOut());
         }
     }
 }

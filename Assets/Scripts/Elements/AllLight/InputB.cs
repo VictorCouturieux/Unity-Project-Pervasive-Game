@@ -76,11 +76,21 @@ public class InputB : InputX
         }
         input_Arduino.InputBGreen();
     }
+    public void Ltg() {
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
+        }
+    }
     
     public void LightToRed() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
         input_Arduino.InputBRed();
+    }
+    public void Ltr() { 
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
+        }
     }
 }

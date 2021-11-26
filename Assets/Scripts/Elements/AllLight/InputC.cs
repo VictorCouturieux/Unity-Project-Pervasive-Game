@@ -77,11 +77,21 @@ public class InputC : InputX
         }
         input_Arduino.InputCGreen();
     }
+    public void Ltg() {
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/GreenRound");
+        }
+    }
     
     public void LightToRed() {
         if (_ledVisual != null) {
             _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
         }
         input_Arduino.InputCRed();
+    }
+    public void Ltr() { 
+        if (_ledVisual != null) {
+            _ledVisual.sprite = Resources.Load <Sprite>("Sprites/RedRound");
+        }
     }
 }

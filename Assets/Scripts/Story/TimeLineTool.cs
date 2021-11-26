@@ -33,7 +33,7 @@ public class TimeLineTool : MonoBehaviour
     {
         StoryManager.Instance.StopForceCoroutineRadio1();
         _radio.StopCurrantHelpMode();
-        StoryManager.Instance.resetLights();
+        // StoryManager.Instance.ResetLights();
         StoryManager.Instance.StageEnum = -1;
         StoryManager.Instance._interactiveStage6.CanControl = false;
         StoryManager.Instance.SoundEvent.StopForceSound();
@@ -50,7 +50,6 @@ public class TimeLineTool : MonoBehaviour
     private void storyLineLoading_1()
     {
         ResetStage();
-        _radio.LightToBlue();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(
             StoryManager.Instance._interactiveStage1.CinematicStageIn(_grpA), 
             StoryManager.Instance._interactiveStage1.CinematicLoop() );
@@ -59,10 +58,8 @@ public class TimeLineTool : MonoBehaviour
     private void storyLineLoading_2()
     {
         ResetStage();
-        _grpA.LightToRed();
-        _radio.LightToBlue();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(
-            StoryManager.Instance._interactiveStage2.CinematicStageIn(), 
+            StoryManager.Instance._interactiveStage2.CinematicStageIn(_grpA), 
             StoryManager.Instance._interactiveStage2.CinematicLoop());
         
     }
@@ -70,8 +67,6 @@ public class TimeLineTool : MonoBehaviour
     private void storyLineLoading_3()
     {
         ResetStage();
-        _grpA.LightToRed();
-        _radio.LightToBlue();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine( 
             StoryManager.Instance._interactiveStage3.CinematicStageIn(_inputA, _radio));
     }
@@ -79,8 +74,6 @@ public class TimeLineTool : MonoBehaviour
     private void storyLineLoading_4()
     {
         ResetStage();
-        _grpA.LightToRed();
-        _radio.LightToBlue();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(
             StoryManager.Instance._interactiveStage4.CinematicStageIn(_inputA, _radio), 
             StoryManager.Instance._interactiveStage4.CinematicTimeLapsOut(_grpA));
@@ -89,17 +82,13 @@ public class TimeLineTool : MonoBehaviour
     private void storyLineLoading_5()
     {
         ResetStage();
-        _radio.LightToBlue();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(StoryManager.Instance._interactiveStage5
-            .CinematicStageIn(_grpA));
+            .CinematicStageIn(_grpA), StoryManager.Instance._interactiveStage5.CinematicTimeLapsOut());
     }
     
     private void storyLineLoading_6()
     {
         ResetStage();
-        _grpA.LightToRed();
-        _radio.LightToBlue();
-        _inputA.LightToBlue();
         StoryManager.Instance._interactiveStage6.IsFirstLoopLevel6 = true;
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(
             StoryManager.Instance._interactiveStage5.CinematicStagePosOut(), 
@@ -109,10 +98,6 @@ public class TimeLineTool : MonoBehaviour
     private void storyLineLoading_7()
     {
         ResetStage();
-        _radio.LightToBlue();
-        _inputA.LightToGreen();
-        _inputB.LightToGreen();
-        _inputC.LightToGreen();
         StoryManager.Instance.StartCoroutineRadio1VoiceLine(
             StoryManager.Instance._interactiveStage6.CinematicStageOut(_inputA, _radio, _door, _grpA), 
             StoryManager.Instance._interactiveStage7.CinematicStageIn(_door, _radio));
