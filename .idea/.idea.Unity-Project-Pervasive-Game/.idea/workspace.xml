@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="486e890c-cc6b-4a7b-b1a8-75354223c60e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Unity-Project-Pervasive-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/AllLight/InputA.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Story/storyLine3/InteractiveStage3.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +226,7 @@
       <workItem from="1637704332253" duration="1541000" />
       <workItem from="1637746856214" duration="8170000" />
       <workItem from="1637791254106" duration="4130000" />
-      <workItem from="1637826859881" duration="1140000" />
+      <workItem from="1637826859881" duration="1995000" />
     </task>
     <servers />
   </component>
