@@ -30,10 +30,11 @@ public class InteractiveStage6 : InteractiveStage {
 
     public IEnumerator CinematicStageIn(InputA _inputA, InputB _inputB, InputC _inputC, Radio _radio) {
         StageEnum = 6;
-        Event_Arduino.Instance.SendEventArduino();
+        //Event_Arduino.Instance.SendEventArduino();
         
         yield return new WaitForSeconds(1);
         StoryManager.Instance.InputArduino.InputsRed();
+        yield return new WaitForSeconds(1);
         
         _canControl = true;
         _radio.StartHelpMode(_helpTimeLapsInSec, _helpInput);

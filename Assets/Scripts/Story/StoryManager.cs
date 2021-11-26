@@ -179,7 +179,8 @@ public class StoryManager : MonoBehaviour
                     if (_interactiveStage5.IsWaiting)
                     {
                         StopCoroutineRadio1VoiceLine();
-                        StartCoroutineRadio1VoiceLine(_interactiveStage5.CinematicStagePosOut(), 
+                        StartCoroutineRadio1VoiceLine(
+                            _interactiveStage5.CinematicStagePosOut(), 
                             _interactiveStage6.CinematicStageIn(_inputA, _inputB, _inputC, _radio));
                     }
                     break;

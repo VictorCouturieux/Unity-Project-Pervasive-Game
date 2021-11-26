@@ -38,7 +38,12 @@ public class InteractiveStage5 : InteractiveStage {
         yield return new WaitForSeconds(_answerTimeLapsInSec);
         _isWaiting = false;
         StoryManager.Instance.StopCoroutineRadio1VoiceLine();
-        StoryManager.Instance.StartCoroutineRadio1VoiceLine(CinematicStageNegOut());
+        StoryManager.Instance.StartCoroutineRadio1VoiceLine(CinematicStageNegOut(),
+            StoryManager.Instance._interactiveStage6.CinematicStageIn(
+                StoryManager.Instance.InputA, 
+                StoryManager.Instance.InputB, 
+                StoryManager.Instance.InputC, 
+                StoryManager.Instance.Radio));
     }
 
     public IEnumerator CinematicStagePosOut() {

@@ -356,61 +356,61 @@ public class Input_Arduino : MonoBehaviour
     {
         StoryManager.Instance.Radio.Ltb();
         StoryManager.Instance.GrpA.Lo();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("25");
+            stream3.Write("25");
         }
     }
     public void StartScene1()
     {
         StoryManager.Instance.Radio.Ltb();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("26");
+            stream3.Write("26");
         }
     }
     public void StartScene2()
     {
         StoryManager.Instance.Radio.Ltb();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("27");
+            stream3.Write("27");
         }
     }
     public void StartScene3()
     {
         StoryManager.Instance.Radio.Ltb();
         StoryManager.Instance.InputA.Ltb();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("28");
+            stream3.Write("28");
         }
     }
     public void StartScene4()
     {
         StoryManager.Instance.Radio.Ltb();
         StoryManager.Instance.InputA.Ltb();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("29");
+            stream3.Write("29");
         }
     }
     public void StartScene5()
     {
         StoryManager.Instance.Radio.Ltb();
         StoryManager.Instance.InputA.Ltb();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("30");
+            stream3.Write("30");
         }
     }
     public void StartScene6()
     {
         StoryManager.Instance.Radio.Ltb();
         StoryManager.Instance.InputA.Ltb();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("31");
+            stream3.Write("31");
         }
     }
     public void StartScene7()
@@ -419,9 +419,9 @@ public class Input_Arduino : MonoBehaviour
         StoryManager.Instance.InputA.Ltg();
         StoryManager.Instance.InputB.Ltg();
         StoryManager.Instance.InputC.Ltg();
-        if (stream != null && stream.IsOpen)
+        if (stream3 != null && stream3.IsOpen)
         {
-            stream.Write("32");
+            stream3.Write("32");
         }
     }
 
