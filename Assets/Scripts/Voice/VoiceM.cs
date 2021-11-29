@@ -43,32 +43,32 @@ public class VoiceM : MonoBehaviour
     
     private void ChangeZone(int newZone)
     {
-        Debug.Log("Zone : " + newZone);
-        if (newZone == 0 && currantMood != Mood.Neutral)
-        {
-            ToMood(false);
-            currantMood = Mood.Neutral;
-        } else if (newZone == 1 && currantMood != Mood.Stat1)
-        {
-            ToMood(false);
-            currantMood = Mood.Stat1;
-            ToMood(true);
-        } else if (newZone == 2 && currantMood != Mood.Stat2)
-        {
-            ToMood(false);
-            currantMood = Mood.Stat2;
-            ToMood(true);
-        } else if (newZone == 3 && currantMood != Mood.Stat3)
-        {
-            ToMood(false);
-            currantMood = Mood.Stat3;
-            ToMood(true);
-        } else if (newZone == 4 && currantMood != Mood.Stat4)
-        {
-            ToMood(false);
-            currantMood = Mood.Stat4;
-            ToMood(true);
-        }
+        // Debug.Log("Zone : " + newZone);
+        // if (newZone == 0 && currantMood != Mood.Neutral)
+        // {
+        //     ToMood(false);
+        //     currantMood = Mood.Neutral;
+        // } else if (newZone == 1 && currantMood != Mood.Stat1)
+        // {
+        //     ToMood(false);
+        //     currantMood = Mood.Stat1;
+        //     ToMood(true);
+        // } else if (newZone == 2 && currantMood != Mood.Stat2)
+        // {
+        //     ToMood(false);
+        //     currantMood = Mood.Stat2;
+        //     ToMood(true);
+        // } else if (newZone == 3 && currantMood != Mood.Stat3)
+        // {
+        //     ToMood(false);
+        //     currantMood = Mood.Stat3;
+        //     ToMood(true);
+        // } else if (newZone == 4 && currantMood != Mood.Stat4)
+        // {
+        //     ToMood(false);
+        //     currantMood = Mood.Stat4;
+        //     ToMood(true);
+        // }
     }
 
     public void ToMood(bool isStarting)
